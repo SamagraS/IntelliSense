@@ -1,0 +1,592 @@
+# Intelli-Credit — Requirements Specification
+**Version 1.0 | Hackathon Build**
+
+---
+
+## Section 1: Product Overview
+
+### What Intelli-Credit Is
+
+Intelli-Credit is an AI-powered Credit Decisioning Engine that automates end-to-end preparation of a Credit Appraisal Memo (CAM) for Indian corporate and SME lending. It ingests multiple types of data — structured financial files, unstructured documents, live web research, and human observations — runs them through a multi-layer intelligence pipeline, and produces a professional, fully explainable lending recommendation.
+
+The system behaves like a **digital senior credit manager**. Not a black box that spits out a score, but a reasoning system that can be interrogated at every step, where every conclusion traces back to evidence.
+
+### What It Is Not
+
+- Not a Loan Origination System. It plugs into existing LOS infrastructure as a decisioning brain.
+- Not a fully automated approve/reject machine. Humans remain in control of the final decision.
+- Not a generic credit scoring tool. Every element is built around Indian lending context, Indian data sources, and Indian regulatory nuance.
+
+### Core Design Principles
+
+**Explainability first.** Every number, signal, and recommendation must be traceable back to a source document, a rule, or a model output. No black boxes anywhere.
+
+**Policy-aligned.** Different lenders have different risk appetites. The system is configurable at three distinct levels.
+
+**Human-in-the-loop.** The system assists and accelerates human judgment. It does not replace it.
+
+**Indian context built-in.** GST reconciliation logic, MCA data structures, e-Courts parsing, CIBIL Commercial nuances — first-class citizens, not add-ons.
+
+---
+
+## Section 2: System Architecture Overview
+
+The system has four sequential layers. Each layer's output feeds the next, and every handoff is visible and auditable.
+
+```
+Raw Documents + External Sources + Primary Notes
+                      ↓
+         LAYER 1 — DATA INGESTOR
+    (Parse, extract, clean, structure)
+                      ↓
+      LAYER 2 — ML INTELLIGENCE LAYER
+  (FinBERT + Isolation Forest + Graph Engine)
+                      ↓
+       LAYER 3 — FIVE CS SCORECARD
+     (Aggregate signals → scores → decision)
+                      ↓
+        LAYER 4 — LLM SYNTHESIS
+      (CAM narrative + recommendation)
+                      ↓
+         Interactive UI + Word/PDF CAM
+```
+
+Every layer's output is stored, labeled, and linked forward and backward. A judge can start at the final CAM recommendation and drill all the way back to the exact sentence in a PDF that triggered a risk signal. That is the explainability promise.
+
+---
+
+## Section 3: Inputs — Full Coverage
+
+These are every input type the system must handle, mapped to their source and what they feed into.
+
+### 3.1 Structured Inputs
+
+**GST Filings (GSTR-2A and GSTR-3B)**
+What they are: GSTR-3B is what a company self-reports as their monthly sales and tax paid. GSTR-2A is an auto-generated statement of purchases that other businesses have declared when buying from this company. In theory these should match. When they don't, it is a red flag for revenue inflation or circular trading.
+Format: PDF or JSON export from the GST portal.
+What we extract: Monthly revenue declared, input tax credit claimed, filing consistency (gaps in months = red flag), GSTR-2A vs 3B divergence percentage.
+Feeds into: Capacity C (revenue reliability), Anomaly Detection model.
+
+**ITRs (Income Tax Returns)**
+What they are: The company's annual income tax filing with the Indian government. Contains declared profits, depreciation, director remuneration, and tax paid — a useful cross-check against the audited financials.
+Format: PDF acknowledgement + computation sheets.
+What we extract: Declared income, tax paid, depreciation schedules, comparison against financial statement profits.
+Feeds into: Capacity C, Capital C, cross-verification flags.
+
+**Bank Statements**
+What they are: 12–24 months of the company's bank account transaction history, showing actual cash moving in and out.
+Format: PDF (often scanned) or CSV export.
+What we extract: Monthly average balance, inflow/outflow patterns, EMI obligations visible in debits, bounce history, large unexplained credits, consistency of cash flows with declared GST revenue.
+Feeds into: Capacity C, GST-bank reconciliation logic.
+
+### 3.2 Unstructured Inputs
+
+**Annual Reports**
+What they are: Yearly reports published by companies (mandatory for listed companies) containing audited financials, management discussion, risk factors, corporate governance disclosures, and auditor notes.
+Format: PDF, often 100–300 pages, mix of text and tables.
+What we extract: Financial tables (P&L, Balance Sheet, Cash Flow — 3 years), auditor qualifications, management commentary on risks, related party transactions, contingent liabilities.
+Feeds into: All Five Cs, FinBERT risk extraction.
+
+**Financial Statements**
+What they are: Standalone audited financials if not embedded in the annual report. For private companies this is often the only formal financial document available.
+Format: PDF.
+What we extract: Same as annual report financial tables — revenue, EBITDA, PAT, debt, net worth, key ratios computed from these numbers (DSCR, leverage, interest coverage, current ratio).
+Feeds into: Capacity C, Capital C, Isolation Forest anomaly model.
+
+**Board Meeting Minutes**
+What they are: Official records of decisions made by the company's board of directors. Contains approvals for loans, related party transactions, auditor changes, and strategic decisions.
+Format: PDF.
+What we extract: Loan approvals and amounts, related party transaction approvals, auditor resignations or changes (a major red flag), any board-level mention of financial stress, dividend decisions.
+Feeds into: Character C — specifically the governance risk signal.
+
+**Rating Agency Reports**
+What they are: Credit assessment reports published by agencies like CRISIL, ICRA, India Ratings on the company's existing debt instruments. They contain detailed risk analysis already done by professionals.
+Format: PDF.
+What we extract: Current rating and outlook, rating history (downgrades are a strong signal), key concerns flagged by the rating agency, debt repayment track record, rating triggers mentioned.
+Feeds into: Character C, Capacity C, FinBERT debt restructuring signal.
+
+**Shareholding Pattern**
+What they are: A mandatory disclosure (for listed companies) showing who owns what percentage of the company. Critically, it shows how much of the promoter's shares are pledged as collateral for their personal loans.
+Format: PDF or structured Excel from BSE/NSE filings.
+What we extract: Promoter holding %, promoter pledge % (high pledge = promoter is financially stressed personally), institutional holding trends, any significant ownership changes.
+Feeds into: Character C — promoter financial stress signal. A promoter who has pledged 70%+ of their shares is a serious red flag regardless of company financials.
+
+**Sanction Letters from Other Banks**
+What they are: Letters from existing lenders detailing the terms on which they have already lent to this company — amount, interest rate, covenants, collateral taken.
+Format: PDF.
+What we extract: Existing debt obligations, interest rates being paid (high rates suggest other banks assessed higher risk), covenants imposed, any mention of restructuring or waivers, collateral already encumbered.
+Feeds into: Capital C, Collateral C — existing encumbrances reduce collateral available to us.
+
+### 3.3 External Intelligence
+
+**News Reports on Sector Trends and Promoters**
+What they are: Web-sourced news articles about the company, its promoters, its sector, and relevant regulatory changes.
+Source: Live web crawl via Tavily API (explained in Section 5).
+What we extract: Promoter controversy or fraud mentions, company financial stress coverage, sector regulatory headwinds (e.g., RBI tightening norms for NBFCs), competitive disruption news.
+Feeds into: Character C (promoter news), Conditions C (sector headwinds).
+
+**MCA Filings (Ministry of Corporate Affairs)**
+What they are: India's MCA database contains official records of every registered company — who the directors are, what other companies they direct, what loans (charges) are registered against company assets, and whether the company is active or struck off.
+Source: MCA21 portal data, either scraped or via third-party API.
+What we extract: Director list and their other directorships, charges registered (existing loans secured against assets), company age and status, any past strike-off history of associated entities.
+Feeds into: Character C, Graph Engine (director network construction).
+
+**Legal Disputes from e-Courts Portal**
+What they are: India's e-Courts portal lists active and disposed court cases. This reveals litigation the company or its promoters are involved in — debt recovery cases, criminal cases, civil disputes.
+Source: e-Courts portal scraping or structured search.
+What we extract: Number of active cases, nature of cases (DRT = Debt Recovery Tribunal cases are most critical for credit), courts and amounts involved, cases involving promoters personally.
+Feeds into: Character C — litigation density signal.
+
+### 3.4 Primary Insights
+
+**Factory Site Visit Observations**
+What they are: Notes recorded by the credit officer or relationship manager after physically visiting the borrower's business premises.
+Examples: "Factory operating at 40% capacity", "Inventory appears aged — over 6 months old", "Workforce headcount significantly lower than HR records suggest."
+Format: Structured input form in the portal (not free text — mapped to specific risk categories).
+Feeds into: Capacity C adjustment, with visible score impact shown.
+
+**Management Interview / Due Diligence Notes**
+What they are: Notes from formal meetings with the company's management team — promoters, CFO, operations head.
+Examples: "Promoter unable to explain revenue decline in Q3", "Management confirmed new export order worth ₹50Cr signed last month", "Promoter has personal guarantee exposure of ₹30Cr with another lender."
+Format: Structured input form mapped to Five Cs categories.
+Feeds into: Character C, Capacity C — with explicit score adjustments and audit trail.
+
+---
+
+## Section 4: Layer 1 — Data Ingestor
+
+### 4.1 Purpose
+
+Layer 1 converts all raw inputs — scanned PDFs, structured files, web data, primary notes — into clean, structured signals that the ML layer can process. Think of it as the document reading and preparation department.
+
+### 4.2 OCR Pipeline
+
+**What OCR is:** OCR stands for Optical Character Recognition. When you scan a physical document and save it as a PDF, the computer only sees an image — it cannot read the text. OCR software analyzes the image and converts it into actual readable text that can be processed programmatically.
+
+**Tool: AWS Textract**
+What it is: Amazon's cloud-based document processing service. Unlike basic OCR tools, Textract is specifically designed for financial and business documents — it understands tables, forms, and multi-column layouts, and preserves the structure when it extracts text.
+Why we use it over alternatives: Basic tools like Tesseract (free, open source) work for clean documents but struggle with messy scanned Indian financial documents — rotated pages, handwritten annotations, low-resolution scans, two-column layouts. Textract handles these significantly better and is an explicit evaluation criterion ("messy, scanned Indian-context PDFs").
+What it outputs: Extracted text with position information, tables extracted as structured data (rows and columns preserved), form fields identified.
+
+**Confidence scoring:** Every extracted value gets a confidence score from Textract (0–100%). Values below a threshold (we set this at 75%) are flagged for human verification and tagged in the CAM as "low confidence — manual check recommended." This is critical for audit credibility.
+
+### 4.3 Table Extraction and Financial Spreading
+
+**What financial spreading is:** Taking the numbers from financial statements — revenue, expenses, assets, liabilities — and organizing them into a standardized format so ratios can be computed automatically.
+
+From extracted tables we compute the following ratios automatically for the last 3 years:
+
+- **DSCR (Debt Service Coverage Ratio):** Net operating income divided by total debt service (principal + interest). Measures whether the company generates enough cash to repay its loans. Below 1.0 means it technically cannot. Industry standard minimum is typically 1.25.
+- **Leverage (Debt/Equity):** Total debt divided by net worth. Higher = more borrowed relative to owner's funds = higher risk.
+- **Interest Coverage:** EBIT divided by interest expense. How many times can operating profit cover interest payments.
+- **Current Ratio:** Current assets divided by current liabilities. Measures short-term liquidity.
+- **EBITDA Margin:** Operating profit as a % of revenue. Measures operational efficiency.
+- **Revenue CAGR:** Compound annual growth rate of revenue over 3 years.
+- **PAT Margin:** Net profit as a % of revenue.
+
+All ratios are stored with their input values and formula, so any number in the CAM can be verified.
+
+### 4.4 GST vs Bank Reconciliation
+
+This is one of the most India-specific and high-value features in the system.
+
+**The logic:** A company's monthly GST-declared revenue (from GSTR-3B) should broadly match the credits appearing in their bank statement for the same period. If a company declares ₹10Cr in GST sales but only ₹6Cr flows into their bank account, that is a serious discrepancy.
+
+**What we flag:**
+
+- **Revenue inflation:** GST declared > bank credits — company may be inflating revenue on paper.
+- **Circular trading:** Pattern where money flows in and out rapidly between related parties to create the appearance of revenue. Detected by looking for large round-number credits followed by near-identical debits within days.
+- **GSTR-2A vs 3B mismatch:** If a company's declared purchases (3B) significantly exceed what suppliers have reported selling to them (2A), they may be claiming false input tax credits.
+
+**Output:** A "revenue reliability score" and a flagged report showing specific months with divergence, the divergence percentage, and a plain-English explanation of what the pattern suggests.
+
+### 4.5 Document-Specific Extraction Rules
+
+**Board Minutes:** Specifically look for keywords and phrases — "related party transaction", "auditor resignation", "loan approval", "waiver", "debt restructuring", "director loan". Each match is extracted with surrounding context and classified as a governance signal.
+
+**Shareholding Pattern:** Extract the promoter pledge % specifically. Flag if above 40% (caution), above 60% (high risk). This is a standard Indian credit analysis red flag that generic tools miss.
+
+**Sanction Letters:** Extract loan amount, interest rate, tenor, collateral description, covenant clauses, any mention of default or restructuring. Store as "existing facilities" that inform the Capital and Collateral scoring.
+
+**Rating Reports:** Extract current rating (e.g., BBB+), outlook (stable/negative/watch), last rating change date and direction, key risk factors cited by the agency.
+
+### 4.6 Databricks Role
+
+**What Databricks is:** Databricks is a cloud-based data processing platform built for handling large volumes of data at scale. Think of it as a very powerful, organized workspace where you can run multiple data processing jobs simultaneously, store results in a structured way, and track what happened to data at every step.
+
+**Why it is used here:** The problem statement explicitly requires it. More practically, when you are ingesting 10–15 different document types, running OCR, extracting tables, and reconciling multiple data sources simultaneously, you need something that can manage all these parallel jobs without breaking. Databricks handles this orchestration and stores all outputs as Delta tables — a format that tracks every change and allows you to query historical states.
+
+**What it does in Layer 1 specifically:**
+- Receives all uploaded documents and routes them to the correct processing job (OCR, table extraction, GST parsing, etc.)
+- Stores all extracted outputs in organized Delta tables
+- Provides a data lineage trail — you can see exactly what processing was applied to each document and when
+- Enables parallel processing so multiple documents are handled simultaneously rather than sequentially
+
+---
+
+## Section 5: Layer 2 — ML Intelligence Layer
+
+This is the core innovation of Intelli-Credit. Three distinct ML components each solve a different problem and together produce a rich set of risk signals that feed the scorecard.
+
+### 5.1 Component A — FinBERT Document Risk Extractor
+
+**What the problem is:** Financial documents contain risk information buried in natural language — sentences like "the company has been subject to an income tax reassessment order which management is contesting" or "auditors have drawn attention to the company's ability to continue as a going concern." A rule-based keyword search would catch "going concern" but miss the nuance of whether it is a formal emphasis of matter or just a passing reference. You need a model that understands financial language semantically.
+
+**What FinBERT is:** BERT (Bidirectional Encoder Representations from Transformers) is a type of AI model that reads text and understands the meaning and context of words, not just the words themselves. FinBERT is a version of BERT that has been specifically trained on financial text — earnings reports, regulatory filings, analyst reports — so it understands the language of finance better than a general-purpose model.
+
+**Where we get it:** HuggingFace — a platform that hosts thousands of pre-trained AI models that you can download and use for free. FinBERT is available there and does not require us to train anything from scratch.
+
+**What it does in our system:**
+
+The model reads text chunks (paragraphs) from all unstructured documents and classifies each chunk into risk categories with a severity score (0.0 to 1.0):
+
+- **Litigation risk** — mentions of court cases, DRT proceedings, arbitration, regulatory penalties
+- **Governance risk** — auditor qualifications, related party transaction concerns, board-level conflicts
+- **Debt restructuring risk** — mentions of OTS (one-time settlement), loan restructuring, moratorium, covenant breaches
+- **Promoter reputation risk** — personal guarantees under stress, promoter-level legal issues
+- **Sector regulatory risk** — mentions of new regulations, compliance failures, license issues
+- **Going concern risk** — auditor emphasis of matter on continuity of business
+
+**Output per document:** A list of flagged text chunks, each with its risk category, severity score, and the original sentence as evidence. The top 3 most severe findings per category are surfaced as key signals.
+
+**Why zero-shot (no training needed):** Fine-tuning FinBERT on labeled Indian credit data would require thousands of annotated examples we do not have. Instead we use zero-shot classification — we give the model the risk categories and example descriptions, and it classifies new text based on semantic similarity. This works well enough for a hackathon demo, especially with well-crafted category descriptions.
+
+### 5.2 Component B — Isolation Forest Anomaly Detector
+
+**What the problem is:** You cannot predict whether a specific company will default without historical loan outcome data — and we have none. But what you can do is ask: "Is this company's financial profile unusual compared to similar companies in the same sector?" A company with debt/equity of 8x when the sector average is 2x is an outlier — and outliers in credit are red flags.
+
+**What Isolation Forest is:** Isolation Forest is an unsupervised machine learning algorithm — meaning it learns patterns without needing labeled training data (no need for "this company defaulted" or "this company did not default" labels). It works by learning what "normal" looks like for a group of companies, and then measuring how different any new company is from that normal. The more different, the higher the anomaly score.
+
+The name comes from how it works internally — it randomly partitions data and measures how quickly a data point gets "isolated" from others. Unusual points get isolated faster because they are far from the cluster of normal points.
+
+**Training data:** We scrape 200–300 Indian listed companies from Screener.in — a publicly available financial data platform for Indian companies. We collect 7 key financial ratios for each company (DSCR, debt/equity, current ratio, EBITDA margin, revenue CAGR, interest coverage, PAT margin) and organize them into sector buckets (manufacturing, NBFC, retail, infrastructure, pharma). We train a separate Isolation Forest model per sector bucket so a manufacturing company is always compared to other manufacturing companies, not to NBFCs.
+
+**This training happens before the hackathon** — the models are pre-trained and saved. During the demo, we simply load the relevant sector model and score the borrower.
+
+**Output:** An anomaly score (0.0 = perfectly normal, 1.0 = extremely unusual) plus a breakdown of which specific ratios are anomalous and in which direction. Example output: "Debt/equity of 4.8x is in the top 8% most anomalous readings for mid-sized NBFCs in our training set of 47 companies. Peer median is 2.1x."
+
+**Why this is genuinely innovative:** We are not predicting default — we are doing quantitative peer benchmarking on real Indian company data. This is what a good credit analyst does mentally when they say "this leverage looks high for this sector." We are making that judgment systematic, data-driven, and explainable.
+
+### 5.3 Component C — Graph Risk Engine
+
+**What the problem is:** A company does not exist in isolation. Its promoter may run 6 other companies. Two of those may have existing defaults. A supplier may be a related party. These hidden connections create risk that is completely invisible when you look at the company in isolation.
+
+**What a graph database/model is:** A graph is a way of representing relationships. In our case, the nodes (points) are companies, directors, and legal cases. The edges (connections) are relationships — "Director A sits on Board of Company B", "Company B has a charge registered by Bank X", "Company C shares a director with Company B." Once you build this graph, you can traverse it — starting from our borrower, follow the connections outward and see what you find.
+
+**Tools:** NetworkX in Python for building and analyzing the graph. Cytoscape.js on the frontend for interactive visual display.
+
+**Data sources for the graph:**
+- MCA director-company relationships (who directs what)
+- Charges registered on MCA (existing loans against assets)
+- e-Courts litigation linked to directors and company names
+- Internal simulated portfolio data (for demo — showing our lender's existing exposures)
+
+**What the graph computes:**
+
+- **Director Stress Score:** For each director of the borrower company, look at all other companies they direct. What fraction of those companies have DRT cases, MCA strikes, or registered charges that appear distressed? A promoter who also runs two companies with active debt recovery cases is a different risk profile from a promoter whose other companies are clean.
+
+- **Group Concentration Risk:** What is the total simulated exposure across all companies in the borrower's group (connected via common directors or ownership)? If the lender already has ₹50Cr deployed across the group, adding another ₹20Cr creates concentration risk.
+
+- **Second-Degree Risk:** Are any major customers or suppliers of the borrower themselves showing stress signals? A company heavily dependent on one customer who is in financial trouble inherits that risk.
+
+**Output:** Graph visualization (the wow moment) plus 3–5 structured risk flags in plain English that feed directly into Character and Collateral scoring.
+
+**The demo moment:** The graph shows the borrower company at the center, with connections fanning out to directors, their other companies, litigation nodes, and existing lender exposures. A judge can visually see hidden connections that would have taken an analyst days to find manually.
+
+---
+
+## Section 6: Layer 3 — Five Cs Scorecard
+
+### 6.1 Purpose
+
+The scorecard is the aggregation layer. It takes every signal from Layer 2 — FinBERT severity scores, Isolation Forest anomaly scores, graph risk flags — plus Layer 1 hard data outputs, plus primary notes, and converts them into structured, explainable scores for each of the Five Cs.
+
+### 6.2 The Five Cs — What Each Measures
+
+**Character (Who are we lending to?)**
+Assesses the integrity, track record, and governance quality of the promoters and management. In Indian lending this is arguably the most important C — a financially weak company run by trustworthy promoters who will work through difficulties is a different risk from a financially strong company with governance red flags.
+
+Signals feeding Character:
+- FinBERT governance risk score (from board minutes, annual report disclosures)
+- FinBERT promoter reputation risk score (from rating reports, news)
+- Litigation density from e-Courts (number and severity of active cases)
+- Director stress score from graph engine
+- Promoter pledge % from shareholding pattern
+- Primary notes: management interview observations
+
+**Capacity (Can they repay?)**
+Assesses whether the business generates enough cash flow to service the proposed debt comfortably.
+
+Signals feeding Capacity:
+- DSCR (primary ratio — most important)
+- Interest coverage ratio
+- Revenue CAGR (growth trajectory)
+- GST-bank revenue reliability score
+- Isolation Forest anomaly score on cash flow ratios
+- FinBERT debt restructuring risk (has restructuring been needed before?)
+- Primary notes: factory capacity utilization observation
+
+**Capital (How much skin do promoters have in the game?)**
+Assesses the financial strength of the company itself and how much promoters have personally invested versus borrowed.
+
+Signals feeding Capital:
+- Debt/equity ratio
+- Net worth trend (growing or eroding?)
+- Promoter contribution % vs borrowed funds
+- Isolation Forest anomaly score on leverage ratios
+- Existing sanctioned facilities (from sanction letters)
+
+**Collateral (What do we hold if things go wrong?)**
+Assesses the quality, liquidity, and enforceability of the security being offered.
+
+Signals feeding Collateral:
+- Collateral coverage ratio (value of security / loan amount)
+- Type of collateral (immovable property > movable assets > receivables)
+- Existing encumbrances from MCA charges (already pledged to other lenders?)
+- Second-degree risk from graph (is collateral linked to a stressed group?)
+- FinBERT flags from sanction letters (covenants on existing facilities)
+
+**Conditions (What environment are they operating in?)**
+Assesses the health of the sector, regulatory environment, and macro conditions the borrower operates in.
+
+Signals feeding Conditions:
+- FinBERT sector regulatory risk score (from crawled news and rating reports)
+- Sector headwind severity (from research agent — new RBI circulars, sector stress)
+- Isolation Forest peer context (how is the sector performing broadly?)
+- Primary notes: any credit officer observations on market conditions
+
+### 6.3 Scoring Structure
+
+Each C is scored out of 10. The final composite score is a weighted sum of the five C scores.
+
+**Default weights (configurable):**
+- Character: 25%
+- Capacity: 30%
+- Capital: 15%
+- Collateral: 20%
+- Conditions: 10%
+
+Within each C, individual signals also have weights. For example within Capacity:
+
+| Signal | Default Weight | Floor | Ceiling |
+|---|---|---|---|
+| DSCR | 0.35 | 0.15 | 0.60 |
+| Interest Coverage | 0.20 | 0.10 | 0.40 |
+| Revenue CAGR | 0.15 | 0.05 | 0.30 |
+| GST-Bank Reliability | 0.15 | 0.05 | 0.30 |
+| Isolation Forest Score | 0.10 | 0.05 | 0.25 |
+| FinBERT Debt Risk | 0.05 | 0.00 | 0.20 |
+
+### 6.4 Three-Level Configurability System
+
+This is a core product requirement. Weight configuration operates at three distinct levels:
+
+**Level 1 — C-Level Weights (Policy Configuration)**
+Who can change it: Risk/policy team only, in admin settings.
+What it controls: How much each C contributes to the final score.
+Audit requirement: Change logged with timestamp, user, and mandatory justification. All changes are versioned — you can roll back to a previous policy configuration.
+Example: A lender operating in a high-litigation geography increases Character weight from 25% to 35%, reducing Conditions to 5%.
+
+**Level 2 — Signal Weights within each C (Policy Configuration)**
+Who can change it: Risk/policy team only, in admin settings.
+What it controls: How much each individual signal contributes to its parent C score.
+Floors and ceilings: Every signal has a minimum and maximum weight to prevent configurations that effectively nullify a signal entirely or make a single signal dominate.
+Audit requirement: Same as Level 1 — versioned, logged, justified.
+Example: A lender with recent NBFC portfolio stress changes DSCR weight within Capacity from 0.35 to 0.55, explicitly citing an internal credit committee directive.
+
+**Level 3 — Per-Case Real-Time Override (Credit Officer Judgment)**
+Who can change it: Credit officer, on a specific live application only.
+What it controls: For this one case, a specific signal's contribution can be adjusted with a mandatory written reason.
+Scope: Applies only to this case. Does not change the underlying policy weights.
+Recalibration warning: If the override changes the final recommendation (e.g., flips from Reject to Approve), the system surfaces a prominent alert: "This override has changed the recommendation from REJECT to APPROVE WITH CONDITIONS. A second approver sign-off is required." The second approver requirement is logged.
+CAM output distinguishes: Policy-weight-driven contributions are labeled differently from per-case overrides in the CAM narrative.
+
+Example CAM statement:
+*"DSCR contributed 0.55 to the Capacity score [policy weight — updated by Risk Team on 01-Mar-2026 per Credit Committee directive CC-2026-04]"*
+vs.
+*"Promoter litigation signal weight increased from 0.20 to 0.45 for this case [override by Credit Manager Priya S. on 08-Mar-2026 — reason: promoter involved in newly filed DRT case not yet indexed in bureau data, discovered during management interview]"*
+
+### 6.5 Decision Output
+
+The composite score maps to a decision band:
+
+| Score Range | Decision | Action |
+|---|---|---|
+| 8.0 – 10.0 | Approve | Suggest limit at requested amount, standard pricing |
+| 6.5 – 7.9 | Approve with Conditions | Suggest limit with covenants, enhanced monitoring |
+| 5.0 – 6.4 | Refer to Senior Credit | Flag for escalation with specific concerns listed |
+| Below 5.0 | Reject | Rejection with explicit reasons |
+
+**Limit suggestion logic:** Based on DSCR and proposed EMI, the system back-calculates the maximum loan amount where DSCR stays above the policy minimum (typically 1.25). This becomes the suggested limit.
+
+**Risk premium suggestion:** Based on the final composite score, the system suggests an interest rate band over the base rate. Lower score = higher premium. The band is configurable per lender's pricing policy.
+
+**"What would change this decision" output:** For every case — especially rejections — the system outputs a structured list of what would need to change for the recommendation to improve. Example: *"Approval possible if: (1) Promoter pledge % reduces below 40%, OR (2) Additional collateral coverage of 0.3x provided, OR (3) DSCR improves above 1.25x (currently 1.08x)."* This is a key differentiator — giving the relationship manager a constructive path forward, not just a rejection.
+
+---
+
+## Section 7: Layer 4 — LLM Synthesis
+
+### 7.1 What an LLM Is and Why We Use One Here
+
+LLM stands for Large Language Model. These are AI models (like ChatGPT or Claude) that have been trained on vast amounts of text and can generate human-quality writing, summaries, and explanations.
+
+We use an LLM here specifically for one job: converting the structured scorecard outputs into professional, readable prose for the CAM. The LLM does not make any decisions — all scores and signals come from Layers 1–3. The LLM only narrates what those layers have already determined. This is critical for explainability — the LLM cannot hallucinate a risk factor that the scorecard did not identify.
+
+**Model:** Claude API or GPT-4. Either works; Claude is slightly preferable for structured output following.
+
+### 7.2 What the LLM Receives as Input
+
+The LLM receives a structured JSON payload containing:
+- Company name, sector, loan type, proposed amount
+- Five Cs scores with signal-level breakdown
+- Top 3 risk findings per C with source evidence
+- All FinBERT flagged sentences with their documents and severity scores
+- Anomaly score and which ratios are anomalous with peer comparisons
+- Graph risk flags and their descriptions
+- Primary notes from credit officer
+- Final decision, suggested limit, and risk premium
+- Any Level 3 overrides and their rationale
+
+### 7.3 What the LLM Produces
+
+A complete CAM structured as follows:
+
+**Section 1 — Executive Summary**
+One paragraph. Company name, proposed facility, final recommendation, and the single most important reason for the recommendation. Designed to be read in 30 seconds.
+
+**Section 2 — Company and Promoter Profile**
+Background on the business, how long it has operated, its primary activity, promoter names and their other directorships (with any graph-derived flags highlighted).
+
+**Section 3 — Industry and Conditions**
+Sector overview, current regulatory environment, key headwinds and tailwinds drawn from the research agent's findings. Cites specific news sources and regulatory circulars found during the crawl.
+
+**Section 4 — Financial Analysis**
+Narrative walking through the financial performance over 3 years, key ratio trends, GST-bank reconciliation findings, and how the Isolation Forest anomaly scores compare the company to peers. Includes ratio tables generated from Layer 1 extraction.
+
+**Section 5 — Five Cs Narrative**
+One section per C, each containing: the score, the top signals that drove it, the evidence behind each signal, any overrides and their rationale, and a plain-English interpretation.
+
+**Section 6 — Proposed Facility and Structure**
+Suggested loan amount, tenor, interest rate band, collateral to be taken, proposed covenants, and monitoring requirements.
+
+**Section 7 — Recommendation and Rationale**
+The final decision in one sentence followed by 3–5 specific reasons. For rejections, includes the "what would change this decision" output. For approvals, includes conditions and triggers for early review.
+
+**Section 8 — Audit Trail Summary**
+A table listing every signal that fed the scorecard, its source document, its model output, and its weight. This is the full traceability record for regulators and internal audit.
+
+---
+
+## Section 8: Research Agent — Live Web Crawl
+
+### 8.1 What Tavily Is and Why We Use It
+
+Tavily is an API (Application Programming Interface — a service you call over the internet) built specifically for AI agents that need to search and retrieve information from the web. Unlike a regular search engine that returns links, Tavily returns the actual content of relevant articles — cleaned, parsed, and ready to process. It handles Indian news sources, handles queries in English, and returns results fast enough for near-real-time use.
+
+Why not just use Google? Google's search API is heavily restricted and expensive. Tavily is purpose-built for this use case, has a generous free tier suitable for a hackathon, and returns content rather than just links — which is what we need since we want to feed article text into FinBERT.
+
+### 8.2 Two-Phase Crawl Architecture
+
+**Phase 1 — Background Deep Crawl (runs when case is created, asynchronously)**
+This is the heavy research work. It runs in the background while documents are being uploaded and processed. It does not block anything.
+
+Queries run (15–20 total, templated):
+- "{company_name} fraud scam controversy India"
+- "{promoter_name} court case DRT NCLT India"
+- "{company_name} insolvency default NPA bank"
+- "{company_name} credit rating downgrade"
+- "{sector} RBI regulation circular 2025"
+- "{sector} India outlook headwinds challenges"
+- "{promoter_name} related party transaction controversy"
+- "{company_name} auditor resignation qualification"
+- And 8–10 more covering variations of the above
+
+Each result is fetched (full article text), parsed, and run through FinBERT for risk severity scoring. Results are cached with timestamp, source URL, query that found them, and the FinBERT risk category and severity assigned.
+
+**Phase 2 — Live Refresh (runs during demo, takes 5–8 seconds)**
+A narrow, targeted live crawl of 3–5 queries focused on the most recent period. This is what the judge sees happening in real time. Results are appended to the cached research and any new risk signals are highlighted as "newly discovered."
+
+The UI shows a live query log during this phase — judges can watch the queries run and see results populate.
+
+### 8.3 Conflict Resolution
+
+If a live crawl result contradicts cached research — for example, a promoter was acquitted of a case that was flagged as active litigation in the background crawl — the system does not silently overwrite. It surfaces the contradiction as an explicit flag: "Conflicting information found — cached research flagged active DRT case, new result suggests case dismissed. Manual verification recommended." The credit officer must resolve this with a note before the CAM is finalized.
+
+### 8.4 Research Agent Log
+
+The UI displays a complete, transparent log of every query run, every source found, the FinBERT severity score assigned to each, and which Five C and signal it fed into. This directly satisfies the "research depth" evaluation criterion — judges can verify that the system found information not present in the uploaded documents.
+
+---
+
+## Section 9: Gaps Explicitly Closed
+
+This section confirms how every gap identified in our PS coverage review is handled.
+
+**Gap 1 — Board Meeting Minutes:** Handled by FinBERT governance risk extraction with specific keywords (related party approval, auditor change, debt approval). Feeds Character C.
+
+**Gap 2 — Shareholding Pattern:** Specific extraction of promoter pledge % with threshold-based flagging (40% caution, 60% high risk). Feeds Character C.
+
+**Gap 3 — Sanction Letters from Other Banks:** Document type added to ingestor. Extracts existing facility terms, covenants, collateral encumbrances. Feeds Capital C and Collateral C.
+
+**Gap 4 — Live Web Crawl:** Two-phase architecture with Tavily API, visible research log, FinBERT scoring of crawl results, conflict resolution system. Fully live, not pre-fetched.
+
+---
+
+## Section 10: Innovations Beyond the Problem Statement
+
+These are capabilities we have architected that the problem statement did not ask for but which represent genuine differentiation:
+
+**Innovation 1 — Isolation Forest Peer Benchmarking**
+The PS asks for ML-based recommendation. We deliver unsupervised anomaly detection trained on 200–300 real Indian companies from Screener.in, providing quantitative peer comparison by sector. This is a real trained model, not rules.
+
+**Innovation 2 — Graph Relationship Engine**
+The PS makes no mention of relationship graphs. We surface hidden director networks, group concentration risk, and second-degree stress propagation using MCA and e-Courts data. This is the visual wow moment of the demo.
+
+**Innovation 3 — Three-Level Weight Configurability**
+The PS asks for explainability. We deliver a full policy configuration system at C-level, signal-level, and per-case override level, with versioning, floors/ceilings, audit trails, and recalibration warnings. This is institutional-grade.
+
+**Innovation 4 — Recalibration Warning System**
+When a per-case override flips the final recommendation, the system mandates a second approver. Not mentioned anywhere in the PS. Shows model governance thinking.
+
+**Innovation 5 — "What Would Change This Decision" Output**
+The PS asks for rejection reasoning. We also output a structured path to approval — what specific metrics would need to improve and by how much. Gives the relationship manager something constructive.
+
+**Innovation 6 — Confidence Scoring on Extracted Values**
+The PS asks for extraction accuracy. We surface data quality as an explicit risk signal — low-confidence extractions are flagged in the CAM rather than silently accepted.
+
+**Innovation 7 — Research Conflict Resolution**
+When live crawl results contradict cached research, the system surfaces the contradiction and requires human resolution rather than silently overwriting. This reflects real-world reliability thinking.
+
+---
+
+## Section 11: Technology Stack Summary
+
+| Component | Technology | Why |
+|---|---|---|
+| OCR and document parsing | AWS Textract | Best-in-class for messy Indian financial PDFs, handles tables |
+| Data orchestration and storage | Databricks + Delta tables | Required by PS, handles parallel ingestion jobs, data lineage |
+| NLP risk extraction | FinBERT (HuggingFace) | Pre-trained on financial text, zero-shot classification, no training data needed |
+| Anomaly detection | Isolation Forest (scikit-learn) | Unsupervised, no labeled data needed, interpretable, fast |
+| Graph construction and analysis | NetworkX (Python) | Lightweight, flexible, handles MCA relationship data well |
+| Graph visualization | Cytoscape.js | Interactive, handles large graphs, web-native |
+| Web research | Tavily API | Purpose-built for AI agents, returns content not just links, handles Indian sources |
+| LLM narrative generation | Claude API / GPT-4 | Grounded narrative generation from structured inputs |
+| CAM document export | python-docx | Programmatic Word document generation with professional formatting |
+| Backend | Python (FastAPI) | Fast, async-capable, easy integration with ML libraries |
+| Training data source | Screener.in | Publicly available Indian company financial data, sector-organized |
+
+---
+
+## Section 12: What Is Explicitly Out of Scope (Hackathon Build)
+
+- Portfolio-level monitoring post-disbursement (Phase 2 roadmap item)
+- Full graph analytics at scale (demo uses curated sample graph)
+- Live CIBIL Commercial API integration (simulated with sample bureau data)
+- Live MCA API (uses scraped/cached MCA data for demo company)
+- Multi-lender policy templates (single lender configuration for demo)
+- UI design specifications (to be discussed separately)
+
+---
+
+This is the complete requirements specification. Everything in the problem statement is covered, all three gaps are closed, and the seven innovations are documented. The UI discussion is the remaining open item, which we will tackle next.
