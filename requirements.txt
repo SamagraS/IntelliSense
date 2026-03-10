@@ -1,0 +1,12 @@
+pandas 
+numpy 
+requests 
+beautifulsoup4
+pdfplumber 
+pymupdf
+camelot-py
+pytesseract 
+pillow
+spacy
+sentence-transformers
+sec-edgar-downloader
