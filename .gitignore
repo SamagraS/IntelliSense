@@ -1,6 +1,3 @@
 data/structured/bank_transactions.csv
-data/annual_reports/raw_reports
-data/annual_reports/download_log_board_meetings.csv
 venv
-data/processed
-data/pipeline/data
+data/unstructured
