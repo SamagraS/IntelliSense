@@ -1,0 +1,283 @@
+{
+  "case_metadata": {
+    "case_id": "CAM_TEST_FULL_0001",
+    "company_name": "ABC Manufacturing Private Limited",
+    "cin": "U28100MH2015PTC123456",
+    "pan": "AABCA1234F",
+    "sector": "Manufacturing",
+    "sub_sector": "Auto Components",
+    "state": "Maharashtra",
+    "incorporation_year": 2015,
+    "registered_office": "Pune, Maharashtra",
+    "annual_turnover_cr": 125.5,
+    "employees": 240,
+    "loan_details": {
+      "loan_type": "Term Loan",
+      "proposed_amount_inr": 50000000,
+      "tenure_months": 60,
+      "proposed_interest_rate_pct": 12.5,
+      "loan_purpose": "Expansion of manufacturing capacity"
+    }
+  },
+
+  "financial_summary": {
+    "revenue_cr": {
+      "FY2022": 88,
+      "FY2023": 104,
+      "FY2024": 125.5
+    },
+    "ebitda_cr": {
+      "FY2022": 13.5,
+      "FY2023": 17.2,
+      "FY2024": 21
+    },
+    "net_profit_cr": {
+      "FY2022": 4.1,
+      "FY2023": 5.2,
+      "FY2024": 6.8
+    },
+    "total_debt_cr": 100,
+    "net_worth_cr": 21,
+    "dscr": 1.08,
+    "interest_coverage_ratio": 1.6,
+    "current_ratio": 0.95
+  },
+
+  "final_decision": {
+    "composite_score": 6.3,
+    "decision_band": "REFER_TO_SENIOR",
+    "decision_action": "Escalate to Senior Credit Committee",
+    "risk_premium_bps": 350,
+    "suggested_limit_inr": 35000000,
+    "requested_amount_inr": 50000000,
+    "limit_notes": "Suggested limit reduced to maintain DSCR ≥ 1.25"
+  },
+
+  "five_cs_scores": {
+
+    "Character": {
+      "score": 4.8,
+      "c_level_weight": 0.35,
+      "contribution_to_composite": 1.68,
+      "signal_breakdown": {
+
+        "governance": {
+          "score": 7.5,
+          "weight": 0.20,
+          "evidence": [
+            {
+              "source": "Board_Minutes_Q3_2024",
+              "page": 3,
+              "text": "Statutory auditor resignation citing disagreement on accounting treatment.",
+              "severity": 0.87
+            }
+          ]
+        },
+
+        "promoter_pledge": {
+          "score": 4.0,
+          "weight": 0.45,
+          "override_applied": true,
+          "override_reason": "Promoter DRT case not yet indexed in bureau",
+          "overridden_by": "credit.officer@bank.com",
+          "second_approver": "risk.head@bank.com",
+          "evidence": [
+            {
+              "source": "Shareholding_Pattern_Q3_FY24",
+              "value": "68.2%",
+              "threshold": "60%"
+            }
+          ]
+        },
+
+        "litigation": {
+          "score": 5.8,
+          "weight": 0.20,
+          "evidence": [
+            {
+              "source": "eCourts_Search",
+              "active_drt_cases": 2,
+              "total_cases": 8,
+              "litigation_density_score": 4.2
+            }
+          ]
+        }
+
+      }
+    },
+
+    "Capacity": {
+      "score": 6.8,
+      "c_level_weight": 0.25,
+      "contribution_to_composite": 1.70,
+      "signal_breakdown": {
+
+        "dscr": {
+          "score": 5.0,
+          "weight": 0.55,
+          "value": 1.08,
+          "policy_minimum": 1.25,
+          "evidence": [
+            {
+              "source": "Financial_Statements_FY2024",
+              "page": 3,
+              "ebitda": 21000000,
+              "principal_repayment": 10000000,
+              "interest": 9500000
+            }
+          ]
+        },
+
+        "gst_bank_reliability": {
+          "score": 6.2,
+          "weight": 0.10,
+          "evidence": [
+            {
+              "source": "GST_Bank_Reconciliation",
+              "high_divergence_months": 4,
+              "circular_trading_instances": 0
+            }
+          ]
+        }
+
+      }
+    },
+
+    "Capital": {
+      "score": 5.2,
+      "c_level_weight": 0.10,
+      "contribution_to_composite": 0.52,
+      "metrics": {
+        "debt_to_equity": 4.8,
+        "net_worth_cr": 21,
+        "leverage_flag": "high"
+      }
+    },
+
+    "Collateral": {
+      "score": 7.5,
+      "c_level_weight": 0.20,
+      "contribution_to_composite": 1.5,
+      "collateral_details": [
+        {
+          "asset_type": "Plant and Machinery",
+          "valuation_inr": 63000000,
+          "valuation_date": "2024-02-11",
+          "valuator": "XYZ Appraisal Services"
+        }
+      ],
+      "collateral_coverage_ratio": 1.8
+    },
+
+    "Conditions": {
+      "score": 6.0,
+      "c_level_weight": 0.10,
+      "contribution_to_composite": 0.60,
+      "sector_outlook": "moderate growth",
+      "macro_risks": [
+        "raw material volatility",
+        "automotive demand cyclicality"
+      ]
+    }
+
+  },
+
+  "ml_outputs": {
+
+    "finbert": {
+      "total_signals": 12,
+      "critical_signals": 3,
+      "high_signals": 5,
+      "medium_signals": 4
+    },
+
+    "isolation_forest": {
+      "anomaly_score": 0.73,
+      "severity": "high_risk",
+      "anomalous_ratios": [
+        "Debt_to_Equity",
+        "DSCR",
+        "Interest_Coverage"
+      ],
+      "peer_count": 280
+    },
+
+    "graph_engine": {
+      "director_stress": {
+        "primary_director": "Rajesh Kumar",
+        "director_stress_score": 0.375,
+        "distressed_directorships": 3
+      },
+      "group_exposure": {
+        "total_exposure_inr": 470000000,
+        "number_of_entities": 7,
+        "concentration_risk_flag": true
+      }
+    }
+
+  },
+
+  "precognitive_signals": [
+    {
+      "signal_category": "triangulation_flag",
+      "severity": "medium",
+      "description": "Revenue mismatch: GST ₹95Cr vs ITR ₹92Cr vs Financials ₹108Cr",
+      "score_impact": -0.8
+    },
+    {
+      "signal_category": "velocity_trend",
+      "severity": "medium",
+      "description": "Revenue growth decelerating from 12% to 3%",
+      "score_impact": -0.5
+    }
+  ],
+
+  "primary_inputs": {
+
+    "site_visit": [
+      {
+        "observation": "Factory capacity utilization 40-60%",
+        "risk_direction": "negative",
+        "score_adjustment": -0.8,
+        "verified_by": "field.officer@bank.com",
+        "visit_date": "2024-03-05"
+      }
+    ],
+
+    "management_interview": [
+      {
+        "topic": "Revenue decline in Q3",
+        "credibility_assessment": "evasive",
+        "score_adjustment": -0.5,
+        "interviewer": "credit.officer@bank.com"
+      }
+    ]
+
+  },
+
+  "what_would_change_decision": [
+    {
+      "scenario": "Improve DSCR",
+      "current_value": 1.08,
+      "target_value": 1.25,
+      "score_impact": "+1.2 points"
+    },
+    {
+      "scenario": "Reduce Promoter Pledge",
+      "current_value": "68.2%",
+      "target_value": "<40%",
+      "score_impact": "+0.9 points"
+    }
+  ],
+
+  "audit_trail_summary": {
+    "total_signals_processed": 87,
+    "data_sources_count": 28,
+    "ml_models_used": 3,
+    "policy_version": "POL_V2.1",
+    "overrides_applied": 1,
+    "processing_timestamp": "2024-03-11T10:30:45Z",
+    "processing_duration_seconds": 12.3
+  }
+
+}
