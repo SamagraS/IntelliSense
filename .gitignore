@@ -4,3 +4,8 @@ data/unstructured
 data/external intelligence/mca/mca_company_master.csv
 data/external intelligence/mca/mca_charges_registered.csv
 data/external intelligence/news_intelligence/news_articles_crawled.csv
+data
+__pycache__
+.pytest_cache
+ocr_processing
+test
