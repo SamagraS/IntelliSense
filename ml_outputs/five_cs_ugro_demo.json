@@ -1,0 +1,160 @@
+{
+  "case_id": "CAM_00001",
+  "company_id": "COMP_00001",
+  "company_cin": "L16313BR2010PLC000001",
+  "sector": "Basic Materials",
+  "composite_score": 6.05,
+  "decision": "APPROVE WITH CONDITIONS",
+  "weights": {
+    "Character": 0.3,
+    "Capacity": 0.3,
+    "Capital": 0.2,
+    "Collateral": 0.1,
+    "Conditions": 0.1
+  },
+  "five_cs": {
+    "Character": {
+      "score": 8.07,
+      "signals": [
+        {
+          "signal": "finbert_governance",
+          "value": 0.7403,
+          "penalty": 1.481,
+          "severity": "high"
+        },
+        {
+          "signal": "graph_risk",
+          "value": 3.0,
+          "penalty": 0.45,
+          "severity": "low"
+        },
+        {
+          "signal": "management_credibility",
+          "adjustment": 0.0
+        }
+      ],
+      "label": "Low Risk"
+    },
+    "Capacity": {
+      "score": 5.04,
+      "signals": [
+        {
+          "signal": "isolation_forest",
+          "value": 0.5725,
+          "label": "anomalous"
+        }
+      ],
+      "label": "Stressed"
+    },
+    "Capital": {
+      "score": 5.0,
+      "signals": [],
+      "label": "Moderate"
+    },
+    "Collateral": {
+      "score": 5.95,
+      "signals": [
+        {
+          "signal": "live_charges_total_cr",
+          "value": 23.8,
+          "penalty": 0.05
+        }
+      ],
+      "label": "Insufficient"
+    },
+    "Conditions": {
+      "score": 5.2,
+      "signals": [
+        {
+          "signal": "sector_news_risks",
+          "count": 1
+        },
+        {
+          "signal": "peer_position",
+          "label": "anomalous",
+          "adjustment": -0.5
+        }
+      ],
+      "sector": "Basic Materials",
+      "label": "Neutral"
+    }
+  },
+  "peer_benchmarks": [
+    {
+      "case_id": "CAM_00001",
+      "company_id": "COMP_00001",
+      "sector": "Basic Materials",
+      "ratio_name": "dscr",
+      "ratio_label": "DSCR",
+      "actual_value": 3.8252,
+      "unit": "x",
+      "percentile_rank": 83.0,
+      "percentile_bucket": "top_quartile",
+      "direction": "higher is better",
+      "is_risk_signal": false,
+      "narrative": "DSCR of 3.83x is at the top 17th percentile among 370 Basic Materials sector peers.",
+      "feeds_into_c": "Capacity"
+    },
+    {
+      "case_id": "CAM_00001",
+      "company_id": "COMP_00001",
+      "sector": "Basic Materials",
+      "ratio_name": "debt_to_equity",
+      "ratio_label": "Debt/Equity",
+      "actual_value": 0.5625,
+      "unit": "x",
+      "percentile_rank": 19.7,
+      "percentile_bucket": "bottom_quartile",
+      "direction": "lower is better",
+      "is_risk_signal": false,
+      "narrative": "Debt/Equity of 0.56x is at the bottom 20th percentile among 370 Basic Materials sector peers.",
+      "feeds_into_c": "Capital"
+    },
+    {
+      "case_id": "CAM_00001",
+      "company_id": "COMP_00001",
+      "sector": "Basic Materials",
+      "ratio_name": "interest_coverage",
+      "ratio_label": "Interest Coverage",
+      "actual_value": 6.7882,
+      "unit": "x",
+      "percentile_rank": 90.5,
+      "percentile_bucket": "top_quartile",
+      "direction": "higher is better",
+      "is_risk_signal": false,
+      "narrative": "Interest Coverage of 6.79x is at the top 10th percentile among 370 Basic Materials sector peers.",
+      "feeds_into_c": "Capacity"
+    },
+    {
+      "case_id": "CAM_00001",
+      "company_id": "COMP_00001",
+      "sector": "Basic Materials",
+      "ratio_name": "ebitda_margin",
+      "ratio_label": "EBITDA Margin",
+      "actual_value": 28.9109,
+      "unit": "%",
+      "percentile_rank": 84.9,
+      "percentile_bucket": "top_quartile",
+      "direction": "higher is better",
+      "is_risk_signal": false,
+      "narrative": "EBITDA Margin of 28.91% is at the top 15th percentile among 370 Basic Materials sector peers.",
+      "feeds_into_c": "Capacity"
+    },
+    {
+      "case_id": "CAM_00001",
+      "company_id": "COMP_00001",
+      "sector": "Basic Materials",
+      "ratio_name": "pat_margin",
+      "ratio_label": "PAT Margin",
+      "actual_value": 17.8305,
+      "unit": "%",
+      "percentile_rank": 98.4,
+      "percentile_bucket": "top_quartile",
+      "direction": "higher is better",
+      "is_risk_signal": false,
+      "narrative": "PAT Margin of 17.83% is at the top 2th percentile among 370 Basic Materials sector peers.",
+      "feeds_into_c": "Capacity"
+    }
+  ],
+  "computed_at": "2026-03-12T15:06:25.532115"
+}
