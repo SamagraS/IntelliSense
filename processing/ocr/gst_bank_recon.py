@@ -216,26 +216,25 @@ class MonthlyReconResult(BaseModel):
     divergence_pct:
         ``(declared_sales - bank_revenue_credits) / max(declared_sales, 1)``.
         Positive → GST > bank (possible inflation).
-        Negative → bank > GST (possible under-declaration).
-    declared_purchases:
-        GSTR-3B self-declared purchases (₹), or 0 if no 3B data.
-    supplier_reported_purchases:
-        GSTR-2A supplier-reported purchases (₹), or 0 if no 2A data.
     issues:
-        List of flag strings: one or more of
-        ``REVENUE_INFLATION``, ``GSTR_2A_3B_MISMATCH``,
-        ``CIRCULAR_TRADING_SUSPECTED``.
+        List of issue codes: "mild_revenue_inflation", "severe_revenue_inflation",
+        "gstr_mismatch", etc.
     summary:
-        Human-readable single-sentence description of the month's status.
+        Human-readable summary like "GST ₹10Cr vs Bank ₹8.5Cr (15% divergence)".
+    circular_trading:
+        True if circular trading pattern detected in this month.
+    gstr_2a_mismatch:
+        Percentage gap between 3B declared purchases and 2A supplier-reported
+        purchases. 0 if no mismatch or data unavailable.
     """
     month: date
     declared_sales: float
     bank_revenue_credits: float
     divergence_pct: float
-    declared_purchases: float = 0.0
-    supplier_reported_purchases: float = 0.0
     issues: list[str] = Field(default_factory=list)
     summary: str = ""
+    circular_trading: bool = False
+    gstr_2a_mismatch: float = 0.0
 
 
 class ReconResult(BaseModel):
@@ -354,21 +353,22 @@ def _is_round_lakh(amount: float) -> bool:
     return (amount % 1_00_000) < 1.0 or (1_00_000 - amount % 1_00_000) < 1.0
 
 
-def _build_summary(issues: list[str], divergence_pct: float) -> str:
-    """Produce a one-sentence plain-English summary for the month."""
+def _build_summary(
+    declared_sales: float,
+    bank_credits: float,
+    divergence_pct: float,
+    issues: list[str],
+) -> str:
+    """Produce a concise summary like 'GST ₹10Cr vs Bank ₹8.5Cr (15% divergence)'."""
     if not issues:
-        return "No anomalies detected; month appears clean."
+        return "No anomalies detected"
 
-    parts: list[str] = []
-    if "REVENUE_INFLATION" in issues:
-        pct_str = f"{divergence_pct * 100:.1f}%"
-        parts.append(f"declared GST sales exceed bank credits by {pct_str}")
-    if "GSTR_2A_3B_MISMATCH" in issues:
-        parts.append("3B purchase claims exceed supplier-reported 2A figures")
-    if "CIRCULAR_TRADING_SUSPECTED" in issues:
-        parts.append("round-number credits followed by near-identical debits within 3 days")
+    # Format amounts in Crores for readability
+    gst_cr = declared_sales / 1_00_00_000  # Convert to Crores
+    bank_cr = bank_credits / 1_00_00_000
+    div_pct = abs(divergence_pct) * 100
 
-    return "Issues detected: " + "; ".join(parts) + "."
+    return f"GST ₹{gst_cr:.1f}Cr vs Bank ₹{bank_cr:.1f}Cr ({div_pct:.0f}% divergence)"
 
 
 def _compute_score(months: list[MonthlyReconResult]) -> tuple[float, int]:
@@ -403,11 +403,13 @@ def _compute_score(months: list[MonthlyReconResult]) -> tuple[float, int]:
         if not month.issues:
             continue
         flagged += 1
-        if "REVENUE_INFLATION" in month.issues:
+        if "mild_revenue_inflation" in month.issues:
             score -= SCORE_DEDUCTION_INFLATION
-        if "GSTR_2A_3B_MISMATCH" in month.issues:
+        if "severe_revenue_inflation" in month.issues:
+            score -= SCORE_DEDUCTION_INFLATION * 2  # Double penalty for severe
+        if "gstr_mismatch" in month.issues:
             score -= SCORE_DEDUCTION_MISMATCH
-        if "CIRCULAR_TRADING_SUSPECTED" in month.issues:
+        if "circular_trading" in month.issues:
             score -= SCORE_DEDUCTION_CIRCULAR
 
     return max(score, 0.0), flagged
@@ -504,38 +506,45 @@ def run_gst_bank_recon(
         # A positive divergence means GST > bank (declared more than received).
         # ---------------------------------------------------------------
         divergence_pct = (declared_sales - bank_credits) / max(declared_sales, 1.0)
-        if divergence_pct > config.inflation_threshold:
-            issues.append("REVENUE_INFLATION")
+        
+        # Categorize inflation severity
+        if divergence_pct > 0.50:  # >50%
+            issues.append("severe_revenue_inflation")
+        elif divergence_pct > config.inflation_threshold:  # >30% default
+            issues.append("mild_revenue_inflation")
 
         # ---------------------------------------------------------------
         # Check 2: GSTR-2A vs 3B purchase mismatch
         # Only run when both 3B and 2A data are available for the month.
         # The entity may be claiming more ITC than its suppliers reported.
         # ---------------------------------------------------------------
+        gstr_2a_mismatch_pct = 0.0
         if gst_row is not None and gst2a_row is not None:
             purchase_gap = declared_purchases - supplier_reported
             pct_gap = purchase_gap / max(declared_purchases, 1.0)
             if purchase_gap > config.mismatch_abs_threshold or pct_gap > config.mismatch_pct_threshold:
-                issues.append("GSTR_2A_3B_MISMATCH")
+                issues.append("gstr_mismatch")
+                gstr_2a_mismatch_pct = abs(pct_gap)
 
         # ---------------------------------------------------------------
         # Check 3: Circular trading heuristic
         # Look for round-lakh credit-then-debit pairs within 3 days.
         # ---------------------------------------------------------------
-        if _detect_circular_trading(txns, month, config):
-            issues.append("CIRCULAR_TRADING_SUSPECTED")
+        circular_trading = _detect_circular_trading(txns, month, config)
+        if circular_trading:
+            issues.append("circular_trading")
 
-        summary = _build_summary(issues, divergence_pct)
+        summary = _build_summary(declared_sales, bank_credits, divergence_pct, issues)
 
         monthly_results.append(MonthlyReconResult(
             month=month,
             declared_sales=declared_sales,
             bank_revenue_credits=bank_credits,
-            divergence_pct=round(divergence_pct, 6),
-            declared_purchases=declared_purchases,
-            supplier_reported_purchases=supplier_reported,
+            divergence_pct=round(divergence_pct, 4),
             issues=issues,
             summary=summary,
+            circular_trading=circular_trading,
+            gstr_2a_mismatch=round(gstr_2a_mismatch_pct, 4),
         ))
 
     # ------------------------------------------------------------------

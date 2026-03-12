@@ -10,6 +10,15 @@ Tests:
 4. Financial spreading (ratios from CSV data)
 5. GST-Bank reconciliation
 
+Updated Output Formats (March 2026):
+- ALM: {enriched_rows, flags: [{issue, ...}], summary: {short_term_negative_gaps, ...}}
+- Board Minutes: List of {type, snippet, page, confidence}
+- Shareholding: {promoter_pledge_pct, risk_tag, extracted_text}
+- Borrowing Profile: {flags, high_interest_count}
+- Rating Report: {current_rating, outlook}
+- Financial Ratios: {value, inputs: {}, formula: "Human Readable"}
+- GST-Bank: {circular_trading: bool, gstr_2a_mismatch: float, issues: ["lowercase"]}
+
 Run with:
     cd C:\Projects\IntelliSense
     python test_pipeline.py
@@ -317,16 +326,20 @@ def test_document_analysis(ocr_results):
             if summary:
                 total_assets = summary.get('total_assets_inr', 0) / 10000000  # Convert to crores
                 total_liabilities = summary.get('total_liabilities_inr', 0) / 10000000
+                short_term_gaps = summary.get('short_term_negative_gaps', 0)
                 print_metric("Total Assets (₹ Cr)", f"{total_assets:.2f}")
                 print_metric("Total Liabilities (₹ Cr)", f"{total_liabilities:.2f}")
+                print_metric("Short-term Negative Gaps", str(short_term_gaps))
             
             print_metric("Gap periods analyzed", str(len(transformed_rows)))
             
-            # Show flags
+            # Show flags (now includes 'issue' field)
             if alm_analysis.get('flags'):
                 print(f"\n  {Colors.YELLOW}Flags:{Colors.END}")
                 for flag in alm_analysis['flags'][:3]:  # Show first 3 flags
-                    print(f"    • {flag}")
+                    issue_type = flag.get('issue', 'unknown')
+                    bucket = flag.get('maturity_bucket', 'N/A')
+                    print(f"    • [{issue_type}] {bucket}")
         else:
             print_error("Could not transform ALM data to required format")
             results['alm_analysis'] = None
@@ -342,19 +355,18 @@ def test_document_analysis(ocr_results):
         results['board_analysis'] = board_analysis
         
         print_success("Board minutes analysis complete")
-        print_metric("Governance signals detected", str(len(board_analysis.get('governance_signals', []))))
+        # New format: list of {type, snippet, page, confidence}
+        print_metric("Governance signals detected", str(len(board_analysis)))
         
-        # Access summary safely
-        summary = board_analysis.get('summary', {})
-        if summary:
-            print_metric("Related party transactions", str(summary.get('related_party_transactions_count', 0)))
-            print_metric("Regulatory mentions", str(summary.get('regulatory_filings_count', 0)))
-        
-        # Show sample signals
-        if board_analysis.get('governance_signals'):
+        # Show sample signals (now a list format)
+        if board_analysis:
             print(f"\n  {Colors.YELLOW}Sample Signals:{Colors.END}")
-            for signal in board_analysis['governance_signals'][:3]:
-                print(f"    • {signal.get('category', 'N/A')}: {signal.get('description', 'N/A')[:60]}...")
+            for signal in board_analysis[:3]:
+                sig_type = signal.get('type', 'N/A')
+                snippet = signal.get('snippet', 'N/A')[:50]
+                page = signal.get('page', 'N/A')
+                confidence = signal.get('confidence', 0)
+                print(f"    • [{sig_type}] p{page} ({confidence:.0f}%): {snippet}...")
     else:
         print_error("Board minutes data not available for analysis")
         results['board_analysis'] = None
@@ -362,7 +374,7 @@ def test_document_analysis(ocr_results):
     # Test 2.3: Additional Document Types
     print(f"\n{Colors.BOLD}2.3 Testing Other Document Analyzers{Colors.END}")
     
-    # Borrowing Profile
+    # Borrowing Profile (new format: top-level flags + high_interest_count)
     bp_csv_path = TEST_DATA_DIR / "bp.csv"
     if bp_csv_path.exists():
         bp_df = pd.read_csv(bp_csv_path)
@@ -378,12 +390,10 @@ def test_document_analysis(ocr_results):
         )
         results['borrowing_analysis'] = bp_analysis
         
-        flagged_count = len(bp_analysis.get('flagged_rows', []))
-        summary = bp_analysis.get('summary', {})
-        if summary:
-            print_success(f"Borrowing Profile: {summary.get('total_facilities', 0)} facilities, {flagged_count} flagged")
-        else:
-            print_success(f"Borrowing Profile: {flagged_count} facilities flagged")
+        # New format: flags at top level, high_interest_count at root
+        flagged_count = len(bp_analysis.get('flags', []))
+        high_interest = bp_analysis.get('high_interest_count', 0)
+        print_success(f"Borrowing Profile: {flagged_count} flags, {high_interest} high-interest facilities")
     
     # Portfolio
     pp_csv_path = TEST_DATA_DIR / "pp.csv"
@@ -399,14 +409,17 @@ def test_document_analysis(ocr_results):
         else:
             print_success(f"Portfolio: {len(portfolio_analysis.get('flags', []))} flags")
     
-    # Shareholding
+    # Shareholding (new format: 3 fields only)
     sh_csv_path = TEST_DATA_DIR / "sh1.csv"
     if sh_csv_path.exists():
         sh_df = pd.read_csv(sh_csv_path)
         sh_text = sh_df.to_string()
         sh_analysis = analyze_shareholding(sh_text.split('\n'))
         results['shareholding_analysis'] = sh_analysis
-        print_success(f"Shareholding: {len(sh_analysis.get('flags', []))} flags detected")
+        # New format: {promoter_pledge_pct, risk_tag, extracted_text}
+        pledge_pct = sh_analysis.get('promoter_pledge_pct') or 0.0
+        risk_tag = sh_analysis.get('risk_tag') or 'unknown'
+        print_success(f"Shareholding: {pledge_pct:.1f}% pledged, Risk: {risk_tag}")
     
     # Test 2.4: Annual Reports Analysis
     print(f"\n{Colors.BOLD}2.4 Annual Reports Analysis{Colors.END}")
@@ -432,20 +445,24 @@ def test_document_analysis(ocr_results):
                         all_ar_lines.append(line.get('text', ''))
                 
                 # Analyze with board minutes analyzer (annual reports contain governance info)
+                # New format: list of {type, snippet, page, confidence}
                 ar_analysis = analyze_board_minutes(all_ar_lines)
                 
                 # Also analyze shareholding patterns if detected
+                # New format: {promoter_pledge_pct, risk_tag, extracted_text}
                 full_text = '\n'.join(all_ar_lines)
+                shareholding_analysis = None
                 if 'shareholding' in full_text.lower() or 'shareholder' in full_text.lower():
-                    sh_analysis = analyze_shareholding(all_ar_lines)
-                    ar_analysis['shareholding_analysis'] = sh_analysis
+                    shareholding_analysis = analyze_shareholding(all_ar_lines)
                 
                 results['annual_reports_analysis'].append({
                     'filename': ar_info['filename'],
-                    'analysis': ar_analysis
+                    'analysis': ar_analysis,
+                    'shareholding_analysis': shareholding_analysis
                 })
                 
-                gov_signals = len(ar_analysis.get('governance_signals', []))
+                # Board analysis now returns a list
+                gov_signals = len(ar_analysis) if isinstance(ar_analysis, list) else 0
                 print_success(f"  {ar_info['filename']}: {gov_signals} governance signals")
                 
             except Exception as e:
@@ -507,8 +524,9 @@ def test_document_analysis(ocr_results):
                             break
                 
                 # Use board minutes analyzer to catch governance items in financial reports
+                # New format: list of {type, snippet, page, confidence}
                 governance_analysis = analyze_board_minutes(all_fr_lines)
-                fr_analysis['governance_signals'] = governance_analysis.get('governance_signals', [])
+                fr_analysis['governance_signals'] = governance_analysis if isinstance(governance_analysis, list) else []
                 
                 results['financial_reports_analysis'].append(fr_analysis)
                 
@@ -545,7 +563,7 @@ def test_document_analysis(ocr_results):
                     for line in page.get('lines', []):
                         all_rr_lines.append(line.get('text', ''))
                 
-                # Use rating report analyzer
+                # Use rating report analyzer (new format: only current_rating + outlook)
                 rr_analysis = analyze_rating_report(all_rr_lines)
                 
                 results['rating_reports_analysis'].append({
@@ -553,11 +571,10 @@ def test_document_analysis(ocr_results):
                     'analysis': rr_analysis
                 })
                 
-                summary = rr_analysis.get('summary', {})
-                rating = summary.get('rating_assigned', 'N/A') if summary else 'N/A'
-                outlook = summary.get('outlook', 'N/A') if summary else 'N/A'
-                red_flags = len(rr_analysis.get('red_flags', []))
-                print_success(f"  {rr_info['filename']}: Rating={rating}, Outlook={outlook}, Red Flags={red_flags}")
+                # New format: {current_rating, outlook}
+                rating = rr_analysis.get('current_rating', 'N/A')
+                outlook = rr_analysis.get('outlook', 'N/A')
+                print_success(f"  {rr_info['filename']}: Rating={rating}, Outlook={outlook}")
                 
             except Exception as e:
                 print_error(f"  {rr_info['filename']}: Analysis failed - {e}")
@@ -1075,14 +1092,20 @@ def print_summary(all_results):
     
     if all_results.get('analysis', {}).get('board_analysis'):
         board = all_results['analysis']['board_analysis']
-        print_metric("Board Signals", f"✓ {len(board.get('governance_signals', []))} signals")
+        # New format: board_analysis is a list
+        signals_count = len(board) if isinstance(board, list) else len(board.get('governance_signals', []))
+        print_metric("Board Signals", f"✓ {signals_count} signals")
         passed_tests += 0.2
     else:
         print_metric("Board Signals", "✗ Failed")
     
     if all_results.get('analysis', {}).get('annual_reports_analysis'):
         ar_list = all_results['analysis']['annual_reports_analysis']
-        total_signals = sum(len(ar['analysis'].get('governance_signals', [])) for ar in ar_list)
+        # New format: analysis is a list
+        total_signals = 0
+        for ar in ar_list:
+            analysis = ar['analysis']
+            total_signals += len(analysis) if isinstance(analysis, list) else len(analysis.get('governance_signals', []))
         print_metric("Annual Reports Analysis", f"✓ {len(ar_list)} reports, {total_signals} signals")
         passed_tests += 0.3
     else:
@@ -1098,8 +1121,9 @@ def print_summary(all_results):
     
     if all_results.get('analysis', {}).get('rating_reports_analysis'):
         rr_list = all_results['analysis']['rating_reports_analysis']
-        total_red_flags = sum(len(rr['analysis'].get('red_flags', [])) for rr in rr_list)
-        print_metric("Rating Reports Analysis", f"✓ {len(rr_list)} reports, {total_red_flags} red flags")
+        # New format: {current_rating, outlook} - no red_flags
+        ratings_found = sum(1 for rr in rr_list if rr['analysis'].get('current_rating'))
+        print_metric("Rating Reports Analysis", f"✓ {len(rr_list)} reports, {ratings_found} ratings extracted")
         passed_tests += 0.2
     else:
         print_metric("Rating Reports Analysis", "✗ Not analyzed")

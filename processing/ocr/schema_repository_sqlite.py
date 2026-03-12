@@ -17,6 +17,7 @@ Table: schema_mappings
     - field_mappings_json (TEXT): JSON dict of raw_column → field_name
     - custom_fields_json (TEXT): JSON list of user-added SchemaField objects
     - manual_edits_json (TEXT): JSON list of ManualEdit objects
+    - extracted_data_json (TEXT): JSON object containing OCR extraction results
     - validated_by (TEXT, nullable)
     - validation_timestamp (DATETIME, nullable)
     - created_at (DATETIME)
@@ -83,6 +84,7 @@ class SchemaMappingORM(Base):
     field_mappings_json = Column(Text, nullable=False, default="{}")
     custom_fields_json = Column(Text, nullable=False, default="[]")
     manual_edits_json = Column(Text, nullable=False, default="[]")
+    extracted_data_json = Column(Text, nullable=True)
     
     validated_by = Column(String(128), nullable=True)
     validation_timestamp = Column(DateTime, nullable=True)
@@ -147,6 +149,10 @@ class SQLiteSchemaRepository:
         record: "SchemaMappingRecord",
     ) -> SchemaMappingORM:
         """Convert Pydantic SchemaMappingRecord to ORM model."""
+        extracted_data_json = None
+        if record.extracted_data:
+            extracted_data_json = json.dumps(record.extracted_data.model_dump(mode="json"))
+        
         return SchemaMappingORM(
             mapping_id=record.mapping_id,
             case_id=record.case_id,
@@ -162,6 +168,7 @@ class SQLiteSchemaRepository:
             manual_edits_json=json.dumps(
                 [edit.model_dump(mode="json") for edit in record.manual_edits_applied]
             ),
+            extracted_data_json=extracted_data_json,
             validated_by=record.validated_by,
             validation_timestamp=record.validation_timestamp,
             created_at=record.created_at,
@@ -176,6 +183,8 @@ class SQLiteSchemaRepository:
         mapping_record_class: type,
     ) -> "SchemaMappingRecord":
         """Convert ORM model to Pydantic SchemaMappingRecord."""
+        from schema_service import ExtractedData
+        
         schema_fields = [
             schema_field_class(**field_dict)
             for field_dict in json.loads(orm_obj.schema_fields_json)
@@ -189,6 +198,10 @@ class SQLiteSchemaRepository:
             for edit_dict in json.loads(orm_obj.manual_edits_json)
         ]
         
+        extracted_data = None
+        if orm_obj.extracted_data_json:
+            extracted_data = ExtractedData(**json.loads(orm_obj.extracted_data_json))
+        
         return mapping_record_class(
             mapping_id=orm_obj.mapping_id,
             case_id=orm_obj.case_id,
@@ -198,6 +211,7 @@ class SQLiteSchemaRepository:
             field_mappings=json.loads(orm_obj.field_mappings_json),
             custom_fields_added=custom_fields,
             manual_edits_applied=manual_edits,
+            extracted_data=extracted_data,
             validated_by=orm_obj.validated_by,
             validation_timestamp=orm_obj.validation_timestamp,
             created_at=orm_obj.created_at,

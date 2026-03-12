@@ -54,6 +54,7 @@ class RatioKey(str, Enum):
     CURRENT_RATIO = "current_ratio"
     EBITDA_MARGIN = "ebitda_margin"
     PAT_MARGIN = "pat_margin"
+    ROE = "roe"  # Return on Equity
 
 
 class ComputeStatus(str, Enum):
@@ -107,28 +108,15 @@ class RatioDetail(BaseModel):
     ----------
     value:
         The computed ratio, or ``None`` when the ratio cannot be calculated
-        (e.g. zero denominator).  Always ``None`` when ``status != ok``.
+        (e.g. zero denominator).
     inputs:
         The raw input values used in the formula, keyed by variable name.
-        Included even when ``value`` is ``None`` so the UI can show what
-        inputs were available.
     formula:
-        Human-readable formula string (e.g. ``"ebit / interest_expense"``).
-    status:
-        ``ok``               — value was computed successfully.
-        ``zero_denominator`` — denominator was zero; value is None.
-        ``negative_base``    — CAGR start revenue ≤ 0; value is None.
-        ``insufficient_data``— not enough years provided; value is None.
-    note:
-        Optional plain-text explanation for non-ok statuses.
+        Human-readable formula string (e.g. ``"EBIT / Interest Expense"``).
     """
     value: Optional[float] = None
     inputs: dict[str, Any] = Field(default_factory=dict)
     formula: str
-    status: ComputeStatus = ComputeStatus.OK
-    note: Optional[str] = None
-
-    model_config = {"use_enum_values": True}
 
 
 class YearlyRatios(BaseModel):
@@ -171,21 +159,13 @@ def _safe_divide(
     """
     Divide *numerator* by *denominator*, returning a :class:`RatioDetail`.
 
-    If ``denominator == 0``, returns a ``RatioDetail`` with ``value=None``
-    and ``status=zero_denominator`` so the caller always gets a well-formed
-    object regardless of input quality.
+    If ``denominator == 0``, returns a ``RatioDetail`` with ``value=None``.
     """
     if denominator == 0.0:
         return RatioDetail(
             value=None,
             inputs=inputs,
             formula=formula,
-            status=ComputeStatus.ZERO_DENOMINATOR,
-            note=(
-                f"Cannot compute: denominator is zero "
-                f"(formula: {formula}). "
-                "Check whether this line item is applicable for this entity."
-            ),
         )
 
     raw = numerator / denominator
@@ -196,7 +176,6 @@ def _safe_divide(
         value=value,
         inputs=inputs,
         formula=formula,
-        status=ComputeStatus.OK,
     )
 
 
@@ -206,15 +185,15 @@ def _compute_dscr(fy: FinancialYear) -> RatioDetail:
     Measures how many times operating income covers debt obligations.
     A value < 1.0 signals the entity cannot service its debt from operations.
 
-    Formula: net_operating_income / total_debt_service
+    Formula: NOI / Total Debt Service
     """
     return _safe_divide(
         numerator=fy.net_operating_income,
         denominator=fy.total_debt_service,
-        formula="net_operating_income / total_debt_service",
+        formula="NOI / Total Debt Service",
         inputs={
-            "net_operating_income": fy.net_operating_income,
-            "total_debt_service": fy.total_debt_service,
+            "noi": fy.net_operating_income,
+            "debt_service": fy.total_debt_service,
         },
     )
 
@@ -224,12 +203,12 @@ def _compute_leverage(fy: FinancialYear) -> RatioDetail:
     Leverage Ratio (Debt-to-Equity).
     Higher values indicate greater financial risk.
 
-    Formula: total_debt / net_worth
+    Formula: Total Debt / Net Worth
     """
     return _safe_divide(
         numerator=fy.total_debt,
         denominator=fy.net_worth,
-        formula="total_debt / net_worth",
+        formula="Total Debt / Net Worth",
         inputs={
             "total_debt": fy.total_debt,
             "net_worth": fy.net_worth,
@@ -243,12 +222,12 @@ def _compute_interest_coverage(fy: FinancialYear) -> RatioDetail:
     Measures how comfortably EBIT covers interest obligations.
     Values < 1.5x are typically flagged as high risk.
 
-    Formula: ebit / interest_expense
+    Formula: EBIT / Interest Expense
     """
     return _safe_divide(
         numerator=fy.ebit,
         denominator=fy.interest_expense,
-        formula="ebit / interest_expense",
+        formula="EBIT / Interest Expense",
         inputs={
             "ebit": fy.ebit,
             "interest_expense": fy.interest_expense,
@@ -262,12 +241,12 @@ def _compute_current_ratio(fy: FinancialYear) -> RatioDetail:
     A ratio < 1.0 means the entity cannot cover short-term obligations
     with short-term assets (liquidity risk).
 
-    Formula: current_assets / current_liabilities
+    Formula: Current Assets / Current Liabilities
     """
     return _safe_divide(
         numerator=fy.current_assets,
         denominator=fy.current_liabilities,
-        formula="current_assets / current_liabilities",
+        formula="Current Assets / Current Liabilities",
         inputs={
             "current_assets": fy.current_assets,
             "current_liabilities": fy.current_liabilities,
@@ -281,12 +260,12 @@ def _compute_ebitda_margin(fy: FinancialYear) -> RatioDetail:
     Expressed as a decimal (e.g. 0.18 = 18%).
     Measures operational efficiency before capital structure effects.
 
-    Formula: ebitda / revenue
+    Formula: (EBITDA / Revenue) × 100
     """
     return _safe_divide(
         numerator=fy.ebitda,
         denominator=fy.revenue,
-        formula="ebitda / revenue",
+        formula="(EBITDA / Revenue) × 100",
         inputs={
             "ebitda": fy.ebitda,
             "revenue": fy.revenue,
@@ -299,15 +278,33 @@ def _compute_pat_margin(fy: FinancialYear) -> RatioDetail:
     PAT (Net Profit) Margin.
     Expressed as a decimal. The bottom-line profitability metric.
 
-    Formula: pat / revenue
+    Formula: (PAT / Revenue) × 100
     """
     return _safe_divide(
         numerator=fy.pat,
         denominator=fy.revenue,
-        formula="pat / revenue",
+        formula="(PAT / Revenue) × 100",
         inputs={
             "pat": fy.pat,
             "revenue": fy.revenue,
+        },
+    )
+
+
+def _compute_roe(fy: FinancialYear) -> RatioDetail:
+    """
+    Return on Equity (ROE).
+    Measures return generated on shareholders' equity.
+
+    Formula: PAT / Net Worth
+    """
+    return _safe_divide(
+        numerator=fy.pat,
+        denominator=fy.net_worth,
+        formula="PAT / Net Worth",
+        inputs={
+            "pat": fy.pat,
+            "net_worth": fy.net_worth,
         },
     )
 
@@ -322,53 +319,27 @@ def _compute_revenue_cagr(
     Uses the two boundary years of the 3-year window.  The number of
     compounding periods is always 2 (oldest → middle → newest).
 
-    Formula: (revenue_N / revenue_N-2) ^ (1/2) - 1
-
-    Edge cases
-    ----------
-    - ``revenue_N-2 <= 0``  → ``negative_base`` status (CAGR undefined)
-    - ``revenue_N < 0``     → value is computed but may look unusual;
-                               a negative CAGR with a loss-making end year
-                               is mathematically valid.
-    - ``revenue_N-2 == 0``  → ``zero_denominator`` status
+    Formula: (Revenue Y3 / Revenue Y1) ^ (1/n) - 1
     """
     n_periods = newest.year - oldest.year   # typically 2 for a 3-year window
     if n_periods <= 0:
-        # Caller passed years in wrong order or identical years — guard
         n_periods = 2
 
     inputs = {
-        "revenue_oldest": oldest.revenue,
-        "revenue_newest": newest.revenue,
-        "year_oldest": oldest.year,
-        "year_newest": newest.year,
-        "n_periods": n_periods,
+        "y1_revenue": oldest.revenue,
+        "y3_revenue": newest.revenue,
+        "y1": oldest.year,
+        "y3": newest.year,
+        "n": n_periods,
     }
-    formula = f"(revenue_{newest.year} / revenue_{oldest.year}) ^ (1/{n_periods}) - 1"
+    formula = f"(Revenue Y{newest.year} / Revenue Y{oldest.year}) ^ (1/{n_periods}) - 1"
 
+    # Handle edge cases
     if oldest.revenue == 0.0:
-        return RatioDetail(
-            value=None,
-            inputs=inputs,
-            formula=formula,
-            status=ComputeStatus.ZERO_DENOMINATOR,
-            note=(
-                f"Cannot compute CAGR: base year ({oldest.year}) revenue is zero. "
-                "Check whether the entity had no operations in that year."
-            ),
-        )
+        return RatioDetail(value=None, inputs=inputs, formula=formula)
 
     if oldest.revenue < 0:
-        return RatioDetail(
-            value=None,
-            inputs=inputs,
-            formula=formula,
-            status=ComputeStatus.NEGATIVE_BASE,
-            note=(
-                f"Cannot compute CAGR: base year ({oldest.year}) revenue is negative "
-                f"({oldest.revenue}). CAGR is undefined for negative base values."
-            ),
-        )
+        return RatioDetail(value=None, inputs=inputs, formula=formula)
 
     ratio = newest.revenue / oldest.revenue
     # For a negative end-year revenue with positive base, ratio < 0 → math.pow
@@ -383,7 +354,6 @@ def _compute_revenue_cagr(
         value=round(cagr, 6),
         inputs=inputs,
         formula=formula,
-        status=ComputeStatus.OK,
     )
 
 
@@ -392,12 +362,13 @@ def _compute_yearly_ratios(fy: FinancialYear) -> YearlyRatios:
     return YearlyRatios(
         year=fy.year,
         ratios={
-            RatioKey.DSCR:              _compute_dscr(fy),
-            RatioKey.LEVERAGE:          _compute_leverage(fy),
-            RatioKey.INTEREST_COVERAGE: _compute_interest_coverage(fy),
-            RatioKey.CURRENT_RATIO:     _compute_current_ratio(fy),
-            RatioKey.EBITDA_MARGIN:     _compute_ebitda_margin(fy),
-            RatioKey.PAT_MARGIN:        _compute_pat_margin(fy),
+            "dscr":              _compute_dscr(fy),
+            "leverage":          _compute_leverage(fy),
+            "interest_coverage": _compute_interest_coverage(fy),
+            "current_ratio":     _compute_current_ratio(fy),
+            "ebitda_margin":     _compute_ebitda_margin(fy),
+            "pat_margin":        _compute_pat_margin(fy),
+            "roe":               _compute_roe(fy),
         },
     )
 

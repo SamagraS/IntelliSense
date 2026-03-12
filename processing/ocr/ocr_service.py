@@ -31,6 +31,7 @@ import os
 import re
 import uuid
 import warnings
+from datetime import datetime
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -159,7 +160,6 @@ class LineResult:
             "text": self.text,
             "confidence": round(self.confidence, 2),
             "bbox": self.bbox.to_dict(),
-            "needs_review": self.needs_review,
         }
 
 
@@ -176,9 +176,7 @@ class TableResult:
         return {
             "table_id": self.table_id,
             "rows": self.rows,
-            "confidence": round(self.confidence, 4),
-            "extraction_method": self.extraction_method,
-            "page_number": self.page_number,
+            "confidence": round(self.confidence, 2),
         }
 
 
@@ -195,7 +193,6 @@ class PageResult:
             "page_number": self.page_number,
             "lines": [ln.to_dict() for ln in self.lines],
             "tables": [tbl.to_dict() for tbl in self.tables],
-            "extraction_method": self.extraction_method,
         }
 
 
@@ -1482,7 +1479,10 @@ def extract_from_pdf(
         raise FileNotFoundError(f"Path is not a file: '{pdf_path}'")
 
     pdf_path_str = str(pdf_path_obj)
-    ocr_run_id = str(uuid.uuid4())
+    
+    # Generate ocr_run_id in format: {case_id}_{document_type}_{YYYYMMDD}
+    timestamp = datetime.now().strftime("%Y%m%d")
+    ocr_run_id = f"{case_id}_{document_type}_{timestamp}"
 
     logger.info(
         "=== OCR run %s | case=%s | type=%s | file=%s ===",

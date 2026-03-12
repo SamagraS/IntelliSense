@@ -123,6 +123,52 @@ class SchemaField(BaseModel):
     model_config = {"use_enum_values": True}
 
 
+class CellValue(BaseModel):
+    """
+    A single OCR-extracted cell value with confidence.
+
+    Attributes
+    ----------
+    value:
+        The extracted text value (as string).
+    confidence:
+        OCR confidence score (0-100 percentage).
+    """
+    value: str
+    confidence: float = Field(ge=0.0, le=100.0)
+
+
+class ExtractedDataRow(BaseModel):
+    """
+    One row of OCR-extracted tabular data.
+
+    The list of cells corresponds to the order of columns in
+    ``extracted_data.columns``.
+    """
+    cells: list[CellValue]
+
+
+class ExtractedData(BaseModel):
+    """
+    Complete OCR extraction result for a document.
+
+    Attributes
+    ----------
+    ocr_run_id:
+        Unique identifier for this OCR extraction run.
+    columns:
+        List of column headers extracted from the document.
+    rows:
+        List of data rows, each containing cells with values and confidence.
+    extraction_timestamp:
+        When the OCR extraction was performed.
+    """
+    ocr_run_id: str
+    columns: list[str]
+    rows: list[ExtractedDataRow]
+    extraction_timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+
 class ManualEdit(BaseModel):
     """
     Represents a single reviewer-applied cell correction.
@@ -199,6 +245,7 @@ class SchemaMappingRecord(BaseModel):
     field_mappings: dict[str, str] = Field(default_factory=dict)
     custom_fields_added: list[SchemaField] = Field(default_factory=list)
     manual_edits_applied: list[ManualEdit] = Field(default_factory=list)
+    extracted_data: Optional[ExtractedData] = None
     validated_by: Optional[str] = None
     validation_timestamp: Optional[datetime] = None
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
@@ -238,6 +285,10 @@ class GetSchemaResponse(BaseModel):
     schema_template_version: str
     schema_fields: list[SchemaField]
     extracted_columns: list[ExtractedColumnSample]
+    extracted_data: Optional[ExtractedData] = Field(
+        None,
+        description="Full extracted data with confidence scores for each cell",
+    )
     is_validated: bool
     validation_timestamp: Optional[datetime] = None
 
@@ -393,6 +444,67 @@ class ValidateResponse(BaseModel):
     validated_by: Optional[str] = None
     validation_timestamp: Optional[datetime] = None
     schema_template_version: str
+
+
+# ---- POST /ocr/extracted-data -------------------------------------------
+
+class SubmitOcrDataRequest(BaseModel):
+    """
+    OCR service submits extracted data after processing a document.
+
+    Attributes
+    ----------
+    ocr_run_id:
+        Unique identifier for this OCR run (format: {case_id}_{document_type}_{YYYYMMDD}).
+    columns:
+        List of column headers extracted from the document.
+    rows:
+        List of data rows with cell values and confidence scores.
+    """
+    ocr_run_id: str = Field(..., min_length=1)
+    columns: list[str] = Field(..., min_length=1)
+    rows: list[ExtractedDataRow] = Field(..., min_length=1)
+
+
+class SubmitOcrDataResponse(BaseModel):
+    mapping_id: str
+    case_id: str
+    document_type: str
+    ocr_run_id: str
+    rows_received: int
+    columns_received: int
+    extraction_timestamp: datetime
+
+
+# ---- GET /validated-output -----------------------------------------------
+
+class ValidatedOutputResponse(BaseModel):
+    """
+    Final output after validation - ready for database ingestion.
+
+    This combines the validated schema, field mappings, and extracted data
+    with all manual edits applied.
+    """
+    mapping_id: str
+    case_id: str
+    document_type: str
+    schema_template_version: str
+    fields: list[SchemaField] = Field(
+        description="Current schema (template + custom fields)"
+    )
+    field_mappings: dict[str, str] = Field(
+        description="Mapping of extracted columns to schema fields"
+    )
+    extracted_data: Optional[ExtractedData] = Field(
+        None,
+        description="Raw OCR extracted data with confidence scores"
+    )
+    manual_edits_applied: list[ManualEdit] = Field(
+        default_factory=list,
+        description="All cell-level corrections made by reviewers"
+    )
+    validated_by: str
+    validation_timestamp: datetime
 
 
 # ---------------------------------------------------------------------------
@@ -764,15 +876,44 @@ def create_app(use_sqlite: bool = True, db_path: str = "schema.db") -> FastAPI:
         """
         record = _get_or_create_record(repo, case_id, document_type)
 
-        # Build extracted-column preview, injecting already-mapped field names
-        raw_columns = _MOCK_OCR_COLUMNS.get(document_type, _DEFAULT_OCR_COLUMNS)
-        extracted_columns = [
-            ExtractedColumnSample(
-                **col,
-                already_mapped_to=record.field_mappings.get(col["column_name"]),
-            )
-            for col in raw_columns
-        ]
+        # Build extracted-column preview
+        extracted_columns: list[ExtractedColumnSample] = []
+        
+        if record.extracted_data:
+            # Use real OCR data if available
+            for col_name in record.extracted_data.columns:
+                col_idx = record.extracted_data.columns.index(col_name)
+                sample_values = []
+                confidences = []
+                low_conf_count = 0
+                
+                for row in record.extracted_data.rows[:5]:  # Sample first 5 rows
+                    if col_idx < len(row.cells):
+                        cell = row.cells[col_idx]
+                        sample_values.append(cell.value)
+                        confidences.append(cell.confidence)
+                        if cell.confidence < 75.0:
+                            low_conf_count += 1
+                
+                avg_conf = sum(confidences) / len(confidences) if confidences else 0.0
+                
+                extracted_columns.append(ExtractedColumnSample(
+                    column_name=col_name,
+                    sample_values=sample_values,
+                    avg_confidence=avg_conf,
+                    low_confidence_row_count=low_conf_count,
+                    already_mapped_to=record.field_mappings.get(col_name),
+                ))
+        else:
+            # Fall back to mock data for testing
+            raw_columns = _MOCK_OCR_COLUMNS.get(document_type, _DEFAULT_OCR_COLUMNS)
+            extracted_columns = [
+                ExtractedColumnSample(
+                    **col,
+                    already_mapped_to=record.field_mappings.get(col["column_name"]),
+                )
+                for col in raw_columns
+            ]
 
         return GetSchemaResponse(
             case_id=case_id,
@@ -781,6 +922,7 @@ def create_app(use_sqlite: bool = True, db_path: str = "schema.db") -> FastAPI:
             schema_template_version=record.schema_template_version,
             schema_fields=record.schema_fields,
             extracted_columns=extracted_columns,
+            extracted_data=record.extracted_data,
             is_validated=record.validation_timestamp is not None,
             validation_timestamp=record.validation_timestamp,
         )
@@ -1139,6 +1281,120 @@ def create_app(use_sqlite: bool = True, db_path: str = "schema.db") -> FastAPI:
             validated_by=record.validated_by,
             validation_timestamp=record.validation_timestamp,
             schema_template_version=record.schema_template_version,
+        )
+
+    # ------------------------------------------------------------------ #
+    # POST /cases/{case_id}/ocr/{document_type}/extracted-data            #
+    # ------------------------------------------------------------------ #
+    @application.post(
+        "/cases/{case_id}/ocr/{document_type}/extracted-data",
+        response_model=SubmitOcrDataResponse,
+        status_code=status.HTTP_201_CREATED,
+        summary="Submit OCR extracted data after document processing",
+        tags=["OCR"],
+    )
+    async def submit_ocr_data(
+        case_id: str = Path(..., description="Lending case identifier"),
+        document_type: str = Path(..., description="Document type enum value"),
+        body: SubmitOcrDataRequest = Body(...),
+    ) -> SubmitOcrDataResponse:
+        """
+        Called by the OCR service after extracting tabular data from a document.
+
+        This endpoint stores the extracted data (columns, rows with confidence
+        scores) so the Schema Editor can display it for the user to review,
+        edit, and map to schema fields.
+
+        The OCR system should call this endpoint immediately after processing
+        each document, before the user opens the Schema Editor.
+        """
+        record = _get_or_create_record(repo, case_id, document_type)
+
+        # Create ExtractedData object
+        extracted_data = ExtractedData(
+            ocr_run_id=body.ocr_run_id,
+            columns=body.columns,
+            rows=body.rows,
+        )
+
+        # Store in the mapping record
+        record.extracted_data = extracted_data
+        # Reset validation since new data was loaded
+        record.validated_by = None
+        record.validation_timestamp = None
+        repo.upsert(record)
+
+        return SubmitOcrDataResponse(
+            mapping_id=record.mapping_id,
+            case_id=case_id,
+            document_type=document_type,
+            ocr_run_id=body.ocr_run_id,
+            rows_received=len(body.rows),
+            columns_received=len(body.columns),
+            extraction_timestamp=extracted_data.extraction_timestamp,
+        )
+
+    # ------------------------------------------------------------------ #
+    # GET /cases/{case_id}/schema/{document_type}/validated-output        #
+    # ------------------------------------------------------------------ #
+    @application.get(
+        "/cases/{case_id}/schema/{document_type}/validated-output",
+        response_model=ValidatedOutputResponse,
+        summary="Get final validated output ready for database ingestion",
+        tags=["Validation"],
+    )
+    async def get_validated_output(
+        case_id: str = Path(...),
+        document_type: str = Path(...),
+    ) -> ValidatedOutputResponse:
+        """
+        Return the complete validated schema and extracted data.
+
+        This endpoint should be called after the user has successfully
+        validated the schema (POST /validate returned is_valid=true).
+
+        The response contains everything needed to ingest the data:
+        - Final schema fields (template + custom)
+        - Column to field mappings
+        - Raw extracted data with confidence scores
+        - All manual edits applied by reviewers
+        - Validation metadata (who/when)
+
+        Returns
+        -------
+        ValidatedOutputResponse
+            Complete validated mapping ready for ETL pipeline.
+
+        Raises
+        ------
+        HTTPException(404)
+            If no mapping exists for this (case_id, document_type).
+        HTTPException(422)
+            If the mapping exists but has not been validated yet.
+        """
+        record = _require_mapping_for_case(repo, case_id, document_type)
+
+        if not record.validated_by or not record.validation_timestamp:
+            raise HTTPException(
+                status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                detail=(
+                    f"Schema for case_id='{case_id}' / "
+                    f"document_type='{document_type}' has not been validated yet. "
+                    "Call POST /validate first."
+                ),
+            )
+
+        return ValidatedOutputResponse(
+            mapping_id=record.mapping_id,
+            case_id=case_id,
+            document_type=document_type,
+            schema_template_version=record.schema_template_version,
+            fields=record.schema_fields,
+            field_mappings=record.field_mappings,
+            extracted_data=record.extracted_data,
+            manual_edits_applied=record.manual_edits_applied,
+            validated_by=record.validated_by,
+            validation_timestamp=record.validation_timestamp,
         )
 
     return application

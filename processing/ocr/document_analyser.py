@@ -264,10 +264,20 @@ def analyze_alm(alm_rows: list[dict]) -> dict:
             worst_gap = gap
             worst_bucket = bucket
 
+    # Simplified flags with issue types
+    simplified_flags = []
+    for flag in flags:
+        simplified_flags.append({
+            "bucket": flag["bucket"],
+            "issue": "negative_short_term_gap",
+            "severity": "high" if flag["severity"] == "critical" else "medium"
+        })
+
     return {
         "enriched_rows": enriched,
-        "short_term_flags": flags,
+        "flags": simplified_flags,
         "summary": {
+            "short_term_negative_gaps": len(simplified_flags),
             "total_assets_inr": round(total_assets, 2),
             "total_liabilities_inr": round(total_liabilities, 2),
             "net_gap_inr": round(total_assets - total_liabilities, 2),
@@ -337,8 +347,7 @@ def analyze_shareholding(text_lines: list[str]) -> dict:
         return {
             "promoter_pledge_pct": None,
             "risk_tag": "unknown",
-            "source_line": None,
-            "all_pledge_mentions": [],
+            "extracted_text": None,
         }
 
     # Use the highest pledge % found (most conservative interpretation)
@@ -355,8 +364,7 @@ def analyze_shareholding(text_lines: list[str]) -> dict:
     return {
         "promoter_pledge_pct": pct,
         "risk_tag": tag,
-        "source_line": best["line"],
-        "all_pledge_mentions": all_mentions,
+        "extracted_text": best["line"],
     }
 
 
@@ -476,11 +484,11 @@ def analyze_borrowing_profile(
             })
 
     return {
-        "flagged_rows": flagged,
+        "flags": flagged,
+        "high_interest_count": high_interest_count,
+        "restructured_count": restructured_count,
         "summary": {
             "total_borrowings_inr": round(total_inr, 2),
-            "restructured_count": restructured_count,
-            "high_interest_count": high_interest_count,
             "restructured_amount_inr": round(restructured_inr, 2),
             "high_interest_amount_inr": round(high_interest_inr, 2),
             "prime_rate_used_pct": PRIME_RATE_PCT,
@@ -590,25 +598,24 @@ def analyze_portfolio_cuts(rows: list[dict]) -> dict:
 # 5. Board Minutes Analysis
 # ---------------------------------------------------------------------------
 
-def analyze_board_minutes(text_lines: list[str]) -> dict:
+def analyze_board_minutes(text_lines: list[str]) -> list[dict]:
     """
     Scan board meeting text for governance red flags.
 
     Returns
     -------
-    {
-        "governance_signals": [
-            {
-                "type": str,
-                "snippet": str,
-                "line_index": int
-            }
-        ],
-        "signal_counts": { type: count },
-        "overall_risk": "low" | "medium" | "high"
-    }
+    List of governance signals:
+    [
+        {
+            "type": str,           # e.g., "RELATED_PARTY", "AUDITOR_RESIGNATION"
+            "snippet": str,        # Relevant text excerpt
+            "page": int,           # Estimated page number
+            "confidence": int      # Detection confidence (70-100)
+        }
+    ]
     """
     signals: list[dict] = []
+    LINES_PER_PAGE = 40  # Approximate lines per page for page estimation
 
     for i, line in enumerate(text_lines):
         line_lower = line.lower()
@@ -617,44 +624,46 @@ def analyze_board_minutes(text_lines: list[str]) -> dict:
                 start = max(0, i - 1)
                 end = min(len(text_lines), i + 3)
                 snippet = _clean(" | ".join(text_lines[start:end]))
+                
+                # Map signal types to uppercase format
+                type_map = {
+                    "related_party_transaction": "RELATED_PARTY",
+                    "auditor_resignation": "AUDITOR_RESIGNATION",
+                    "loan_approval": "LOAN_APPROVAL",
+                    "waiver": "WAIVER",
+                    "debt_restructuring": "DEBT_RESTRUCTURING",
+                    "director_loan": "DIRECTOR_LOAN",
+                }
+                
+                # Calculate confidence based on pattern match quality
+                match = re.search(pattern, line_lower)
+                if match:
+                    # Higher confidence for exact matches
+                    match_quality = len(match.group(0)) / len(line_lower.split())
+                    confidence = min(95, max(70, int(85 + match_quality * 10)))
+                else:
+                    confidence = 75
+                
+                # Estimate page number
+                page = (i // LINES_PER_PAGE) + 1
+                
                 signals.append({
-                    "type": signal_type,
-                    "snippet": snippet[:400],   # cap snippet length
-                    "line_index": i,
+                    "type": type_map.get(signal_type, signal_type.upper()),
+                    "snippet": snippet[:200],   # Cap snippet length
+                    "page": page,
+                    "confidence": confidence,
                 })
                 # Don't break — one line may match multiple governance types
 
-    # Deduplicate: same type+line
-    seen: set[tuple[str, int]] = set()
-    unique: list[dict] = []
+    # Deduplicate: same type+line, keep highest confidence
+    seen: dict[tuple[str, int], dict] = {}
     for s in signals:
-        key = (s["type"], s["line_index"])
-        if key not in seen:
-            seen.add(key)
-            unique.append(s)
+        line_idx = s.get("page", 0) - 1
+        key = (s["type"], line_idx)
+        if key not in seen or s["confidence"] > seen[key]["confidence"]:
+            seen[key] = s
 
-    signal_counts: dict[str, int] = {}
-    for s in unique:
-        signal_counts[s["type"]] = signal_counts.get(s["type"], 0) + 1
-
-    # Risk escalation rules
-    high_risk_types = {"auditor_resignation", "debt_restructuring", "director_loan"}
-    medium_risk_types = {"related_party_transaction", "waiver", "loan_approval"}
-
-    if any(t in signal_counts for t in high_risk_types):
-        overall_risk = "high"
-    elif any(t in signal_counts for t in medium_risk_types):
-        overall_risk = "medium"
-    elif unique:
-        overall_risk = "medium"
-    else:
-        overall_risk = "low"
-
-    return {
-        "governance_signals": unique,
-        "signal_counts": signal_counts,
-        "overall_risk": overall_risk,
-    }
+    return list(seen.values())
 
 
 # ---------------------------------------------------------------------------
@@ -929,35 +938,10 @@ def analyze_rating_report(text_lines: list[str]) -> dict:
     if m_agency:
         agency = _clean(m_agency.group(1))
 
-    # ---- Key risk factors ----
-    RISK_TRIGGER_PHRASES = [
-        "key risk", "risk factor", "concern", "challenge", "weakness",
-        "vulnerability", "exposure", "concentration risk", "asset quality",
-        "npa", "liquidity risk", "refinancing risk",
-    ]
-    key_risks: list[str] = []
-    for line in text_lines:
-        line_lower = line.lower()
-        for phrase in RISK_TRIGGER_PHRASES:
-            if phrase in line_lower:
-                key_risks.append(_clean(line)[:300])
-                break
-
-    # Deduplicate while preserving order
-    key_risks = list(dict.fromkeys(key_risks))
-
+    # Simplified return format
     return {
         "current_rating": current_rating,
         "outlook": outlook,
-        "last_change": {
-            "date": change_date,
-            "direction": direction,
-            "from_rating": from_rating,
-            "to_rating": to_rating,
-        },
-        "rating_agency": agency,
-        "key_risk_factors": key_risks,
-        "flags": flags,
     }
 
 
