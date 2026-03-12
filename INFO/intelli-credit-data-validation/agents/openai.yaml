@@ -1,0 +1,4 @@
+interface:
+  display_name: "Intelli Credit Validation"
+  short_description: "Validate credit data and CAM readiness"
+  default_prompt: "Use $intelli-credit-data-validation to validate a case dataset and produce a blocking/non-blocking validation report."

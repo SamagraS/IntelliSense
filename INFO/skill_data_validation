@@ -1,0 +1,645 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## SKILL IDENTITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Skill Name: intelli_credit_data_validation
+Skill Type: End-to-End Data Validity Enforcement
+Domain: Indian Corporate Credit Appraisal (NBFC / Bank Lending)
+Trigger: Run at every layer boundary and before CAM generation
+Output: Validation report per case_id + annotated dataset + alert flags for UI
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## PROBLEM DEFINITION (STAGE 1)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Business Context:
+  Intelli-Credit ingests 5 core document types, 3 structured data sources,
+  external intelligence (MCA, e-Courts, news, sentiment, macro), and primary
+  notes to produce a Five Cs credit score and a CAM report.
+
+  Validity failures at any stage produce incorrect scores, bad recommendations,
+  or legally/regulatory problematic CAM outputs delivered to lenders.
+
+Problem Type: Multi-stage data pipeline validation + scoring consistency check
+Success Criteria:
+  - Zero unresolved CRITICAL violations entering Layer 3 scoring
+  - Zero CAM sections citing data with extraction_confidence < 75
+  - All Five Cs scores recomputable from stored signals (no black-box drift)
+  - All source citations in CAM traceable to a document_id and page_number
+
+Regulatory Constraints:
+  - PAN format: 5 letters + 4 digits + 1 letter (mandatory, validated)
+  - CIN format: L/U + 5digits + StateCode + 4-digit year + PLC/PTC + 6digits
+  - GSTIN format: 15 alphanumeric characters, check digit verifiable
+  - Monetary fields: INR, non-negative, DECIMAL(15,2) max precision
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## STAGE 2: DATA DISCOVERY AND SOURCE RELIABILITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+For each case_id, validate that all required sources are present:
+
+REQUIRED SOURCES PER CASE:
+  CRITICAL (block scoring if absent):
+    □ At least 3 years of financial_statements_line_items (FY2021-22, FY2022-23, FY2023-24)
+    □ At least 12 months of banktransactions
+    □ At least 12 months of gstfilings
+    □ mca_company_master entry exists for CIN
+
+  HIGH PRIORITY (warn if absent):
+    □ alm_data (required for NBFC sector; warn for others)
+    □ borrowing_profile (at least 1 facility row)
+    □ shareholding_pattern_quarterly (at least 1 quarter)
+    □ litigation_risk_summary_entity for both company and promoter
+
+  STANDARD (note if absent):
+    □ rating_reports_master (at least 1 report)
+    □ board_governance_signals (at least 1 board meeting processed)
+    □ portfolio_performance (required if sector = NBFC)
+    □ site_visit_observations (at least 1 record)
+    □ management_interview_notes (at least 1 record)
+    □ news_articles_crawled (at least 10 articles)
+
+SOURCE RELIABILITY CHECKS:
+  - document_classification: all records must have validation_status = 'approved'
+    → BLOCK: any document with validation_status = 'denied' used in analysis
+    → WARN: any document with validation_status = 'pending' still in pipeline
+  - extraction_confidence < 75 on any field → flag for manual review
+  - OCR-derived fields: check source_document_id is non-null and exists in document store
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## STAGE 3: SCHEMA AND STRUCTURAL VALIDITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Run the following structural checks on every table before analysis:
+
+--- TABLE: case_metadata ---
+  PK UNIQUE: case_id not null, unique per row
+  FORMAT: cin matches regex ^[LU][0-9]{5}[A-Z]{2}[0-9]{4}[A-Z]{3}[0-9]{6}$
+  FORMAT: pan matches regex ^[A-Z]{5}[0-9]{4}[A-Z]{1}$
+  ENUM: sector ∈ {Manufacturing, NBFC, Retail, Infrastructure, Pharma, Other}
+  RANGE: annual_turnover_cr > 0
+  RANGE: proposed_amount_inr > 0
+  RANGE: tenure_months > 0
+  RANGE: proposed_interest_rate_pct in [0, 50] if provided
+
+--- TABLE: gstfilings ---
+  PK UNIQUE: (case_id, gstin, filing_month) must be unique
+  FORMAT: gstin is 15 characters alphanumeric
+  FORMAT: filing_month is valid YYYY-MM
+  RANGE: gstr3b_revenue_declared >= 0
+  RANGE: gstr2a_reported_purchases >= 0
+  RANGE: gstr3b_tax_paid >= 0
+  RANGE: gstr2a_vs_3b_divergence_pct in [-200, 200]
+  ENUM: filing_status ∈ {filed, missing, late_filed}
+  NULL CHECK: filing_month, gstin, filing_status must not be null
+
+--- TABLE: itrfinancials ---
+  PK UNIQUE: (case_id, assessment_year) must be unique
+  CONSISTENCY: financial_year = "FY" + (assessment_year_start_year), e.g. AY2023-24 → FY2022-23
+  RANGE: declared_gross_income >= declared_net_income (gross >= net always)
+  RANGE: total_tax_paid >= 0
+  RANGE: director_remuneration_total >= 0
+  NULL CHECK: declared_gross_income, declared_net_income must not be null
+
+--- TABLE: banktransactions ---
+  PK UNIQUE: transaction_id not null, unique
+  ENUM: transaction_type ∈ {credit, debit}
+  RANGE: amount > 0 (always positive; type determines direction)
+  RANGE: running_balance can be negative (overdraft) but flag if < -1 Cr unexplained
+  TEMPORAL: transaction_date must not be future date
+  TEMPORAL: running_balance must be monotonically consistent within account sequence
+  NULL CHECK: transaction_date, amount, transaction_type, bank_account_no not null
+
+--- TABLE: bankmonthlysummary ---
+  AGGREGATE CONSISTENCY: total_credits in month must equal SUM(amount) for credits
+    in banktransactions for same (company_id, bank_account_no, month)
+    TOLERANCE: ±0.5% allowed for rounding
+  RANGE: average_balance can be negative but flag
+  RANGE: bounce_count >= 0, emi_obligations_detected >= 0
+  TEMPORAL: no gaps > 2 months without explanation flag
+
+--- TABLE: alm_data ---
+  COMPLETENESS: exactly 8 rows per case_id covering all buckets:
+    {1-7d, 8-14d, 15-30d, 1-3m, 3-6m, 6-12m, 1-3y, >3y}
+  ENUM: maturity_bucket ∈ the 8 values above
+  RANGE: assets_bucket_inr >= 0
+  RANGE: liabilities_bucket_inr >= 0
+  COMPUTED: cumulative_gap_inr[i] = cumulative_gap_inr[i-1] + (assets[i] - liabilities[i])
+    → Recompute and compare; flag if difference > 1 (rounding threshold)
+  COMPUTED: gap_as_pct_of_assets = (cumulative_gap_inr / SUM(assets_bucket_inr)) * 100
+    → Recompute per bucket; flag mismatch > 0.1%
+  CONSISTENCY: negative_gap_flag must be True iff liabilities_bucket_inr > assets_bucket_inr
+  RANGE: extraction_confidence in [0, 100]
+
+--- TABLE: shareholding_pattern_quarterly ---
+  RANGE: promoter_holding_pct in [0, 100]
+  RANGE: institutional_holding_pct in [0, 100]
+  RANGE: public_holding_pct in [0, 100]
+  SUM CHECK: promoter_holding_pct + institutional_holding_pct + public_holding_pct
+    must be in [99.0, 101.0] (tolerance for small rounding)
+  CONSISTENCY: promoter_shares_pledged_pct <= promoter_holding_pct
+  TEMPORAL: filing_date must be a valid date; quarters should be 3 months apart
+  NULL CHECK: promoter_holding_pct, promoter_shares_pledged_pct not null
+
+--- TABLE: promoter_pledge_analysis ---
+  ENUM: pledge_risk_flag ∈ {normal, caution, high_risk, critical}
+  CONSISTENCY: pledge_risk_flag must match these thresholds:
+    normal: promoter_pledged_pct < 40
+    caution: 40 <= promoter_pledged_pct < 60
+    high_risk: 60 <= promoter_pledged_pct < 75
+    critical: promoter_pledged_pct >= 75
+  → Recompute and flag any mismatch
+  COMPUTED: qoq_change_percentage_points = current_pledged - previous_quarter_pledged
+  CONSISTENCY: trend must match qoq_change direction
+    increasing: qoq_change > 0.5
+    decreasing: qoq_change < -0.5
+    stable: abs(qoq_change) <= 0.5
+
+--- TABLE: borrowing_profile ---
+  UNIQUENESS: (case_id, lender_name, facility_type) should be unique or have distinct source docs
+  ENUM: facility_type ∈ {term_loan, working_capital, cash_credit,
+                          letter_of_credit, bank_guarantee, overdraft}
+  RANGE: sanctioned_amount_inr > 0
+  RANGE: outstanding_amount_inr >= 0
+  CONSISTENCY: outstanding_amount_inr <= sanctioned_amount_inr
+  RANGE: interest_rate_pct in [0, 50]; flag if > 18 (high risk threshold)
+  ENUM: payment_track_record ∈ {regular, irregular, arrears, default}
+  NULL CHECK: lender_name, facility_type, sanctioned_amount_inr not null
+
+--- TABLE: portfolio_performance ---
+  REQUIRED FOR: case_id where sector = NBFC
+  RANGE: gross_npa_pct in [0, 100]
+  RANGE: net_npa_pct in [0, 100]
+  CONSISTENCY: net_npa_pct <= gross_npa_pct
+  RANGE: restructured_assets_pct in [0, 100]
+  RANGE: top_10_borrower_concentration_pct in [0, 100]
+  RANGE: provisioning_coverage_ratio in [0, 100]
+  RANGE: portfolio_outstanding_inr > 0
+
+--- TABLE: financial_statements_line_items ---
+  COVERAGE: must have at least 3 distinct financial_years per case_id
+  ENUM: statement_type ∈ {PL, BalanceSheet, CashFlow}
+  REQUIRED LINE ITEMS (minimum set per year):
+    PL: Revenue_from_Operations, EBITDA, PAT, Interest_Expense, Depreciation
+    BalanceSheet: Total_Assets, Total_Liabilities, Net_Worth, Total_Debt,
+                  Current_Assets, Current_Liabilities
+    CashFlow: Cash_Flow_from_Operations
+  RANGE: extraction_confidence in [0, 100]; flag if < 75
+  NULL CHECK: line_item_standardized_name, amount_inr, financial_year not null
+
+--- TABLE: computed_financial_ratios ---
+  7 REQUIRED RATIOS per financial_year:
+    DSCR, Debt_to_Equity, Interest_Coverage, Current_Ratio,
+    EBITDA_Margin, Revenue_CAGR, PAT_Margin
+  RECOMPUTE AND VERIFY:
+    DSCR = (Net_Operating_Income or EBITDA) / Annual_Debt_Service
+    Debt_to_Equity = Total_Debt / Net_Worth
+    Interest_Coverage = EBIT / Interest_Expense
+    Current_Ratio = Current_Assets / Current_Liabilities
+    EBITDA_Margin = (EBITDA / Revenue_from_Operations) * 100
+    PAT_Margin = (PAT / Revenue_from_Operations) * 100
+    Revenue_CAGR = ((Revenue_Year3 / Revenue_Year1) ^ (1/2) - 1) * 100
+  FLAG if recomputed value differs from stored by > 1% relative
+
+--- TABLE: auditor_notes ---
+  COVERAGE: at least 1 row per financial_year in financial_statements_line_items
+  CONSISTENCY: if going_concern_flag = True then has_qualification must be True
+  CONSISTENCY: if has_emphasis_of_matter = True then emphasis_text must not be null
+  NULL CHECK: financial_year, auditor_firm_name, has_qualification, has_emphasis_of_matter
+
+--- TABLE: mca_company_master ---
+  PK UNIQUE: company_cin matches CIN format regex
+  ENUM: company_status ∈ {active, strike_off, amalgamated, dissolved, under_liquidation}
+  CRITICAL FLAG: company_status != 'active' → emit CRITICAL validation alert
+  NULL CHECK: company_name, company_status, date_of_incorporation
+
+--- TABLE: mca_directors ---
+  UNIQUENESS: (director_din, company_cin) pair should be unique for active directorships
+  ENUM: din_status ∈ {active, deactivated, disqualified}
+  CRITICAL FLAG: din_status = 'disqualified' → emit CRITICAL alert (Character C)
+  TEMPORAL: resignation_date must be null for current directors or > appointment_date
+
+--- TABLE: mca_charges_registered ---
+  RANGE: charge_amount_inr > 0
+  ENUM: charge_status ∈ {live, satisfied, partially_satisfied}
+  ENUM: charge_type ∈ {mortgage, hypothecation, pledge, other}
+  TEMPORAL: charge_modification_date >= charge_creation_date if not null
+  CROSS-CHECK: lender in charge_holder_name should ideally appear in borrowing_profile
+    → flag if mismatch > 2 lenders (possible unreported facilities)
+
+--- TABLE: ecourts_cases_raw ---
+  PK UNIQUE: case_number not null, unique
+  ENUM: case_type ∈ {DRT, NCLT, civil, criminal, arbitration, consumer_dispute, other}
+  ENUM: case_status ∈ {active, disposed, pending, dismissed}
+  TEMPORAL: filing_date must not be future date
+  TEMPORAL: last_hearing_date >= filing_date
+  NULL CHECK: case_type, case_status, court_name not null
+
+--- TABLE: litigation_risk_summary_entity ---
+  RECOMPUTE: total_active_cases = COUNT(ecourts_cases_raw where case_status = 'active')
+             for that entity
+  RECOMPUTE: drt_cases_active_count = COUNT where case_type = 'DRT' and active
+  RECOMPUTE: litigation_density_score =
+    (DRT_count × 10 + NCLT_count × 8 + Criminal_count × 5 + Civil_count × 1) / 10
+    CAP AT 10
+  → Flag if stored score differs from recomputed by > 0.1
+  COVERAGE: must exist for BOTH entity_type = 'company' AND entity_type = 'promoter'
+    for each case_id → warn if promoter record missing
+
+--- TABLE: news_articles_crawled ---
+  COVERAGE: at least 10 articles per case_id
+  NULL CHECK: article_url, published_date, search_query_used not null
+  TEMPORAL: published_date must not be future date
+  ENUM: crawl_phase ∈ {background_deep_crawl, live_refresh}
+  NULL CHECK: article_full_text not null or empty (reject empty-text articles from scoring)
+
+--- TABLE: news_risk_signals ---
+  RANGE: severity_score in [0.0, 1.0]
+  CONSISTENCY: is_high_severity = True iff severity_score > 0.6
+  ENUM: signal_category valid (6 allowed categories)
+  CROSS-CHECK: article_id must exist in news_articles_crawled
+
+--- TABLE: site_visit_observations ---
+  ENUM: observation_category ∈ valid enum values
+  RANGE: score_adjustment_points in [-2.0, +2.0]
+  CONSISTENCY: risk_impact_direction and score_adjustment_points must agree:
+    positive direction: score_adjustment > 0
+    negative direction: score_adjustment < 0
+    neutral: score_adjustment = 0
+    critical_negative: score_adjustment <= -1.5
+  WORKFLOW: if verification_status = 'pending' and observation > 7 days old → warn
+
+--- TABLE: management_interview_notes ---
+  ENUM: management_credibility_assessment ∈ valid 5 values
+  RANGE: score_adjustment_points in [-2.0, +2.0]
+  CONSISTENCY:
+    contradictory_to_documents → score_adjustment <= -1.2
+    evasive → score_adjustment in [-1.5, -0.5]
+    confident_and_consistent → score_adjustment >= 0
+  WORKFLOW: if requires_document_verification = True and verification_status = 'pending'
+    and interview > 3 days old → warn
+
+--- TABLE: precognitive_signals ---
+  ENUM: signal_category ∈ {velocity_trend, triangulation_flag,
+                             sentiment_divergence, network_contagion}
+  ENUM: severity ∈ {low, medium, high, critical}
+  RANGE: score_impact in [-2.0, +2.0]
+  CONSISTENCY: severity must match score_impact magnitude:
+    low: |score_impact| < 0.5
+    medium: 0.5 <= |score_impact| < 1.0
+    high: 1.0 <= |score_impact| < 1.5
+    critical: |score_impact| >= 1.5
+  DEDUPE: no two signals with same (case_id, signal_category, signal_description) — exact duplicate
+  CROSS-CHECK: all items in data_sources_used must reference tables/docs that exist for case_id
+
+--- TABLE: document_classification ---
+  ENUM: validation_status ∈ {pending, approved, denied, edited}
+  WORKFLOW GATE: no document with validation_status ∈ {pending, denied} may be used
+    as source_document_id in ANY downstream table
+  CONSISTENCY: if validation_status = 'denied' then denial_reason must not be null
+  CONSISTENCY: if validation_status = 'edited' then human_validated_type must differ
+    from auto_classified_type
+
+--- TABLE: schema_mappings ---
+  COVERAGE: one record must exist per (case_id, document_type) where document is approved
+  CONSISTENCY: all keys in field_mappings must exist in the document's extracted data
+  NULL CHECK: case_id, document_type, field_mappings not null
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## STAGE 4: DEEP VALIDITY AND BUSINESS RULE CHECKS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### 4.1 CROSS-TABLE TRIANGULATION CHECKS (Business Rule Validity)
+
+CHECK T-1 — GST vs Bank vs ITR Revenue Triangulation:
+  a) Monthly GST revenue (gstfilings.gstr3b_revenue_declared × 12) vs
+     Annual bank credits (bankmonthlysummary.total_credits summed)
+     THRESHOLD: divergence > 25% → emit triangulation precognitive_signal (medium)
+     THRESHOLD: divergence > 40% → emit critical precognitive_signal
+
+  b) ITR declared_gross_income vs Annual Report Revenue_from_Operations
+     THRESHOLD: divergence > 10% → emit triangulation precognitive_signal (medium)
+     THRESHOLD: divergence > 20% → critical (potential financial statement inflation)
+
+  c) Borrowing profile total outstanding vs Balance Sheet Total_Debt:
+     SUM(borrowing_profile.outstanding_amount_inr) vs Total_Debt in BalanceSheet
+     THRESHOLD: divergence > 15% → emit triangulation precognitive_signal (high)
+     Notes: Off-balance-sheet (LC/BG) legitimately won't appear in balance sheet
+
+CHECK T-2 — MCA Charges vs Borrowing Profile:
+  - For each live charge in mca_charges_registered, verify corresponding
+    lender appears in borrowing_profile
+  - If > 2 lenders in MCA charges have no corresponding borrowing profile entry →
+    emit high-severity precognitive_signal (unreported lender relationships)
+
+CHECK T-3 — Circular Trading Detection:
+  From banktransactions for each month:
+  - Find credits matching pattern: large round amount (is_round_number = True),
+    followed by debit of 95-100% of same amount within 3-7 days to same counterparty
+  - If 3+ such cycles detected → set bankmonthlysummary.circular_trading_flag = True
+  - Emit CRITICAL Character C signal
+
+CHECK T-4 — Auditor Qualification vs Rating Outlook:
+  - If auditor_notes.has_qualification = True AND going_concern_flag = True
+    AND rating_reports_master.outlook = 'stable' for same period →
+    emit sentiment_divergence precognitive_signal (high):
+    "Rating agency shows stable outlook but auditor has raised going concern"
+
+CHECK T-5 — Promoter Pledge vs Management Interview Tone:
+  - If promoter_pledged_pct > 60 AND management interview notes show
+    management_credibility_assessment = 'confident_and_consistent' →
+    emit sentiment_divergence precognitive_signal (medium):
+    "Management appears confident but promoter pledge exceeds high-risk threshold"
+
+CHECK T-6 — Director Stress Cross-Check:
+  For each director_din in mca_directors for a case:
+    Count other companies (excluding borrower) with:
+      - DRT active cases: +10 weight
+      - NCLT active: +8 weight
+      - company_status != active: +5 weight
+      - distressed MCA charges: +3 weight
+    Director Stress Score = weighted sum / (number of other companies × 10)
+    If Director Stress Score > 0.4 → emit Character C signal (high)
+    If Director Stress Score > 0.7 → emit Character C signal (critical)
+
+CHECK T-7 — ALM Short-Term Liquidity Stress:
+  From alm_data for case:
+    Sum liabilities in {1-7d, 8-14d, 15-30d} buckets (L_short)
+    Sum assets in {1-7d, 8-14d, 15-30d} buckets (A_short)
+    If L_short > A_short * 1.2 (liabilities 20% > assets in 30 days) → warn
+    If L_short > A_short * 1.5 (liabilities 50% > assets in 30 days) → critical
+    If cumulative gap in 1-3m bucket is < -10% of total assets → high severity
+
+CHECK T-8 — NBFC Portfolio Quality vs Financials:
+  For sector = NBFC:
+    If gross_npa_pct > 10 AND PAT_Margin is positive and trending up →
+    Suspect under-provisioning → emit triangulation_flag (high):
+    "High NPA but improving profitability — verify provisioning adequacy"
+    If provisioning_coverage_ratio < 60 AND gross_npa_pct > 5 →
+    Capital C penalty: insufficient buffer
+
+### 4.2 STATISTICAL VALIDITY CHECKS
+
+CHECK S-1 — Revenue Velocity:
+  Compute YoY change in Revenue_from_Operations for 3 years
+  If revenue declined > 20% in 2 consecutive years → velocity_trend (critical)
+  If revenue grew > 100% in 1 year with no M&A or extraordinary reason → flag for review
+
+CHECK S-2 — Debt Velocity:
+  Compute YoY change in Total_Debt
+  If Total_Debt grew > 30% while Revenue flat/declining → velocity_trend (high)
+  If Total_Debt doubled in 2 years → velocity_trend (critical)
+
+CHECK S-3 — NPA Velocity (NBFC only):
+  From portfolio_performance across time periods:
+  If gross_npa_pct increased by > 2% points in latest period → velocity_trend (medium)
+  If gross_npa_pct increased by > 5% points → velocity_trend (critical)
+
+CHECK S-4 — Financial Ratio Outlier Detection (Isolation Forest pre-check):
+  Before feeding to Isolation Forest, verify ratios are within extreme bounds:
+    DSCR: must be in [-5, 20] (negative allowed if loss-making)
+    Debt_to_Equity: must be in [0, 50]
+    Interest_Coverage: must be in [-50, 100]
+    Current_Ratio: must be in [0, 20]
+    EBITDA_Margin: must be in [-100, 100]
+    PAT_Margin: must be in [-100, 100]
+    Revenue_CAGR: must be in [-100, 500]
+  Values outside these bounds → likely extraction error → flag for manual correction
+
+CHECK S-5 — Shareholder Pledge Trend:
+  From promoter_pledge_analysis sorted by filing_date:
+  If pledge_pct increased for 3+ consecutive quarters → velocity_trend (high):
+  "Promoter pledge increasing consistently — possible personal financial stress building"
+
+### 4.3 TEMPORAL VALIDITY CHECKS
+
+CHECK TM-1 — Bank Statement Coverage:
+  banktransactions must cover at least last 12 months relative to case creation date
+  Gaps > 45 days in transaction history → flag (possible account dormancy or hidden account)
+
+CHECK TM-2 — Financial Statement Recency:
+  Latest financial_year in financial_statements_line_items must be ≤ 18 months before case date
+  If latest year > 18 months old → warn (stale financials)
+
+CHECK TM-3 — GST Filing Gaps:
+  For each GSTIN, check all months in last 24 months are filed
+  Missing months → flag as per filing_status logic
+  > 3 consecutive missing months → Character C penalty (filing non-compliance)
+
+CHECK TM-4 — News Article Recency:
+  At least 5 of crawled articles must be within last 12 months
+  If all articles older than 18 months → warn (research may be stale)
+
+CHECK TM-5 — e-Courts Date Consistency:
+  filing_date <= last_hearing_date <= next_hearing_date (if both set)
+  No case dates before company incorporation date (from mca_company_master)
+
+CHECK TM-6 — Document Classification Workflow Timing:
+  All documents must be classified + approved before Layer 2 ML processing begins
+  Any document approved AFTER ML signals were generated → invalidate and rerun affected signals
+
+### 4.4 LABEL AND TARGET VALIDITY (Five Cs)
+
+CHECK L-1 — Score Recomputation:
+  For each C in {Character, Capacity, Capital, Collateral, Conditions}:
+    Recompute score from stored signals using configured weights
+    If |recomputed_score - stored_score| > 0.1 → BLOCK: score inconsistency
+    This prevents weight config changes from silently creating stale scores
+
+CHECK L-2 — Composite Score:
+  Recompute composite = SUM(C_score × C_weight) for all 5 Cs
+  Weights must sum to 1.0 (± 0.001)
+  If |composite_recomputed - stored_composite| > 0.05 → BLOCK
+
+CHECK L-3 — Decision Band Consistency:
+  Verify decision_output matches composite score:
+    > 7.5 → APPROVE
+    6.0-7.5 → APPROVE_WITH_CONDITIONS
+    5.0-6.0 → REFER
+    < 5.0 → REJECT
+  Mismatch → CRITICAL: flag for immediate review
+
+CHECK L-4 — Override Validation:
+  If any per-case override was applied:
+    Verify override has audit log entry (who, when, reason)
+    If override changed decision band → verify second_approver_sign_off exists
+    If second approver not recorded → BLOCK: incomplete audit trail
+
+CHECK L-5 — Pre-Cognitive Signal Integration:
+  Verify all precognitive_signals with severity ∈ {high, critical} have
+  corresponding score_impact applied to the correct C
+  If signal exists but no corresponding score adjustment → warn (signal ignored)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## STAGE 5: DATA QUALITY ACTIONS AND REMEDIATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SEVERITY CLASSIFICATION AND ACTIONS:
+
+CRITICAL (Block pipeline, require human resolution):
+  - document_classification with validation_status = 'denied' used downstream
+  - going_concern_flag = True in auditor_notes
+  - mca_company_status != 'active'
+  - director din_status = 'disqualified'
+  - DRT active case with large amount (> proposed loan amount / 2)
+  - composite score recomputation mismatch > 0.1
+  - override with no second approver when decision band changed
+  - circular_trading_flag = True
+
+HIGH (Block CAM export, flag for credit officer resolution):
+  - extraction_confidence < 75 on any field used in ratio computation
+  - MCA charges with no corresponding borrowing profile entry (> 2 lenders)
+  - borrowing profile debt vs balance sheet debt mismatch > 15%
+  - promoter pledge critical (>= 75%)
+  - director stress score > 0.7
+  - ALM liabilities 50% > assets in 30-day window
+  - precognitive_signal severity = critical not reflected in score
+
+MEDIUM (Show in UI alert panel, allow CAM with notation):
+  - Revenue/GST/Bank triangulation divergence 25-40%
+  - Debt velocity > 30% with flat revenue
+  - Missing shareholding quarter data
+  - management_credibility_assessment = 'evasive'
+  - News article recency issue (all > 12 months)
+
+LOW (Log only, appear in validation report):
+  - Missing optional documents
+  - extraction_confidence 75-85 (amber zone)
+  - Minor temporal gaps in bank statements (< 15 days)
+  - Rating outlook not updated recently
+
+REMEDIATION RULES:
+  - Auto-correct: unit conversions (Cr to INR), date format normalization,
+    whitespace trimming in text fields
+  - Clip: financial ratios outside extreme bounds → flag as OCR error,
+    send back to schema editor for manual correction
+  - Impute: only for non-critical fields with explicit documentation;
+    never impute ratios, flags, or signals
+  - Reject record: if primary key null/duplicate and cannot be resolved
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## STAGE 6: FEATURE AND SIGNAL VALIDITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ISOLATION FOREST FEATURE VALIDITY:
+  Input features (7 ratios × 3 years = 21 values + ALM gap ratios):
+  - Ensure no NaN or Inf values in feature matrix before model call
+  - Ensure sector label matches the correct sector-specific model
+  - Verify training data version matches sector (Screener.in data vintage)
+  - If any of 7 ratios is missing for a year → impute with sector median
+    but flag as imputed in output (do not use imputed features for final scoring
+    without human acknowledgment)
+
+FINBERT INPUT VALIDITY:
+  - Text chunks must be 200-500 words; reject empty or <50 word chunks
+  - Remove PII before submission (account numbers, DIN, PAN from text)
+  - Verify source_document_id and page_number are recorded for each chunk
+    to maintain traceability
+
+GRAPH ENGINE VALIDITY:
+  - All director_din values must exist in mca_directors before graph construction
+  - Detect isolated nodes (directors with no edges) → log but don't block
+  - Detect self-loops (company charged to itself) → flag as data error
+  - Verify all edge weights and node attributes are numeric and finite
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## STAGE 7-8: CAM OUTPUT VALIDITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PRE-CAM GENERATION GATE (all must pass before LLM call):
+  □ All CRITICAL violations resolved
+  □ All documents have validation_status = 'approved'
+  □ All 7 ratios computed for at least 2 of 3 years
+  □ Five Cs scores recomputable (L-1, L-2, L-3 checks pass)
+  □ Override audit trail complete (L-4)
+  □ At least 1 source_document_id per CAM section has traceability to page
+
+POST-CAM VALIDATION:
+  - Every figure cited in CAM must have a source:
+    → Find all numbers in CAM text
+    → Each must trace to: source_document_id + page OR computed_financial_ratios row
+    → Untraceable figures → flag for manual review before export
+  - SWOT quadrants must each have at least 1 bullet point
+  - Each SWOT bullet must link to at least 1 underlying signal or data point
+  - Recommendation decision (Approve/Reject/etc.) must match computed decision band
+  - "What would change this decision" section must be non-empty for all non-Approve decisions
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## STAGE 9-10: DEPLOYMENT AND DRIFT MONITORING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+RUNTIME VALIDATION (per new document upload):
+  - Re-run document_classification validation
+  - Re-run schema structural checks on newly extracted table rows
+  - Re-run triangulation checks T-1, T-2, T-4 for any newly ingested financial data
+  - Recalculate affected Five Cs scores and flag if decision band changes
+
+DRIFT MONITORS (run weekly across all active cases):
+  - Track: median extraction_confidence per doc type (alert if drops > 5 points)
+  - Track: rate of human edits in schema_mappings (high edit rate = OCR degrading)
+  - Track: rate of classification denials (high denial rate = classifier degrading)
+  - Track: precognitive signal trigger rates per category (sudden spike = data quality issue)
+  - Track: score distribution across cases (alert if average composite shifts > 0.5)
+
+PERIODIC AUDIT TRIGGERS:
+  - Any case where override changed decision band: flag for quarterly review
+  - Any case with CRITICAL violations that were manually overridden: escalate for review
+  - Isolation Forest model retraining: trigger when Screener.in data updated
+    or when > 20% of cases show anomaly scores near threshold
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## SKILL INPUTS AND OUTPUTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+INPUTS:
+  - case_id (STRING): the case to validate
+  - validation_stage (ENUM): layer0 / layer1 / layer2 / layer3 / pre_cam / post_cam / full
+  - strict_mode (BOOLEAN): if True, block on HIGH violations too (not just CRITICAL)
+
+OUTPUTS:
+  - validation_report (JSON):
+    {
+      case_id: STRING,
+      validation_stage: STRING,
+      run_timestamp: TIMESTAMP,
+      critical_violations: [{check_id, table, field, description, value_found}],
+      high_violations: [...],
+      medium_violations: [...],
+      low_violations: [...],
+      auto_corrections_applied: [{field, old_value, new_value, rule}],
+      pipeline_blocked: BOOLEAN,
+      blocking_reasons: [STRING],
+      scores_valid: BOOLEAN,
+      cam_ready: BOOLEAN
+    }
+  - annotated_flags per row in each table (validity_annotation field)
+  - alert_panel_items: list of human-readable alerts for UI Screen 1
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## QUICK REFERENCE — ALL CHECK IDs
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STRUCTURAL:   case_metadata, gstfilings, itrfinancials, banktransactions,
+              bankmonthlysummary, alm_data, shareholding_pattern_quarterly,
+              promoter_pledge_analysis, borrowing_profile, portfolio_performance,
+              financial_statements_line_items, computed_financial_ratios,
+              auditor_notes, mca_company_master, mca_directors,
+              mca_charges_registered, ecourts_cases_raw,
+              litigation_risk_summary_entity, news_articles_crawled,
+              news_risk_signals, site_visit_observations,
+              management_interview_notes, precognitive_signals,
+              document_classification, schema_mappings
+
+TRIANGULATION: T-1 (GST/Bank/ITR), T-2 (MCA/Borrowing), T-3 (Circular Trading),
+               T-4 (Auditor/Rating), T-5 (Pledge/Management), T-6 (Director Stress),
+               T-7 (ALM Liquidity), T-8 (NBFC Portfolio)
+
+STATISTICAL:  S-1 (Revenue Velocity), S-2 (Debt Velocity), S-3 (NPA Velocity),
+              S-4 (Ratio Bounds), S-5 (Pledge Trend)
+
+TEMPORAL:     TM-1 (Bank Coverage), TM-2 (Financials Recency), TM-3 (GST Gaps),
+              TM-4 (News Recency), TM-5 (e-Courts Dates), TM-6 (Doc Classification Timing)
+
+LABEL/TARGET: L-1 (C Score Recompute), L-2 (Composite Score), L-3 (Decision Band),
+              L-4 (Override Audit), L-5 (Signal Integration)
