@@ -1,0 +1,2239 @@
+case_id,total_signals,critical_count,high_count,medium_count,total_score_impact,velocity_signals,triangulation_signals,sentiment_signals,contagion_signals,primary_c_affected,company_id,sector
+CAM_00001,4,1,2,0,0.0,1,2,0,1,Character,COMP_00001,Basic Materials
+CAM_00002,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00002,Financial Services
+CAM_00003,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00003,Financial Services
+CAM_00004,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00004,Technology
+CAM_00005,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00005,Industrials
+CAM_00006,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00006,Financial Services
+CAM_00007,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00007,Technology
+CAM_00008,4,1,1,1,0.3999999999999999,1,2,0,1,Character,COMP_00008,Industrials
+CAM_00009,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00009,Technology
+CAM_00010,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00010,Financial Services
+CAM_00011,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00011,Energy
+CAM_00012,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00012,Healthcare
+CAM_00013,4,1,2,0,0.0,1,2,0,1,Character,COMP_00013,Industrials
+CAM_00014,4,1,2,0,0.0,1,2,0,1,Character,COMP_00014,Industrials
+CAM_00015,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00015,Healthcare
+CAM_00016,4,1,2,0,0.0,1,2,0,1,Character,COMP_00016,Basic Materials
+CAM_00017,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00017,Healthcare
+CAM_00018,4,1,2,0,0.0,1,2,0,1,Character,COMP_00018,Basic Materials
+CAM_00019,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00019,Industrials
+CAM_00020,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00020,Financial Services
+CAM_00021,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00021,Energy
+CAM_00022,4,1,2,0,0.0,1,2,0,1,Character,COMP_00022,Industrials
+CAM_00023,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00023,Healthcare
+CAM_00024,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00024,Financial Services
+CAM_00025,4,1,2,0,0.0,1,2,0,1,Character,COMP_00025,Consumer Cyclical
+CAM_00026,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00026,Consumer Defensive
+CAM_00027,4,1,2,0,0.0,1,2,0,1,Character,COMP_00027,Consumer Cyclical
+CAM_00028,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00028,Industrials
+CAM_00029,2,1,1,0,0.5,0,1,0,1,Character,COMP_00029,Consumer Cyclical
+CAM_00030,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00030,Basic Materials
+CAM_00031,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00031,Real Estate
+CAM_00032,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00032,Financial Services
+CAM_00033,4,1,2,0,0.0,1,2,0,1,Character,COMP_00033,Basic Materials
+CAM_00034,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00034,Technology
+CAM_00035,4,1,2,0,0.0,1,2,0,1,Character,COMP_00035,Industrials
+CAM_00036,4,1,2,0,0.0,1,2,0,1,Character,COMP_00036,Industrials
+CAM_00037,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00037,Industrials
+CAM_00038,4,1,2,0,0.0,1,2,0,1,Character,COMP_00038,Basic Materials
+CAM_00039,4,1,2,0,0.0,1,2,0,1,Character,COMP_00039,Basic Materials
+CAM_00040,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00040,Utilities
+CAM_00041,4,1,2,0,0.0,1,2,0,1,Character,COMP_00041,Basic Materials
+CAM_00042,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00042,Utilities
+CAM_00043,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00043,Energy
+CAM_00044,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00044,Utilities
+CAM_00045,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00045,Industrials
+CAM_00046,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00046,Utilities
+CAM_00047,4,1,2,0,0.0,1,2,0,1,Character,COMP_00047,Consumer Defensive
+CAM_00048,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00048,Consumer Cyclical
+CAM_00049,4,1,2,0,0.0,1,2,0,1,Character,COMP_00049,Industrials
+CAM_00050,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00050,Technology
+CAM_00051,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00051,Technology
+CAM_00052,4,1,2,0,0.0,1,2,0,1,Character,COMP_00052,Industrials
+CAM_00053,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00053,Basic Materials
+CAM_00054,4,1,2,0,0.0,1,2,0,1,Character,COMP_00054,Consumer Cyclical
+CAM_00055,4,1,2,0,0.0,1,2,0,1,Character,COMP_00055,Consumer Cyclical
+CAM_00056,4,1,2,0,0.0,1,2,0,1,Character,COMP_00056,Basic Materials
+CAM_00057,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00057,Energy
+CAM_00058,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00058,Energy
+CAM_00059,4,1,2,0,0.0,1,2,0,1,Character,COMP_00059,Industrials
+CAM_00060,4,1,2,0,0.0,1,2,0,1,Character,COMP_00060,Basic Materials
+CAM_00061,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00061,Industrials
+CAM_00062,4,1,2,0,0.0,1,2,0,1,Character,COMP_00062,Consumer Cyclical
+CAM_00063,4,1,2,0,0.0,1,2,0,1,Character,COMP_00063,Basic Materials
+CAM_00064,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00064,Industrials
+CAM_00065,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00065,Communication Services
+CAM_00066,4,1,2,0,0.0,1,2,0,1,Character,COMP_00066,Industrials
+CAM_00067,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00067,Financial Services
+CAM_00068,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00068,Financial Services
+CAM_00069,4,1,2,0,0.0,1,2,0,1,Character,COMP_00069,Basic Materials
+CAM_00070,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00070,Healthcare
+CAM_00071,4,1,2,0,0.0,1,2,0,1,Character,COMP_00071,Consumer Cyclical
+CAM_00072,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00072,Real Estate
+CAM_00073,4,1,2,0,0.0,1,2,0,1,Character,COMP_00073,Consumer Defensive
+CAM_00074,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00074,Basic Materials
+CAM_00075,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00075,Technology
+CAM_00076,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00076,Healthcare
+CAM_00077,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00077,Industrials
+CAM_00078,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00078,Consumer Cyclical
+CAM_00079,4,1,2,0,0.0,1,2,0,1,Character,COMP_00079,Industrials
+CAM_00080,4,1,2,0,0.0,1,2,0,1,Character,COMP_00080,Industrials
+CAM_00081,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00081,Financial Services
+CAM_00082,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00082,Technology
+CAM_00083,4,1,2,0,0.0,1,2,0,1,Character,COMP_00083,Consumer Cyclical
+CAM_00084,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00084,Healthcare
+CAM_00085,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00085,Industrials
+CAM_00086,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00086,Real Estate
+CAM_00087,4,1,2,0,0.0,1,2,0,1,Character,COMP_00087,Consumer Defensive
+CAM_00088,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00088,Industrials
+CAM_00089,4,1,2,0,0.0,1,2,0,1,Character,COMP_00089,Industrials
+CAM_00090,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00090,Consumer Cyclical
+CAM_00091,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00091,Consumer Cyclical
+CAM_00092,4,1,2,0,0.0,1,2,0,1,Character,COMP_00092,Basic Materials
+CAM_00093,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00093,Technology
+CAM_00094,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00094,Healthcare
+CAM_00095,4,1,2,0,0.0,1,2,0,1,Character,COMP_00095,Basic Materials
+CAM_00096,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00096,Technology
+CAM_00097,4,1,2,0,0.0,1,2,0,1,Character,COMP_00097,Healthcare
+CAM_00098,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00098,Real Estate
+CAM_00099,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00099,Financial Services
+CAM_00100,4,1,2,0,0.0,1,2,0,1,Character,COMP_00100,Industrials
+CAM_00101,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00101,Healthcare
+CAM_00102,4,1,2,0,0.0,1,2,0,1,Character,COMP_00102,Basic Materials
+CAM_00103,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00103,Healthcare
+CAM_00104,4,1,2,0,0.0,1,2,0,1,Character,COMP_00104,Basic Materials
+CAM_00105,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00105,Industrials
+CAM_00106,4,1,2,0,0.0,1,2,0,1,Character,COMP_00106,Industrials
+CAM_00107,4,1,2,0,0.0,1,2,0,1,Character,COMP_00107,Consumer Defensive
+CAM_00108,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00108,Financial Services
+CAM_00109,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00109,Consumer Cyclical
+CAM_00110,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00110,Healthcare
+CAM_00111,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00111,Energy
+CAM_00112,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00112,Technology
+CAM_00113,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00113,Healthcare
+CAM_00114,2,1,1,0,0.5,0,1,0,1,Character,COMP_00114,Consumer Cyclical
+CAM_00115,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00115,Consumer Defensive
+CAM_00116,4,1,2,0,0.0,1,2,0,1,Character,COMP_00116,Consumer Cyclical
+CAM_00117,4,1,2,0,0.0,1,2,0,1,Character,COMP_00117,Basic Materials
+CAM_00118,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00118,Consumer Cyclical
+CAM_00119,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00119,Real Estate
+CAM_00120,4,1,2,0,0.0,1,2,0,1,Character,COMP_00120,Basic Materials
+CAM_00121,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00121,Healthcare
+CAM_00122,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00122,Financial Services
+CAM_00123,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00123,Real Estate
+CAM_00124,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00124,Basic Materials
+CAM_00125,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00125,Basic Materials
+CAM_00126,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00126,Financial Services
+CAM_00127,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00127,Consumer Defensive
+CAM_00128,4,1,2,0,0.0,1,2,0,1,Character,COMP_00128,Basic Materials
+CAM_00129,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00129,Energy
+CAM_00130,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00130,Real Estate
+CAM_00131,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00131,Energy
+CAM_00132,4,1,1,1,0.3999999999999999,1,2,0,1,Character,COMP_00132,Consumer Cyclical
+CAM_00133,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00133,Healthcare
+CAM_00134,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00134,Healthcare
+CAM_00135,4,1,2,0,0.0,1,2,0,1,Character,COMP_00135,Industrials
+CAM_00136,4,1,2,0,0.0,1,2,0,1,Character,COMP_00136,Basic Materials
+CAM_00137,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00137,Industrials
+CAM_00138,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00138,Basic Materials
+CAM_00139,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00139,Basic Materials
+CAM_00140,4,1,2,0,0.0,1,2,0,1,Character,COMP_00140,Consumer Defensive
+CAM_00141,4,1,2,0,0.0,1,2,0,1,Character,COMP_00141,Basic Materials
+CAM_00142,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00142,Healthcare
+CAM_00143,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00143,Industrials
+CAM_00144,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00144,Healthcare
+CAM_00145,4,1,2,0,0.0,1,2,0,1,Character,COMP_00145,Industrials
+CAM_00146,4,1,2,0,0.0,1,2,0,1,Character,COMP_00146,Consumer Cyclical
+CAM_00147,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00147,Industrials
+CAM_00148,4,1,2,0,0.0,1,2,0,1,Character,COMP_00148,Consumer Defensive
+CAM_00149,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00149,Financial Services
+CAM_00150,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00150,Communication Services
+CAM_00151,4,1,2,0,0.0,1,2,0,1,Character,COMP_00151,Basic Materials
+CAM_00152,4,1,2,0,0.0,1,2,0,1,Character,COMP_00152,Consumer Cyclical
+CAM_00153,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00153,Industrials
+CAM_00154,4,1,2,0,0.0,1,2,0,1,Character,COMP_00154,Basic Materials
+CAM_00155,4,1,2,0,0.0,1,2,0,1,Character,COMP_00155,Basic Materials
+CAM_00156,4,1,2,0,0.0,1,2,0,1,Character,COMP_00156,Basic Materials
+CAM_00157,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00157,Financial Services
+CAM_00158,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00158,Real Estate
+CAM_00159,4,1,2,0,0.0,1,2,0,1,Character,COMP_00159,Industrials
+CAM_00160,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00160,Real Estate
+CAM_00161,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00161,Financial Services
+CAM_00162,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00162,Industrials
+CAM_00163,4,1,2,0,0.0,1,2,0,1,Character,COMP_00163,Consumer Cyclical
+CAM_00164,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00164,Financial Services
+CAM_00165,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00165,Real Estate
+CAM_00166,4,1,2,0,0.0,1,2,0,1,Character,COMP_00166,Basic Materials
+CAM_00167,4,1,2,0,0.0,1,2,0,1,Character,COMP_00167,Consumer Cyclical
+CAM_00168,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00168,Consumer Cyclical
+CAM_00169,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00169,Real Estate
+CAM_00170,4,1,2,0,0.0,1,2,0,1,Character,COMP_00170,Consumer Cyclical
+CAM_00171,4,1,2,0,0.0,1,2,0,1,Character,COMP_00171,Basic Materials
+CAM_00172,4,1,2,0,0.0,1,2,0,1,Character,COMP_00172,Consumer Cyclical
+CAM_00173,4,1,2,0,0.0,1,2,0,1,Character,COMP_00173,Consumer Defensive
+CAM_00174,4,1,2,0,0.0,1,2,0,1,Character,COMP_00174,Basic Materials
+CAM_00175,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00175,Real Estate
+CAM_00176,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00176,Real Estate
+CAM_00177,4,1,2,0,0.0,1,2,0,1,Character,COMP_00177,Industrials
+CAM_00178,4,1,2,0,0.0,1,2,0,1,Character,COMP_00178,Basic Materials
+CAM_00179,4,1,2,0,0.0,1,2,0,1,Character,COMP_00179,Industrials
+CAM_00180,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00180,Energy
+CAM_00181,4,1,1,1,0.3999999999999999,1,2,0,1,Character,COMP_00181,Consumer Cyclical
+CAM_00182,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00182,Basic Materials
+CAM_00183,4,1,2,0,0.0,1,2,0,1,Character,COMP_00183,Industrials
+CAM_00184,2,1,1,0,0.5,0,1,0,1,Character,COMP_00184,Consumer Cyclical
+CAM_00185,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00185,Technology
+CAM_00186,4,1,2,0,0.0,1,2,0,1,Character,COMP_00186,Consumer Defensive
+CAM_00187,4,1,2,0,0.0,1,2,0,1,Character,COMP_00187,Basic Materials
+CAM_00188,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00188,Healthcare
+CAM_00189,4,1,2,0,0.0,1,2,0,1,Character,COMP_00189,Industrials
+CAM_00190,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00190,Technology
+CAM_00191,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00191,Healthcare
+CAM_00192,4,1,2,0,0.0,1,2,0,1,Character,COMP_00192,Basic Materials
+CAM_00193,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00193,Industrials
+CAM_00194,4,1,2,0,0.0,1,2,0,1,Character,COMP_00194,Industrials
+CAM_00195,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00195,Utilities
+CAM_00196,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00196,Consumer Cyclical
+CAM_00197,4,1,2,0,0.0,1,2,0,1,Character,COMP_00197,Industrials
+CAM_00198,4,1,2,0,0.0,1,2,0,1,Character,COMP_00198,Industrials
+CAM_00199,4,1,2,0,0.0,1,2,0,1,Character,COMP_00199,Industrials
+CAM_00200,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00200,Consumer Cyclical
+CAM_00201,4,1,2,0,0.0,1,2,0,1,Character,COMP_00201,Basic Materials
+CAM_00202,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00202,Consumer Cyclical
+CAM_00203,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00203,Financial Services
+CAM_00204,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00204,Industrials
+CAM_00205,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00205,Technology
+CAM_00206,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00206,Healthcare
+CAM_00207,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00207,Real Estate
+CAM_00208,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00208,Financial Services
+CAM_00209,4,1,2,0,0.0,1,2,0,1,Character,COMP_00209,Consumer Cyclical
+CAM_00210,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00210,Consumer Cyclical
+CAM_00211,4,1,2,0,0.0,1,2,0,1,Character,COMP_00211,Consumer Defensive
+CAM_00212,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00212,Technology
+CAM_00213,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00213,Technology
+CAM_00214,4,1,2,0,0.0,1,2,0,1,Character,COMP_00214,Consumer Defensive
+CAM_00215,4,1,2,0,0.0,1,2,0,1,Character,COMP_00215,Industrials
+CAM_00216,4,1,2,0,0.0,1,2,0,1,Character,COMP_00216,Consumer Cyclical
+CAM_00217,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00217,Financial Services
+CAM_00218,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00218,Consumer Cyclical
+CAM_00219,4,1,2,0,0.0,1,2,0,1,Character,COMP_00219,Basic Materials
+CAM_00220,4,1,2,0,0.0,1,2,0,1,Character,COMP_00220,Industrials
+CAM_00221,4,1,2,0,0.0,1,2,0,1,Character,COMP_00221,Industrials
+CAM_00222,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00222,Consumer Defensive
+CAM_00223,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00223,Financial Services
+CAM_00224,4,1,2,0,0.0,1,2,0,1,Character,COMP_00224,Industrials
+CAM_00225,3,1,1,1,-0.10000000000000009,0,2,0,1,Character,COMP_00225,Consumer Cyclical
+CAM_00226,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00226,Financial Services
+CAM_00227,4,1,2,0,0.0,1,2,0,1,Character,COMP_00227,Consumer Cyclical
+CAM_00228,4,1,2,0,0.0,1,2,0,1,Character,COMP_00228,Industrials
+CAM_00229,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00229,Healthcare
+CAM_00230,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00230,Communication Services
+CAM_00231,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00231,Financial Services
+CAM_00232,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00232,Consumer Cyclical
+CAM_00233,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00233,Consumer Defensive
+CAM_00234,4,1,2,0,0.0,1,2,0,1,Character,COMP_00234,Consumer Cyclical
+CAM_00235,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00235,Financial Services
+CAM_00236,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00236,Healthcare
+CAM_00237,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00237,Financial Services
+CAM_00238,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00238,Consumer Defensive
+CAM_00239,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00239,Financial Services
+CAM_00240,4,1,2,0,0.0,1,2,0,1,Character,COMP_00240,Industrials
+CAM_00241,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00241,Utilities
+CAM_00242,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00242,Financial Services
+CAM_00243,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00243,Consumer Cyclical
+CAM_00244,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00244,Communication Services
+CAM_00245,3,1,1,0,1.0,1,1,0,1,Character,COMP_00245,Basic Materials
+CAM_00246,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00246,Healthcare
+CAM_00247,4,1,2,0,0.0,1,2,0,1,Character,COMP_00247,Consumer Cyclical
+CAM_00248,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00248,Consumer Cyclical
+CAM_00249,4,1,2,0,0.0,1,2,0,1,Character,COMP_00249,Industrials
+CAM_00250,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00250,Healthcare
+CAM_00251,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00251,Consumer Defensive
+CAM_00252,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00252,Industrials
+CAM_00253,4,1,2,0,0.0,1,2,0,1,Character,COMP_00253,Consumer Cyclical
+CAM_00254,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00254,Consumer Defensive
+CAM_00255,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00255,Consumer Cyclical
+CAM_00256,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00256,Financial Services
+CAM_00257,4,1,2,0,0.0,1,2,0,1,Character,COMP_00257,Consumer Cyclical
+CAM_00258,4,1,2,0,0.0,1,2,0,1,Character,COMP_00258,Industrials
+CAM_00259,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00259,Financial Services
+CAM_00260,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00260,Financial Services
+CAM_00261,4,1,2,0,0.0,1,2,0,1,Character,COMP_00261,Basic Materials
+CAM_00262,4,1,2,0,0.0,1,2,0,1,Character,COMP_00262,Consumer Cyclical
+CAM_00263,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00263,Basic Materials
+CAM_00264,4,1,2,0,0.0,1,2,0,1,Character,COMP_00264,Consumer Cyclical
+CAM_00265,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00265,Consumer Cyclical
+CAM_00266,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00266,Basic Materials
+CAM_00267,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00267,Industrials
+CAM_00268,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00268,Technology
+CAM_00269,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00269,Consumer Defensive
+CAM_00270,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00270,Consumer Cyclical
+CAM_00271,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00271,Communication Services
+CAM_00272,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00272,Consumer Defensive
+CAM_00273,4,1,2,0,0.0,1,2,0,1,Character,COMP_00273,Consumer Cyclical
+CAM_00274,4,1,2,0,0.0,1,2,0,1,Character,COMP_00274,Industrials
+CAM_00275,4,1,2,0,0.0,1,2,0,1,Character,COMP_00275,Industrials
+CAM_00276,4,1,2,0,0.0,1,2,0,1,Character,COMP_00276,Consumer Defensive
+CAM_00277,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00277,Basic Materials
+CAM_00278,4,1,2,0,0.0,1,2,0,1,Character,COMP_00278,Industrials
+CAM_00279,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00279,Consumer Cyclical
+CAM_00280,4,1,2,0,0.0,1,2,0,1,Character,COMP_00280,Consumer Cyclical
+CAM_00281,4,1,2,0,0.0,1,2,0,1,Character,COMP_00281,Industrials
+CAM_00282,4,1,2,0,0.0,1,2,0,1,Character,COMP_00282,Basic Materials
+CAM_00283,4,1,2,0,0.0,1,2,0,1,Character,COMP_00283,Basic Materials
+CAM_00284,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00284,Basic Materials
+CAM_00285,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00285,Healthcare
+CAM_00286,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00286,Financial Services
+CAM_00287,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00287,Industrials
+CAM_00288,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00288,Industrials
+CAM_00289,4,1,2,0,0.0,1,2,0,1,Character,COMP_00289,Basic Materials
+CAM_00290,4,1,2,0,0.0,1,2,0,1,Character,COMP_00290,Basic Materials
+CAM_00291,4,1,2,0,0.0,1,2,0,1,Character,COMP_00291,Basic Materials
+CAM_00292,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00292,Consumer Cyclical
+CAM_00293,4,1,2,0,0.0,1,2,0,1,Character,COMP_00293,Basic Materials
+CAM_00294,4,1,2,0,0.0,1,2,0,1,Character,COMP_00294,Consumer Cyclical
+CAM_00295,3,1,1,1,-0.10000000000000009,0,2,0,1,Character,COMP_00295,Consumer Cyclical
+CAM_00296,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00296,Basic Materials
+CAM_00297,4,1,2,0,0.0,1,2,0,1,Character,COMP_00297,Consumer Cyclical
+CAM_00298,4,1,2,0,0.0,1,2,0,1,Character,COMP_00298,Basic Materials
+CAM_00299,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00299,Communication Services
+CAM_00300,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00300,Communication Services
+CAM_00301,4,1,2,0,0.0,1,2,0,1,Character,COMP_00301,Industrials
+CAM_00302,4,1,2,0,0.0,1,2,0,1,Character,COMP_00302,Industrials
+CAM_00303,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00303,Consumer Defensive
+CAM_00304,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00304,Consumer Cyclical
+CAM_00305,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00305,Basic Materials
+CAM_00306,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00306,Healthcare
+CAM_00307,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00307,Healthcare
+CAM_00308,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00308,Technology
+CAM_00309,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00309,Basic Materials
+CAM_00310,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00310,Financial Services
+CAM_00311,4,1,2,0,0.0,1,2,0,1,Character,COMP_00311,Industrials
+CAM_00312,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00312,Technology
+CAM_00313,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00313,Financial Services
+CAM_00314,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00314,Financial Services
+CAM_00315,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00315,Healthcare
+CAM_00316,4,1,2,0,0.0,1,2,0,1,Character,COMP_00316,Industrials
+CAM_00317,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00317,Industrials
+CAM_00318,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00318,Industrials
+CAM_00319,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00319,Consumer Cyclical
+CAM_00320,4,1,2,0,0.0,1,2,0,1,Character,COMP_00320,Industrials
+CAM_00321,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00321,Healthcare
+CAM_00322,4,1,2,0,0.0,1,2,0,1,Character,COMP_00322,Industrials
+CAM_00323,4,1,2,0,0.0,1,2,0,1,Character,COMP_00323,Consumer Cyclical
+CAM_00324,4,1,2,0,0.0,1,2,0,1,Character,COMP_00324,Industrials
+CAM_00325,4,1,2,0,0.0,1,2,0,1,Character,COMP_00325,Basic Materials
+CAM_00326,4,1,2,0,0.0,1,2,0,1,Character,COMP_00326,Basic Materials
+CAM_00327,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00327,Basic Materials
+CAM_00328,4,1,2,0,0.0,1,2,0,1,Character,COMP_00328,Consumer Cyclical
+CAM_00329,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00329,Basic Materials
+CAM_00330,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00330,Consumer Cyclical
+CAM_00331,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00331,Consumer Cyclical
+CAM_00332,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00332,Technology
+CAM_00333,4,1,2,0,0.0,1,2,0,1,Character,COMP_00333,Consumer Cyclical
+CAM_00334,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00334,Consumer Cyclical
+CAM_00335,4,1,2,0,0.0,1,2,0,1,Character,COMP_00335,Consumer Cyclical
+CAM_00336,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00336,Energy
+CAM_00337,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00337,Technology
+CAM_00338,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00338,Real Estate
+CAM_00339,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00339,Consumer Cyclical
+CAM_00340,4,1,2,0,0.0,1,2,0,1,Character,COMP_00340,Consumer Defensive
+CAM_00341,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00341,Industrials
+CAM_00342,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00342,Healthcare
+CAM_00343,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00343,Financial Services
+CAM_00344,4,1,2,0,0.0,1,2,0,1,Character,COMP_00344,Basic Materials
+CAM_00345,4,1,2,0,0.0,1,2,0,1,Character,COMP_00345,Consumer Cyclical
+CAM_00346,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00346,Technology
+CAM_00347,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00347,Communication Services
+CAM_00348,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00348,Consumer Cyclical
+CAM_00349,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00349,Consumer Cyclical
+CAM_00350,3,1,1,1,-0.10000000000000009,0,2,0,1,Character,COMP_00350,Basic Materials
+CAM_00351,4,1,2,0,0.0,1,2,0,1,Character,COMP_00351,Consumer Cyclical
+CAM_00352,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00352,Technology
+CAM_00353,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00353,Basic Materials
+CAM_00354,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00354,Consumer Cyclical
+CAM_00355,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00355,Technology
+CAM_00356,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00356,Financial Services
+CAM_00357,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00357,Financial Services
+CAM_00358,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00358,Financial Services
+CAM_00359,4,1,2,0,0.0,1,2,0,1,Character,COMP_00359,Consumer Cyclical
+CAM_00360,4,1,2,0,0.0,1,2,0,1,Character,COMP_00360,Industrials
+CAM_00361,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00361,Technology
+CAM_00362,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00362,Financial Services
+CAM_00363,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00363,Healthcare
+CAM_00364,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00364,Financial Services
+CAM_00365,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00365,Industrials
+CAM_00366,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00366,Financial Services
+CAM_00367,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00367,Consumer Cyclical
+CAM_00368,4,1,2,0,0.0,1,2,0,1,Character,COMP_00368,Consumer Cyclical
+CAM_00369,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00369,Consumer Cyclical
+CAM_00370,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00370,Energy
+CAM_00371,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00371,Technology
+CAM_00372,4,1,2,0,0.0,1,2,0,1,Character,COMP_00372,Industrials
+CAM_00373,4,1,2,0,0.0,1,2,0,1,Character,COMP_00373,Consumer Cyclical
+CAM_00374,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00374,Consumer Defensive
+CAM_00375,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00375,Financial Services
+CAM_00376,4,1,2,0,0.0,1,2,0,1,Character,COMP_00376,Consumer Cyclical
+CAM_00377,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00377,Industrials
+CAM_00378,4,1,2,0,0.0,1,2,0,1,Character,COMP_00378,Industrials
+CAM_00379,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00379,Consumer Cyclical
+CAM_00380,4,1,2,0,0.0,1,2,0,1,Character,COMP_00380,Consumer Cyclical
+CAM_00381,4,1,2,0,0.0,1,2,0,1,Character,COMP_00381,Industrials
+CAM_00382,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00382,Consumer Cyclical
+CAM_00383,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00383,Basic Materials
+CAM_00384,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00384,Financial Services
+CAM_00385,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00385,Financial Services
+CAM_00386,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00386,Technology
+CAM_00387,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00387,Basic Materials
+CAM_00388,4,1,2,0,0.0,1,2,0,1,Character,COMP_00388,Industrials
+CAM_00389,4,1,2,0,0.0,1,2,0,1,Character,COMP_00389,Industrials
+CAM_00390,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00390,Utilities
+CAM_00391,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00391,Utilities
+CAM_00392,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00392,Financial Services
+CAM_00393,4,1,2,0,0.0,1,2,0,1,Character,COMP_00393,Industrials
+CAM_00394,4,1,2,0,0.0,1,2,0,1,Character,COMP_00394,Consumer Cyclical
+CAM_00395,4,1,2,0,0.0,1,2,0,1,Character,COMP_00395,Basic Materials
+CAM_00396,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00396,Basic Materials
+CAM_00397,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00397,Basic Materials
+CAM_00398,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00398,Basic Materials
+CAM_00399,4,1,2,0,0.0,1,2,0,1,Character,COMP_00399,Basic Materials
+CAM_00400,4,1,2,0,0.0,1,2,0,1,Character,COMP_00400,Basic Materials
+CAM_00401,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00401,Energy
+CAM_00402,4,1,2,0,0.0,1,2,0,1,Character,COMP_00402,Consumer Cyclical
+CAM_00403,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00403,Financial Services
+CAM_00404,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00404,Financial Services
+CAM_00405,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00405,Financial Services
+CAM_00406,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00406,Consumer Cyclical
+CAM_00407,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00407,Financial Services
+CAM_00408,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00408,Technology
+CAM_00409,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00409,Communication Services
+CAM_00410,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00410,Communication Services
+CAM_00411,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00411,Healthcare
+CAM_00412,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00412,Basic Materials
+CAM_00413,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00413,Utilities
+CAM_00414,4,1,2,0,0.0,1,2,0,1,Character,COMP_00414,Consumer Defensive
+CAM_00415,4,1,2,0,0.0,1,2,0,1,Character,COMP_00415,Consumer Defensive
+CAM_00416,4,1,2,0,0.0,1,2,0,1,Character,COMP_00416,Industrials
+CAM_00417,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00417,Technology
+CAM_00418,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00418,Energy
+CAM_00419,4,1,2,0,0.0,1,2,0,1,Character,COMP_00419,Consumer Defensive
+CAM_00420,4,1,2,0,0.0,1,2,0,1,Character,COMP_00420,Industrials
+CAM_00421,4,1,2,0,0.0,1,2,0,1,Character,COMP_00421,Consumer Cyclical
+CAM_00422,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00422,Technology
+CAM_00423,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00423,Healthcare
+CAM_00424,4,1,2,0,0.0,1,2,0,1,Character,COMP_00424,Consumer Defensive
+CAM_00425,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00425,Technology
+CAM_00426,4,1,2,0,0.0,1,2,0,1,Character,COMP_00426,Consumer Defensive
+CAM_00427,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00427,Consumer Cyclical
+CAM_00428,4,1,2,0,0.0,1,2,0,1,Character,COMP_00428,Industrials
+CAM_00429,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00429,Healthcare
+CAM_00430,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00430,Energy
+CAM_00431,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00431,Financial Services
+CAM_00432,4,1,2,0,0.0,1,2,0,1,Character,COMP_00432,Industrials
+CAM_00433,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00433,Real Estate
+CAM_00434,4,1,2,0,0.0,1,2,0,1,Character,COMP_00434,Industrials
+CAM_00435,4,1,2,0,0.0,1,2,0,1,Character,COMP_00435,Basic Materials
+CAM_00436,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00436,Healthcare
+CAM_00437,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00437,Consumer Cyclical
+CAM_00438,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00438,Real Estate
+CAM_00439,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00439,Financial Services
+CAM_00440,4,1,2,0,0.0,1,2,0,1,Character,COMP_00440,Consumer Defensive
+CAM_00441,4,1,2,0,0.0,1,2,0,1,Character,COMP_00441,Industrials
+CAM_00442,4,1,2,0,0.0,1,2,0,1,Character,COMP_00442,Consumer Cyclical
+CAM_00443,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00443,Financial Services
+CAM_00444,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00444,Communication Services
+CAM_00445,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00445,Financial Services
+CAM_00446,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00446,Financial Services
+CAM_00447,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00447,Financial Services
+CAM_00448,4,1,2,0,0.0,1,2,0,1,Character,COMP_00448,Consumer Defensive
+CAM_00449,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00449,Consumer Cyclical
+CAM_00450,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00450,Industrials
+CAM_00451,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00451,Financial Services
+CAM_00452,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00452,Financial Services
+CAM_00453,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00453,Technology
+CAM_00454,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00454,Financial Services
+CAM_00455,4,1,2,0,0.0,1,2,0,1,Character,COMP_00455,Basic Materials
+CAM_00456,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00456,Industrials
+CAM_00457,4,1,2,0,0.0,1,2,0,1,Character,COMP_00457,Consumer Defensive
+CAM_00458,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00458,Technology
+CAM_00459,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00459,Communication Services
+CAM_00460,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00460,Technology
+CAM_00461,4,1,2,0,0.0,1,2,0,1,Character,COMP_00461,Industrials
+CAM_00462,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00462,Technology
+CAM_00463,4,1,1,1,0.3999999999999999,1,2,0,1,Character,COMP_00463,Consumer Defensive
+CAM_00464,4,1,2,0,0.0,1,2,0,1,Character,COMP_00464,Basic Materials
+CAM_00465,4,1,2,0,0.0,1,2,0,1,Character,COMP_00465,Consumer Defensive
+CAM_00466,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00466,Financial Services
+CAM_00467,3,1,1,1,-0.10000000000000009,0,2,0,1,Character,COMP_00467,Consumer Cyclical
+CAM_00468,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00468,Consumer Cyclical
+CAM_00469,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00469,Technology
+CAM_00470,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00470,Industrials
+CAM_00471,4,1,2,0,0.0,1,2,0,1,Character,COMP_00471,Consumer Defensive
+CAM_00472,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00472,Communication Services
+CAM_00473,4,1,2,0,0.0,1,2,0,1,Character,COMP_00473,Industrials
+CAM_00474,4,1,2,0,0.0,1,2,0,1,Character,COMP_00474,Industrials
+CAM_00475,4,1,2,0,0.0,1,2,0,1,Character,COMP_00475,Consumer Defensive
+CAM_00476,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00476,Real Estate
+CAM_00477,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00477,Financial Services
+CAM_00478,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00478,Healthcare
+CAM_00479,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00479,Financial Services
+CAM_00480,4,1,2,0,0.0,1,2,0,1,Character,COMP_00480,Technology
+CAM_00481,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00481,Industrials
+CAM_00482,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00482,Financial Services
+CAM_00483,4,1,2,0,0.0,1,2,0,1,Character,COMP_00483,Consumer Cyclical
+CAM_00484,4,1,2,0,0.0,1,2,0,1,Character,COMP_00484,Industrials
+CAM_00485,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00485,Industrials
+CAM_00486,4,1,2,0,0.0,1,2,0,1,Character,COMP_00486,Consumer Defensive
+CAM_00487,4,1,2,0,0.0,1,2,0,1,Character,COMP_00487,Basic Materials
+CAM_00488,4,1,2,0,0.0,1,2,0,1,Character,COMP_00488,Industrials
+CAM_00489,4,1,2,0,0.0,1,2,0,1,Character,COMP_00489,Basic Materials
+CAM_00490,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00490,Basic Materials
+CAM_00491,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00491,Industrials
+CAM_00492,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00492,Basic Materials
+CAM_00493,4,1,2,0,0.0,1,2,0,1,Character,COMP_00493,Basic Materials
+CAM_00494,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00494,Energy
+CAM_00495,4,1,2,0,0.0,1,2,0,1,Character,COMP_00495,Industrials
+CAM_00496,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00496,Financial Services
+CAM_00497,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00497,Consumer Cyclical
+CAM_00498,2,1,1,0,0.5,0,1,0,1,Character,COMP_00498,Consumer Cyclical
+CAM_00499,4,1,2,0,0.0,1,2,0,1,Character,COMP_00499,Communication Services
+CAM_00500,4,1,2,0,0.0,1,2,0,1,Character,COMP_00500,Industrials
+CAM_00501,4,1,2,0,0.0,1,2,0,1,Character,COMP_00501,Industrials
+CAM_00502,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00502,Technology
+CAM_00503,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00503,Real Estate
+CAM_00504,4,1,2,0,0.0,1,2,0,1,Character,COMP_00504,Consumer Cyclical
+CAM_00505,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00505,Communication Services
+CAM_00506,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00506,Consumer Defensive
+CAM_00507,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00507,Financial Services
+CAM_00508,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00508,Basic Materials
+CAM_00509,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00509,Real Estate
+CAM_00510,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00510,Basic Materials
+CAM_00511,4,1,2,0,0.0,1,2,0,1,Character,COMP_00511,Industrials
+CAM_00512,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00512,Financial Services
+CAM_00513,4,1,2,0,0.0,1,2,0,1,Character,COMP_00513,Industrials
+CAM_00514,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00514,Basic Materials
+CAM_00515,4,1,2,0,0.0,1,2,0,1,Character,COMP_00515,Consumer Defensive
+CAM_00516,4,1,2,0,0.0,1,2,0,1,Character,COMP_00516,Basic Materials
+CAM_00517,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00517,Industrials
+CAM_00518,4,1,2,0,0.0,1,2,0,1,Character,COMP_00518,Consumer Cyclical
+CAM_00519,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00519,Financial Services
+CAM_00520,4,1,2,0,0.0,1,2,0,1,Character,COMP_00520,Industrials
+CAM_00521,4,1,2,0,0.0,1,2,0,1,Character,COMP_00521,Consumer Cyclical
+CAM_00522,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00522,Communication Services
+CAM_00523,4,1,2,0,0.0,1,2,0,1,Character,COMP_00523,Consumer Cyclical
+CAM_00524,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00524,Healthcare
+CAM_00525,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00525,Technology
+CAM_00526,4,1,2,0,0.0,1,2,0,1,Character,COMP_00526,Industrials
+CAM_00527,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00527,Real Estate
+CAM_00528,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00528,Technology
+CAM_00529,4,1,2,0,0.0,1,2,0,1,Character,COMP_00529,Consumer Defensive
+CAM_00530,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00530,Basic Materials
+CAM_00531,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00531,Communication Services
+CAM_00532,4,1,2,0,0.0,1,2,0,1,Character,COMP_00532,Consumer Defensive
+CAM_00533,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00533,Financial Services
+CAM_00534,4,1,2,0,0.0,1,2,0,1,Character,COMP_00534,Consumer Cyclical
+CAM_00535,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00535,Energy
+CAM_00536,4,1,2,0,0.0,1,2,0,1,Character,COMP_00536,Industrials
+CAM_00537,4,1,2,0,0.0,1,2,0,1,Character,COMP_00537,Consumer Cyclical
+CAM_00538,4,1,2,0,0.0,1,2,0,1,Character,COMP_00538,Consumer Cyclical
+CAM_00539,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00539,Utilities
+CAM_00540,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00540,Industrials
+CAM_00541,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00541,Technology
+CAM_00542,4,1,2,0,0.0,1,2,0,1,Character,COMP_00542,Industrials
+CAM_00543,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00543,Industrials
+CAM_00544,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00544,Healthcare
+CAM_00545,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00545,Basic Materials
+CAM_00546,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00546,Technology
+CAM_00547,4,1,2,0,0.0,1,2,0,1,Character,COMP_00547,Consumer Defensive
+CAM_00548,4,1,2,0,0.0,1,2,0,1,Character,COMP_00548,Industrials
+CAM_00549,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00549,Financial Services
+CAM_00550,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00550,Consumer Defensive
+CAM_00551,4,1,2,0,0.0,1,2,0,1,Character,COMP_00551,Industrials
+CAM_00552,4,1,2,0,0.0,1,2,0,1,Character,COMP_00552,Consumer Cyclical
+CAM_00553,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00553,Basic Materials
+CAM_00554,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00554,Technology
+CAM_00555,4,1,2,0,0.0,1,2,0,1,Character,COMP_00555,Consumer Cyclical
+CAM_00556,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00556,Technology
+CAM_00557,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00557,Technology
+CAM_00558,4,1,2,0,0.0,1,2,0,1,Character,COMP_00558,Industrials
+CAM_00559,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00559,Financial Services
+CAM_00560,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00560,Real Estate
+CAM_00561,4,1,2,0,0.0,1,2,0,1,Character,COMP_00561,Consumer Cyclical
+CAM_00562,4,1,2,0,0.0,1,2,0,1,Character,COMP_00562,Basic Materials
+CAM_00563,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00563,Industrials
+CAM_00564,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00564,Consumer Defensive
+CAM_00565,4,1,2,0,0.0,1,2,0,1,Character,COMP_00565,Consumer Cyclical
+CAM_00566,4,1,2,0,0.0,1,2,0,1,Character,COMP_00566,Consumer Cyclical
+CAM_00567,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00567,Industrials
+CAM_00568,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00568,Industrials
+CAM_00569,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00569,Real Estate
+CAM_00570,4,1,2,0,0.0,1,2,0,1,Character,COMP_00570,Industrials
+CAM_00571,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00571,Industrials
+CAM_00572,4,1,2,0,0.0,1,2,0,1,Character,COMP_00572,Basic Materials
+CAM_00573,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00573,Industrials
+CAM_00574,4,1,2,0,0.0,1,2,0,1,Character,COMP_00574,Consumer Cyclical
+CAM_00575,4,1,1,1,0.3999999999999999,1,2,0,1,Character,COMP_00575,Industrials
+CAM_00576,4,1,2,0,0.0,1,2,0,1,Character,COMP_00576,Basic Materials
+CAM_00577,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00577,Consumer Defensive
+CAM_00578,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00578,Basic Materials
+CAM_00579,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00579,Real Estate
+CAM_00580,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00580,Real Estate
+CAM_00581,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00581,Healthcare
+CAM_00582,4,1,2,0,0.0,1,2,0,1,Character,COMP_00582,Consumer Cyclical
+CAM_00583,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00583,Financial Services
+CAM_00584,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00584,Consumer Cyclical
+CAM_00585,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00585,Technology
+CAM_00586,4,1,2,0,0.0,1,2,0,1,Character,COMP_00586,Industrials
+CAM_00587,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00587,Technology
+CAM_00588,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00588,Consumer Cyclical
+CAM_00589,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00589,Utilities
+CAM_00590,4,1,2,0,0.0,1,2,0,1,Character,COMP_00590,Industrials
+CAM_00591,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00591,Communication Services
+CAM_00592,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00592,Utilities
+CAM_00593,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00593,Healthcare
+CAM_00594,4,1,2,0,0.0,1,2,0,1,Character,COMP_00594,Consumer Cyclical
+CAM_00595,4,1,2,0,0.0,1,2,0,1,Character,COMP_00595,Industrials
+CAM_00596,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00596,Basic Materials
+CAM_00597,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00597,Consumer Cyclical
+CAM_00598,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00598,Technology
+CAM_00599,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00599,Financial Services
+CAM_00600,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00600,Healthcare
+CAM_00601,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00601,Industrials
+CAM_00602,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00602,Financial Services
+CAM_00603,4,1,2,0,0.0,1,2,0,1,Character,COMP_00603,Industrials
+CAM_00604,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00604,Industrials
+CAM_00605,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00605,Consumer Defensive
+CAM_00606,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00606,Basic Materials
+CAM_00607,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00607,Consumer Cyclical
+CAM_00608,4,1,2,0,0.0,1,2,0,1,Character,COMP_00608,Consumer Cyclical
+CAM_00609,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00609,Consumer Cyclical
+CAM_00610,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00610,Industrials
+CAM_00611,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00611,Basic Materials
+CAM_00612,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00612,Real Estate
+CAM_00613,4,1,2,0,0.0,1,2,0,1,Character,COMP_00613,Industrials
+CAM_00614,4,1,1,1,0.3999999999999999,1,2,0,1,Character,COMP_00614,Industrials
+CAM_00615,4,1,2,0,0.0,1,2,0,1,Character,COMP_00615,Industrials
+CAM_00616,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00616,Basic Materials
+CAM_00617,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00617,Technology
+CAM_00618,4,1,2,0,0.0,1,2,0,1,Character,COMP_00618,Industrials
+CAM_00619,4,1,2,0,0.0,1,2,0,1,Character,COMP_00619,Consumer Cyclical
+CAM_00620,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00620,Technology
+CAM_00621,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00621,Industrials
+CAM_00622,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00622,Healthcare
+CAM_00623,4,1,2,0,0.0,1,2,0,1,Character,COMP_00623,Basic Materials
+CAM_00624,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00624,Basic Materials
+CAM_00625,4,1,2,0,0.0,1,2,0,1,Character,COMP_00625,Consumer Cyclical
+CAM_00626,4,1,2,0,0.0,1,2,0,1,Character,COMP_00626,Basic Materials
+CAM_00627,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00627,Technology
+CAM_00628,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00628,Healthcare
+CAM_00629,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00629,Financial Services
+CAM_00630,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00630,Financial Services
+CAM_00631,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00631,Consumer Cyclical
+CAM_00632,4,1,2,0,0.0,1,2,0,1,Character,COMP_00632,Consumer Cyclical
+CAM_00633,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00633,Consumer Cyclical
+CAM_00634,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00634,Consumer Cyclical
+CAM_00635,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00635,Consumer Cyclical
+CAM_00636,4,1,1,1,0.3999999999999999,1,2,0,1,Character,COMP_00636,Consumer Cyclical
+CAM_00637,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00637,Industrials
+CAM_00638,4,1,2,0,0.0,1,2,0,1,Character,COMP_00638,Basic Materials
+CAM_00639,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00639,Financial Services
+CAM_00640,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00640,Financial Services
+CAM_00641,4,1,2,0,0.0,1,2,0,1,Character,COMP_00641,Industrials
+CAM_00642,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00642,Consumer Cyclical
+CAM_00643,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00643,Healthcare
+CAM_00644,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00644,Financial Services
+CAM_00645,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00645,Industrials
+CAM_00646,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00646,Consumer Cyclical
+CAM_00647,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00647,Consumer Cyclical
+CAM_00648,4,1,2,0,0.0,1,2,0,1,Character,COMP_00648,Basic Materials
+CAM_00649,4,1,2,0,0.0,1,2,0,1,Character,COMP_00649,Consumer Cyclical
+CAM_00650,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00650,Real Estate
+CAM_00651,4,1,2,0,0.0,1,2,0,1,Character,COMP_00651,Consumer Cyclical
+CAM_00652,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00652,Consumer Defensive
+CAM_00653,4,1,2,0,0.0,1,2,0,1,Character,COMP_00653,Consumer Cyclical
+CAM_00654,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00654,Healthcare
+CAM_00655,4,1,2,0,0.0,1,2,0,1,Character,COMP_00655,Basic Materials
+CAM_00656,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00656,Technology
+CAM_00657,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00657,Technology
+CAM_00658,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00658,Financial Services
+CAM_00659,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00659,Consumer Cyclical
+CAM_00660,4,1,2,0,0.0,1,2,0,1,Character,COMP_00660,Consumer Defensive
+CAM_00661,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00661,Utilities
+CAM_00662,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00662,Industrials
+CAM_00663,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00663,Basic Materials
+CAM_00664,4,1,2,0,0.0,1,2,0,1,Character,COMP_00664,Basic Materials
+CAM_00665,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00665,Energy
+CAM_00666,4,1,2,0,0.0,1,2,0,1,Character,COMP_00666,Industrials
+CAM_00667,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00667,Consumer Cyclical
+CAM_00668,4,1,2,0,0.0,1,2,0,1,Character,COMP_00668,Basic Materials
+CAM_00669,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00669,Consumer Defensive
+CAM_00670,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00670,Real Estate
+CAM_00671,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00671,Industrials
+CAM_00672,4,1,2,0,0.0,1,2,0,1,Character,COMP_00672,Consumer Defensive
+CAM_00673,4,1,2,0,0.0,1,2,0,1,Character,COMP_00673,Consumer Cyclical
+CAM_00674,3,1,1,0,1.0,1,1,0,1,Character,COMP_00674,Industrials
+CAM_00675,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00675,Financial Services
+CAM_00676,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00676,Financial Services
+CAM_00677,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00677,Industrials
+CAM_00678,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00678,Healthcare
+CAM_00679,4,1,2,0,0.0,1,2,0,1,Character,COMP_00679,Industrials
+CAM_00680,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00680,Financial Services
+CAM_00681,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00681,Real Estate
+CAM_00682,4,1,2,0,0.0,1,2,0,1,Character,COMP_00682,Industrials
+CAM_00683,4,1,2,0,0.0,1,2,0,1,Character,COMP_00683,Basic Materials
+CAM_00684,4,1,2,0,0.0,1,2,0,1,Character,COMP_00684,Industrials
+CAM_00685,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00685,Technology
+CAM_00686,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00686,Basic Materials
+CAM_00687,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00687,Industrials
+CAM_00688,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00688,Financial Services
+CAM_00689,4,1,2,0,0.0,1,2,0,1,Character,COMP_00689,Industrials
+CAM_00690,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00690,Financial Services
+CAM_00691,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00691,Basic Materials
+CAM_00692,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00692,Consumer Cyclical
+CAM_00693,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00693,Financial Services
+CAM_00694,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00694,Industrials
+CAM_00695,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00695,Financial Services
+CAM_00696,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00696,Consumer Defensive
+CAM_00697,4,1,2,0,0.0,1,2,0,1,Character,COMP_00697,Consumer Defensive
+CAM_00698,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00698,Consumer Cyclical
+CAM_00699,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00699,Utilities
+CAM_00700,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00700,Utilities
+CAM_00701,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00701,Healthcare
+CAM_00702,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00702,Industrials
+CAM_00703,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00703,Healthcare
+CAM_00704,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00704,Healthcare
+CAM_00705,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00705,Healthcare
+CAM_00706,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00706,Financial Services
+CAM_00707,4,1,2,0,0.0,1,2,0,1,Character,COMP_00707,Consumer Defensive
+CAM_00708,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00708,Consumer Cyclical
+CAM_00709,4,1,2,0,0.0,1,2,0,1,Character,COMP_00709,Industrials
+CAM_00710,4,1,2,0,0.0,1,2,0,1,Character,COMP_00710,Consumer Cyclical
+CAM_00711,2,1,1,0,0.5,0,1,0,1,Character,COMP_00711,Industrials
+CAM_00712,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00712,Consumer Defensive
+CAM_00713,4,1,2,0,0.0,1,2,0,1,Character,COMP_00713,Consumer Cyclical
+CAM_00714,4,1,2,0,0.0,1,2,0,1,Character,COMP_00714,Industrials
+CAM_00715,4,1,2,0,0.0,1,2,0,1,Character,COMP_00715,Consumer Defensive
+CAM_00716,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00716,Energy
+CAM_00717,4,1,2,0,0.0,1,2,0,1,Character,COMP_00717,Industrials
+CAM_00718,4,1,2,0,0.0,1,2,0,1,Character,COMP_00718,Industrials
+CAM_00719,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00719,Energy
+CAM_00720,4,1,2,0,0.0,1,2,0,1,Character,COMP_00720,Consumer Cyclical
+CAM_00721,4,1,2,0,0.0,1,2,0,1,Character,COMP_00721,Basic Materials
+CAM_00722,4,1,1,1,0.3999999999999999,1,2,0,1,Character,COMP_00722,Basic Materials
+CAM_00723,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00723,Basic Materials
+CAM_00724,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00724,Consumer Cyclical
+CAM_00725,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00725,Basic Materials
+CAM_00726,4,1,2,0,0.0,1,2,0,1,Character,COMP_00726,Consumer Defensive
+CAM_00727,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00727,Financial Services
+CAM_00728,4,1,2,0,0.0,1,2,0,1,Character,COMP_00728,Consumer Defensive
+CAM_00729,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00729,Consumer Defensive
+CAM_00730,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00730,Industrials
+CAM_00731,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00731,Real Estate
+CAM_00732,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00732,Consumer Cyclical
+CAM_00733,4,1,2,0,0.0,1,2,0,1,Character,COMP_00733,Consumer Defensive
+CAM_00734,4,1,2,0,0.0,1,2,0,1,Character,COMP_00734,Consumer Defensive
+CAM_00735,4,1,2,0,0.0,1,2,0,1,Character,COMP_00735,Consumer Defensive
+CAM_00736,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00736,Consumer Cyclical
+CAM_00737,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00737,Technology
+CAM_00738,4,1,2,0,0.0,1,2,0,1,Character,COMP_00738,Basic Materials
+CAM_00739,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00739,Consumer Defensive
+CAM_00740,4,1,2,0,0.0,1,2,0,1,Character,COMP_00740,Basic Materials
+CAM_00741,4,1,2,0,0.0,1,2,0,1,Character,COMP_00741,Basic Materials
+CAM_00742,4,1,2,0,0.0,1,2,0,1,Character,COMP_00742,Industrials
+CAM_00743,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00743,Healthcare
+CAM_00744,4,1,2,0,0.0,1,2,0,1,Character,COMP_00744,Industrials
+CAM_00745,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00745,Healthcare
+CAM_00746,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00746,Industrials
+CAM_00747,4,1,2,0,0.0,1,2,0,1,Character,COMP_00747,Basic Materials
+CAM_00748,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00748,Industrials
+CAM_00749,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00749,Industrials
+CAM_00750,4,1,2,0,0.0,1,2,0,1,Character,COMP_00750,Consumer Cyclical
+CAM_00751,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00751,Basic Materials
+CAM_00752,4,1,2,0,0.0,1,2,0,1,Character,COMP_00752,Basic Materials
+CAM_00753,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00753,Utilities
+CAM_00754,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00754,Industrials
+CAM_00755,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00755,Industrials
+CAM_00756,4,1,2,0,0.0,1,2,0,1,Character,COMP_00756,Consumer Defensive
+CAM_00757,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00757,Consumer Defensive
+CAM_00758,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00758,Financial Services
+CAM_00759,4,1,2,0,0.0,1,2,0,1,Character,COMP_00759,Consumer Cyclical
+CAM_00760,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00760,Industrials
+CAM_00761,4,1,2,0,0.0,1,2,0,1,Character,COMP_00761,Basic Materials
+CAM_00762,4,1,2,0,0.0,1,2,0,1,Character,COMP_00762,Basic Materials
+CAM_00763,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00763,Basic Materials
+CAM_00764,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00764,Utilities
+CAM_00765,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00765,Technology
+CAM_00766,4,1,2,0,0.0,1,2,0,1,Character,COMP_00766,Consumer Defensive
+CAM_00767,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00767,Communication Services
+CAM_00768,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00768,Technology
+CAM_00769,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00769,Communication Services
+CAM_00770,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00770,Healthcare
+CAM_00771,4,1,2,0,0.0,1,2,0,1,Character,COMP_00771,Basic Materials
+CAM_00772,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00772,Industrials
+CAM_00773,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00773,Utilities
+CAM_00774,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00774,Healthcare
+CAM_00775,4,1,2,0,0.0,1,2,0,1,Character,COMP_00775,Basic Materials
+CAM_00776,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00776,Energy
+CAM_00777,4,1,2,0,0.0,1,2,0,1,Character,COMP_00777,Basic Materials
+CAM_00778,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00778,Utilities
+CAM_00779,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00779,Industrials
+CAM_00780,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00780,Technology
+CAM_00781,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00781,Industrials
+CAM_00782,4,1,2,0,0.0,1,2,0,1,Character,COMP_00782,Industrials
+CAM_00783,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00783,Consumer Defensive
+CAM_00784,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00784,Healthcare
+CAM_00785,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00785,Technology
+CAM_00786,4,1,2,0,0.0,1,2,0,1,Character,COMP_00786,Industrials
+CAM_00787,4,1,2,0,0.0,1,2,0,1,Character,COMP_00787,Industrials
+CAM_00788,4,1,2,0,0.0,1,2,0,1,Character,COMP_00788,Basic Materials
+CAM_00789,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00789,Consumer Defensive
+CAM_00790,4,1,2,0,0.0,1,2,0,1,Character,COMP_00790,Industrials
+CAM_00791,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00791,Communication Services
+CAM_00792,4,1,2,0,0.0,1,2,0,1,Character,COMP_00792,Consumer Defensive
+CAM_00793,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00793,Industrials
+CAM_00794,4,1,2,0,0.0,1,2,0,1,Character,COMP_00794,Consumer Cyclical
+CAM_00795,4,1,2,0,0.0,1,2,0,1,Character,COMP_00795,Industrials
+CAM_00796,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00796,Financial Services
+CAM_00797,4,1,2,0,0.0,1,2,0,1,Character,COMP_00797,Industrials
+CAM_00798,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00798,Healthcare
+CAM_00799,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00799,Technology
+CAM_00800,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00800,Technology
+CAM_00801,5,1,3,0,-1.0,2,2,0,1,Capacity,COMP_00801,Financial Services
+CAM_00802,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00802,Financial Services
+CAM_00803,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00803,Financial Services
+CAM_00804,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00804,Financial Services
+CAM_00805,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00805,Consumer Cyclical
+CAM_00806,4,1,2,0,0.0,1,2,0,1,Character,COMP_00806,Industrials
+CAM_00807,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00807,Industrials
+CAM_00808,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00808,Basic Materials
+CAM_00809,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00809,Real Estate
+CAM_00810,4,1,2,0,0.0,1,2,0,1,Character,COMP_00810,Basic Materials
+CAM_00811,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00811,Consumer Defensive
+CAM_00812,4,1,2,0,0.0,1,2,0,1,Character,COMP_00812,Consumer Cyclical
+CAM_00813,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00813,Healthcare
+CAM_00814,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00814,Financial Services
+CAM_00815,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00815,Technology
+CAM_00816,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00816,Technology
+CAM_00817,4,1,2,0,0.0,1,2,0,1,Character,COMP_00817,Industrials
+CAM_00818,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00818,Technology
+CAM_00819,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00819,Industrials
+CAM_00820,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00820,Healthcare
+CAM_00821,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00821,Industrials
+CAM_00822,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00822,Industrials
+CAM_00823,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00823,Consumer Cyclical
+CAM_00824,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00824,Basic Materials
+CAM_00825,4,1,1,1,0.3999999999999999,1,2,0,1,Character,COMP_00825,Consumer Cyclical
+CAM_00826,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00826,Basic Materials
+CAM_00827,4,1,2,0,0.0,1,2,0,1,Character,COMP_00827,Basic Materials
+CAM_00828,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00828,Energy
+CAM_00829,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00829,Energy
+CAM_00830,4,1,2,0,0.0,1,2,0,1,Character,COMP_00830,Consumer Defensive
+CAM_00831,4,1,2,0,0.0,1,2,0,1,Character,COMP_00831,Consumer Cyclical
+CAM_00832,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00832,Basic Materials
+CAM_00833,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00833,Industrials
+CAM_00834,4,1,2,0,0.0,1,2,0,1,Character,COMP_00834,Basic Materials
+CAM_00835,4,1,2,0,0.0,1,2,0,1,Character,COMP_00835,Basic Materials
+CAM_00836,4,1,2,0,0.0,1,2,0,1,Character,COMP_00836,Consumer Cyclical
+CAM_00837,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00837,Consumer Cyclical
+CAM_00838,4,1,2,0,0.0,1,2,0,1,Character,COMP_00838,Industrials
+CAM_00839,4,1,2,0,0.0,1,2,0,1,Character,COMP_00839,Consumer Cyclical
+CAM_00840,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00840,Consumer Defensive
+CAM_00841,4,1,2,0,0.0,1,2,0,1,Character,COMP_00841,Industrials
+CAM_00842,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00842,Communication Services
+CAM_00843,4,1,2,0,0.0,1,2,0,1,Character,COMP_00843,Industrials
+CAM_00844,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00844,Financial Services
+CAM_00845,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00845,Consumer Defensive
+CAM_00846,4,1,2,0,0.0,1,2,0,1,Character,COMP_00846,Industrials
+CAM_00847,4,1,2,0,0.0,1,2,0,1,Character,COMP_00847,Industrials
+CAM_00848,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00848,Basic Materials
+CAM_00849,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00849,Basic Materials
+CAM_00850,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00850,Industrials
+CAM_00851,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00851,Basic Materials
+CAM_00852,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00852,Communication Services
+CAM_00853,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00853,Real Estate
+CAM_00854,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00854,Financial Services
+CAM_00855,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00855,Consumer Cyclical
+CAM_00856,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00856,Financial Services
+CAM_00857,4,1,2,0,0.0,1,2,0,1,Character,COMP_00857,Consumer Cyclical
+CAM_00858,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00858,Real Estate
+CAM_00859,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00859,Real Estate
+CAM_00860,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00860,Industrials
+CAM_00861,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00861,Financial Services
+CAM_00862,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00862,Financial Services
+CAM_00863,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00863,Financial Services
+CAM_00864,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00864,Financial Services
+CAM_00865,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00865,Consumer Cyclical
+CAM_00866,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00866,Financial Services
+CAM_00867,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00867,Financial Services
+CAM_00868,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00868,Communication Services
+CAM_00869,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00869,Technology
+CAM_00870,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00870,Financial Services
+CAM_00871,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00871,Financial Services
+CAM_00872,3,1,1,0,1.0,1,1,0,1,Character,COMP_00872,Consumer Defensive
+CAM_00873,4,1,2,0,0.0,1,2,0,1,Character,COMP_00873,Consumer Cyclical
+CAM_00874,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00874,Financial Services
+CAM_00875,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00875,Basic Materials
+CAM_00876,4,1,2,0,0.0,1,2,0,1,Character,COMP_00876,Consumer Cyclical
+CAM_00877,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00877,Basic Materials
+CAM_00878,4,1,2,0,0.0,1,2,0,1,Character,COMP_00878,Basic Materials
+CAM_00879,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00879,Utilities
+CAM_00880,4,1,2,0,0.0,1,2,0,1,Character,COMP_00880,Basic Materials
+CAM_00881,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00881,Financial Services
+CAM_00882,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00882,Financial Services
+CAM_00883,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00883,Financial Services
+CAM_00884,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00884,Technology
+CAM_00885,4,1,2,0,0.0,1,2,0,1,Character,COMP_00885,Healthcare
+CAM_00886,4,1,2,0,0.0,1,2,0,1,Character,COMP_00886,Industrials
+CAM_00887,4,1,2,0,0.0,1,2,0,1,Character,COMP_00887,Industrials
+CAM_00888,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00888,Communication Services
+CAM_00889,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00889,Basic Materials
+CAM_00890,4,1,2,0,0.0,1,2,0,1,Character,COMP_00890,Consumer Cyclical
+CAM_00891,4,1,2,0,0.0,1,2,0,1,Character,COMP_00891,Basic Materials
+CAM_00892,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00892,Basic Materials
+CAM_00893,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00893,Financial Services
+CAM_00894,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00894,Healthcare
+CAM_00895,4,1,2,0,0.0,1,2,0,1,Character,COMP_00895,Consumer Cyclical
+CAM_00896,4,1,2,0,0.0,1,2,0,1,Character,COMP_00896,Basic Materials
+CAM_00897,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00897,Basic Materials
+CAM_00898,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00898,Communication Services
+CAM_00899,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00899,Financial Services
+CAM_00900,4,1,2,0,0.0,1,2,0,1,Character,COMP_00900,Consumer Cyclical
+CAM_00901,4,1,2,0,0.0,1,2,0,1,Character,COMP_00901,Industrials
+CAM_00902,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00902,Financial Services
+CAM_00903,4,1,2,0,0.0,1,2,0,1,Character,COMP_00903,Industrials
+CAM_00904,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00904,Basic Materials
+CAM_00905,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00905,Real Estate
+CAM_00906,4,1,2,0,0.0,1,2,0,1,Character,COMP_00906,Consumer Cyclical
+CAM_00907,4,1,2,0,0.0,1,2,0,1,Character,COMP_00907,Basic Materials
+CAM_00908,4,1,2,0,0.0,1,2,0,1,Character,COMP_00908,Basic Materials
+CAM_00909,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00909,Healthcare
+CAM_00910,4,1,2,0,0.0,1,2,0,1,Character,COMP_00910,Industrials
+CAM_00911,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00911,Consumer Cyclical
+CAM_00912,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00912,Financial Services
+CAM_00913,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00913,Industrials
+CAM_00914,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00914,Financial Services
+CAM_00915,4,1,2,0,0.0,1,2,0,1,Character,COMP_00915,Basic Materials
+CAM_00916,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00916,Utilities
+CAM_00917,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00917,Healthcare
+CAM_00918,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00918,Healthcare
+CAM_00919,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00919,Consumer Cyclical
+CAM_00920,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00920,Financial Services
+CAM_00921,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00921,Communication Services
+CAM_00922,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00922,Technology
+CAM_00923,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00923,Financial Services
+CAM_00924,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00924,Technology
+CAM_00925,4,1,2,0,0.0,1,2,0,1,Character,COMP_00925,Industrials
+CAM_00926,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00926,Healthcare
+CAM_00927,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00927,Technology
+CAM_00928,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00928,Utilities
+CAM_00929,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00929,Industrials
+CAM_00930,4,1,2,0,0.0,1,2,0,1,Character,COMP_00930,Industrials
+CAM_00931,4,1,2,0,0.0,1,2,0,1,Character,COMP_00931,Basic Materials
+CAM_00932,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00932,Technology
+CAM_00933,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00933,Technology
+CAM_00934,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00934,Technology
+CAM_00935,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00935,Industrials
+CAM_00936,4,1,2,0,0.0,1,2,0,1,Character,COMP_00936,Industrials
+CAM_00937,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00937,Financial Services
+CAM_00938,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00938,Financial Services
+CAM_00939,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00939,Energy
+CAM_00940,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00940,Healthcare
+CAM_00941,4,1,2,0,0.0,1,2,0,1,Character,COMP_00941,Industrials
+CAM_00942,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00942,Healthcare
+CAM_00943,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00943,Basic Materials
+CAM_00944,4,1,2,0,0.0,1,2,0,1,Character,COMP_00944,Industrials
+CAM_00945,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00945,Industrials
+CAM_00946,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00946,Consumer Cyclical
+CAM_00947,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00947,Financial Services
+CAM_00948,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00948,Financial Services
+CAM_00949,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00949,Technology
+CAM_00950,4,1,2,0,0.0,1,2,0,1,Character,COMP_00950,Consumer Cyclical
+CAM_00951,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00951,Utilities
+CAM_00952,4,1,2,0,0.0,1,2,0,1,Character,COMP_00952,Consumer Cyclical
+CAM_00953,4,1,2,0,0.0,1,2,0,1,Character,COMP_00953,Industrials
+CAM_00954,4,1,2,0,0.0,1,2,0,1,Character,COMP_00954,Basic Materials
+CAM_00955,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00955,Consumer Defensive
+CAM_00956,4,1,2,0,0.0,1,2,0,1,Character,COMP_00956,Consumer Cyclical
+CAM_00957,4,1,2,0,0.0,1,2,0,1,Character,COMP_00957,Consumer Cyclical
+CAM_00958,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00958,Technology
+CAM_00959,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00959,Technology
+CAM_00960,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00960,Financial Services
+CAM_00961,4,1,2,0,0.0,1,2,0,1,Character,COMP_00961,Basic Materials
+CAM_00962,4,1,2,0,0.0,1,2,0,1,Character,COMP_00962,Consumer Cyclical
+CAM_00963,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00963,Technology
+CAM_00964,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00964,Financial Services
+CAM_00965,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00965,Communication Services
+CAM_00966,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00966,Healthcare
+CAM_00967,4,1,2,0,0.0,1,2,0,1,Character,COMP_00967,Basic Materials
+CAM_00968,4,1,2,0,0.0,1,2,0,1,Character,COMP_00968,Basic Materials
+CAM_00969,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00969,Basic Materials
+CAM_00970,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00970,Consumer Cyclical
+CAM_00971,4,1,2,0,0.0,1,2,0,1,Character,COMP_00971,Consumer Cyclical
+CAM_00972,4,1,2,0,0.0,1,2,0,1,Character,COMP_00972,Consumer Defensive
+CAM_00973,4,1,2,0,0.0,1,2,0,1,Character,COMP_00973,Industrials
+CAM_00974,4,1,2,0,0.0,1,2,0,1,Character,COMP_00974,Basic Materials
+CAM_00975,4,1,2,0,0.0,1,2,0,1,Character,COMP_00975,Consumer Cyclical
+CAM_00976,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00976,Industrials
+CAM_00977,4,1,2,0,0.0,1,2,0,1,Character,COMP_00977,Basic Materials
+CAM_00978,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00978,Consumer Defensive
+CAM_00979,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00979,Healthcare
+CAM_00980,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00980,Consumer Cyclical
+CAM_00981,4,1,2,0,0.0,1,2,0,1,Character,COMP_00981,Industrials
+CAM_00982,4,1,2,0,0.0,1,2,0,1,Character,COMP_00982,Basic Materials
+CAM_00983,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00983,Consumer Defensive
+CAM_00984,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00984,Financial Services
+CAM_00985,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00985,Consumer Cyclical
+CAM_00986,4,1,2,0,0.0,1,2,0,1,Character,COMP_00986,Basic Materials
+CAM_00987,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00987,Basic Materials
+CAM_00988,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00988,Energy
+CAM_00989,4,1,2,0,0.0,1,2,0,1,Character,COMP_00989,Consumer Cyclical
+CAM_00990,4,1,3,0,-1.5,1,2,0,1,Character,COMP_00990,Financial Services
+CAM_00991,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00991,Industrials
+CAM_00992,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00992,Industrials
+CAM_00993,4,1,2,0,0.0,1,2,0,1,Character,COMP_00993,Industrials
+CAM_00994,4,1,2,0,0.0,1,2,0,1,Character,COMP_00994,Basic Materials
+CAM_00995,4,1,2,0,0.0,1,2,0,1,Character,COMP_00995,Industrials
+CAM_00996,4,1,2,0,0.0,1,2,0,1,Character,COMP_00996,Industrials
+CAM_00997,4,1,2,0,0.0,1,2,0,1,Character,COMP_00997,Basic Materials
+CAM_00998,3,1,2,0,-0.5,0,2,0,1,Character,COMP_00998,Basic Materials
+CAM_00999,4,1,2,0,0.0,1,2,0,1,Character,COMP_00999,Consumer Cyclical
+CAM_01000,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01000,Healthcare
+CAM_01001,4,1,2,0,0.0,1,2,0,1,Character,COMP_01001,Consumer Cyclical
+CAM_01002,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01002,Financial Services
+CAM_01003,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01003,Industrials
+CAM_01004,4,1,2,0,0.0,1,2,0,1,Character,COMP_01004,Basic Materials
+CAM_01005,4,1,2,0,0.0,1,2,0,1,Character,COMP_01005,Industrials
+CAM_01006,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01006,Financial Services
+CAM_01007,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01007,Utilities
+CAM_01008,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01008,Financial Services
+CAM_01009,4,1,2,0,0.0,1,2,0,1,Character,COMP_01009,Basic Materials
+CAM_01010,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01010,Healthcare
+CAM_01011,4,1,2,0,0.0,1,2,0,1,Character,COMP_01011,Basic Materials
+CAM_01012,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01012,Utilities
+CAM_01013,4,1,2,0,0.0,1,2,0,1,Character,COMP_01013,Industrials
+CAM_01014,4,1,2,0,0.0,1,2,0,1,Character,COMP_01014,Industrials
+CAM_01015,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01015,Basic Materials
+CAM_01016,4,1,2,0,0.0,1,2,0,1,Character,COMP_01016,Consumer Cyclical
+CAM_01017,4,1,2,0,0.0,1,2,0,1,Character,COMP_01017,Basic Materials
+CAM_01018,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01018,Basic Materials
+CAM_01019,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01019,Consumer Cyclical
+CAM_01020,4,1,2,0,0.0,1,2,0,1,Character,COMP_01020,Basic Materials
+CAM_01021,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01021,Healthcare
+CAM_01022,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01022,Consumer Cyclical
+CAM_01023,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01023,Communication Services
+CAM_01024,4,1,2,0,0.0,1,2,0,1,Character,COMP_01024,Industrials
+CAM_01025,4,1,2,0,0.0,1,2,0,1,Character,COMP_01025,Consumer Defensive
+CAM_01026,4,1,2,0,0.0,1,2,0,1,Character,COMP_01026,Industrials
+CAM_01027,4,1,2,0,0.0,1,2,0,1,Character,COMP_01027,Industrials
+CAM_01028,4,1,2,0,0.0,1,2,0,1,Character,COMP_01028,Industrials
+CAM_01029,4,1,2,0,0.0,1,2,0,1,Character,COMP_01029,Industrials
+CAM_01030,4,1,2,0,0.0,1,2,0,1,Character,COMP_01030,Basic Materials
+CAM_01031,4,1,2,0,0.0,1,2,0,1,Character,COMP_01031,Consumer Cyclical
+CAM_01032,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01032,Real Estate
+CAM_01033,4,1,2,0,0.0,1,2,0,1,Character,COMP_01033,Consumer Cyclical
+CAM_01034,4,1,2,0,0.0,1,2,0,1,Character,COMP_01034,Consumer Cyclical
+CAM_01035,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01035,Consumer Cyclical
+CAM_01036,4,1,2,0,0.0,1,2,0,1,Character,COMP_01036,Consumer Cyclical
+CAM_01037,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01037,Basic Materials
+CAM_01038,4,1,2,0,0.0,1,2,0,1,Character,COMP_01038,Basic Materials
+CAM_01039,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01039,Consumer Cyclical
+CAM_01040,4,1,2,0,0.0,1,2,0,1,Character,COMP_01040,Basic Materials
+CAM_01041,4,1,2,0,0.0,1,2,0,1,Character,COMP_01041,Consumer Cyclical
+CAM_01042,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01042,Basic Materials
+CAM_01043,4,1,2,0,0.0,1,2,0,1,Character,COMP_01043,Industrials
+CAM_01044,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01044,Utilities
+CAM_01045,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01045,Financial Services
+CAM_01046,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01046,Industrials
+CAM_01047,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01047,Technology
+CAM_01048,4,1,2,0,0.0,1,2,0,1,Character,COMP_01048,Consumer Defensive
+CAM_01049,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01049,Technology
+CAM_01050,4,1,2,0,0.0,1,2,0,1,Character,COMP_01050,Basic Materials
+CAM_01051,2,1,1,0,0.5,0,1,0,1,Character,COMP_01051,Consumer Defensive
+CAM_01052,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01052,Consumer Cyclical
+CAM_01053,4,1,2,0,0.0,1,2,0,1,Character,COMP_01053,Industrials
+CAM_01054,4,1,2,0,0.0,1,2,0,1,Character,COMP_01054,Industrials
+CAM_01055,4,1,2,0,0.0,1,2,0,1,Character,COMP_01055,Consumer Defensive
+CAM_01056,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01056,Industrials
+CAM_01057,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01057,Technology
+CAM_01058,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01058,Technology
+CAM_01059,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01059,Basic Materials
+CAM_01060,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01060,Financial Services
+CAM_01061,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01061,Technology
+CAM_01062,4,1,2,0,0.0,1,2,0,1,Character,COMP_01062,Consumer Cyclical
+CAM_01063,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01063,Basic Materials
+CAM_01064,4,1,2,0,0.0,1,2,0,1,Character,COMP_01064,Industrials
+CAM_01065,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01065,Financial Services
+CAM_01066,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01066,Financial Services
+CAM_01067,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01067,Healthcare
+CAM_01068,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01068,Healthcare
+CAM_01069,4,1,2,0,0.0,1,2,0,1,Character,COMP_01069,Basic Materials
+CAM_01070,4,1,2,0,0.0,1,2,0,1,Character,COMP_01070,Basic Materials
+CAM_01071,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01071,Basic Materials
+CAM_01072,4,1,2,0,0.0,1,2,0,1,Character,COMP_01072,Industrials
+CAM_01073,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01073,Industrials
+CAM_01074,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01074,Industrials
+CAM_01075,4,1,2,0,0.0,1,2,0,1,Character,COMP_01075,Industrials
+CAM_01076,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01076,Consumer Cyclical
+CAM_01077,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01077,Consumer Cyclical
+CAM_01078,4,1,2,0,0.0,1,2,0,1,Character,COMP_01078,Industrials
+CAM_01079,4,1,2,0,0.0,1,2,0,1,Character,COMP_01079,Consumer Defensive
+CAM_01080,4,1,2,0,0.0,1,2,0,1,Character,COMP_01080,Consumer Defensive
+CAM_01081,4,1,2,0,0.0,1,2,0,1,Character,COMP_01081,Industrials
+CAM_01082,4,1,2,0,0.0,1,2,0,1,Character,COMP_01082,Consumer Defensive
+CAM_01083,4,1,2,0,0.0,1,2,0,1,Character,COMP_01083,Industrials
+CAM_01084,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01084,Real Estate
+CAM_01085,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01085,Healthcare
+CAM_01086,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01086,Financial Services
+CAM_01087,4,1,2,0,0.0,1,2,0,1,Character,COMP_01087,Consumer Defensive
+CAM_01088,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01088,Basic Materials
+CAM_01089,4,1,2,0,0.0,1,2,0,1,Character,COMP_01089,Industrials
+CAM_01090,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01090,Industrials
+CAM_01091,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01091,Utilities
+CAM_01092,4,1,2,0,0.0,1,2,0,1,Character,COMP_01092,Industrials
+CAM_01093,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01093,Technology
+CAM_01094,4,1,2,0,0.0,1,2,0,1,Character,COMP_01094,Consumer Cyclical
+CAM_01095,4,1,2,0,0.0,1,2,0,1,Character,COMP_01095,Consumer Defensive
+CAM_01096,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01096,Healthcare
+CAM_01097,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01097,Basic Materials
+CAM_01098,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01098,Basic Materials
+CAM_01099,3,1,1,1,-0.10000000000000009,0,2,0,1,Character,COMP_01099,Consumer Defensive
+CAM_01100,4,1,2,0,0.0,1,2,0,1,Character,COMP_01100,Industrials
+CAM_01101,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01101,Industrials
+CAM_01102,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01102,Basic Materials
+CAM_01103,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01103,Consumer Defensive
+CAM_01104,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01104,Technology
+CAM_01105,4,1,2,0,0.0,1,2,0,1,Character,COMP_01105,Basic Materials
+CAM_01106,4,1,2,0,0.0,1,2,0,1,Character,COMP_01106,Consumer Cyclical
+CAM_01107,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01107,Healthcare
+CAM_01108,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01108,Industrials
+CAM_01109,4,1,2,0,0.0,1,2,0,1,Character,COMP_01109,Industrials
+CAM_01110,4,1,2,0,0.0,1,2,0,1,Character,COMP_01110,Basic Materials
+CAM_01111,4,1,2,0,0.0,1,2,0,1,Character,COMP_01111,Industrials
+CAM_01112,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01112,Industrials
+CAM_01113,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01113,Basic Materials
+CAM_01114,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01114,Technology
+CAM_01115,4,1,2,0,0.0,1,2,0,1,Character,COMP_01115,Consumer Cyclical
+CAM_01116,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01116,Financial Services
+CAM_01117,4,1,2,0,0.0,1,2,0,1,Character,COMP_01117,Basic Materials
+CAM_01118,4,1,2,0,0.0,1,2,0,1,Character,COMP_01118,Consumer Defensive
+CAM_01119,4,1,2,0,0.0,1,2,0,1,Character,COMP_01119,Consumer Cyclical
+CAM_01120,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01120,Industrials
+CAM_01121,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01121,Consumer Cyclical
+CAM_01122,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01122,Healthcare
+CAM_01123,4,1,2,0,0.0,1,2,0,1,Character,COMP_01123,Consumer Cyclical
+CAM_01124,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01124,Real Estate
+CAM_01125,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01125,Consumer Cyclical
+CAM_01126,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01126,Consumer Cyclical
+CAM_01127,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01127,Healthcare
+CAM_01128,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01128,Industrials
+CAM_01129,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01129,Industrials
+CAM_01130,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01130,Healthcare
+CAM_01131,4,1,2,0,0.0,1,2,0,1,Character,COMP_01131,Consumer Cyclical
+CAM_01132,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01132,Healthcare
+CAM_01133,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01133,Financial Services
+CAM_01134,4,1,2,0,0.0,1,2,0,1,Character,COMP_01134,Consumer Defensive
+CAM_01135,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01135,Consumer Cyclical
+CAM_01136,4,1,2,0,0.0,1,2,0,1,Character,COMP_01136,Consumer Cyclical
+CAM_01137,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01137,Healthcare
+CAM_01138,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01138,Industrials
+CAM_01139,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01139,Financial Services
+CAM_01140,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01140,Consumer Cyclical
+CAM_01141,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01141,Technology
+CAM_01142,4,1,2,0,0.0,1,2,0,1,Character,COMP_01142,Consumer Cyclical
+CAM_01143,4,1,2,0,0.0,1,2,0,1,Character,COMP_01143,Consumer Cyclical
+CAM_01144,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01144,Consumer Cyclical
+CAM_01145,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01145,Financial Services
+CAM_01146,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01146,Financial Services
+CAM_01147,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01147,Energy
+CAM_01148,4,1,2,0,0.0,1,2,0,1,Character,COMP_01148,Industrials
+CAM_01149,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01149,Healthcare
+CAM_01150,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01150,Basic Materials
+CAM_01151,4,1,2,0,0.0,1,2,0,1,Character,COMP_01151,Industrials
+CAM_01152,4,1,2,0,0.0,1,2,0,1,Character,COMP_01152,Basic Materials
+CAM_01153,4,1,2,0,0.0,1,2,0,1,Character,COMP_01153,Basic Materials
+CAM_01154,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01154,Industrials
+CAM_01155,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01155,Real Estate
+CAM_01156,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01156,Industrials
+CAM_01157,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01157,Basic Materials
+CAM_01158,4,1,2,0,0.0,1,2,0,1,Character,COMP_01158,Industrials
+CAM_01159,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01159,Healthcare
+CAM_01160,4,1,2,0,0.0,1,2,0,1,Character,COMP_01160,Consumer Cyclical
+CAM_01161,4,1,2,0,0.0,1,2,0,1,Character,COMP_01161,Consumer Cyclical
+CAM_01162,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01162,Real Estate
+CAM_01163,4,1,2,0,0.0,1,2,0,1,Character,COMP_01163,Industrials
+CAM_01164,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01164,Financial Services
+CAM_01165,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01165,Consumer Defensive
+CAM_01166,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01166,Technology
+CAM_01167,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01167,Technology
+CAM_01168,4,1,2,0,0.0,1,2,0,1,Character,COMP_01168,Consumer Cyclical
+CAM_01169,4,1,2,0,0.0,1,2,0,1,Character,COMP_01169,Consumer Cyclical
+CAM_01170,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01170,Healthcare
+CAM_01171,4,1,2,0,0.0,1,2,0,1,Character,COMP_01171,Consumer Cyclical
+CAM_01172,4,1,2,0,0.0,1,2,0,1,Character,COMP_01172,Basic Materials
+CAM_01173,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01173,Healthcare
+CAM_01174,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01174,Consumer Cyclical
+CAM_01175,4,1,2,0,0.0,1,2,0,1,Character,COMP_01175,Consumer Cyclical
+CAM_01176,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01176,Financial Services
+CAM_01177,4,1,2,0,0.0,1,2,0,1,Character,COMP_01177,Basic Materials
+CAM_01178,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01178,Industrials
+CAM_01179,4,1,2,0,0.0,1,2,0,1,Character,COMP_01179,Industrials
+CAM_01180,4,1,2,0,0.0,1,2,0,1,Character,COMP_01180,Industrials
+CAM_01181,4,1,2,0,0.0,1,2,0,1,Character,COMP_01181,Basic Materials
+CAM_01182,3,1,1,1,-0.10000000000000009,0,2,0,1,Character,COMP_01182,Consumer Defensive
+CAM_01183,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01183,Basic Materials
+CAM_01184,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01184,Financial Services
+CAM_01185,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01185,Financial Services
+CAM_01186,4,1,2,0,0.0,1,2,0,1,Character,COMP_01186,Basic Materials
+CAM_01187,4,1,2,0,0.0,1,2,0,1,Character,COMP_01187,Industrials
+CAM_01188,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01188,Industrials
+CAM_01189,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01189,Real Estate
+CAM_01190,4,1,2,0,0.0,1,2,0,1,Character,COMP_01190,Industrials
+CAM_01191,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01191,Financial Services
+CAM_01192,4,1,2,0,0.0,1,2,0,1,Character,COMP_01192,Basic Materials
+CAM_01193,4,1,2,0,0.0,1,2,0,1,Character,COMP_01193,Basic Materials
+CAM_01194,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01194,Industrials
+CAM_01195,4,1,2,0,0.0,1,2,0,1,Character,COMP_01195,Basic Materials
+CAM_01196,4,1,2,0,0.0,1,2,0,1,Character,COMP_01196,Industrials
+CAM_01197,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01197,Basic Materials
+CAM_01198,4,1,1,1,0.3999999999999999,1,2,0,1,Character,COMP_01198,Industrials
+CAM_01199,4,1,2,0,0.0,1,2,0,1,Character,COMP_01199,Industrials
+CAM_01200,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01200,Basic Materials
+CAM_01201,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01201,Basic Materials
+CAM_01202,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01202,Financial Services
+CAM_01203,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01203,Financial Services
+CAM_01204,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01204,Financial Services
+CAM_01205,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01205,Healthcare
+CAM_01206,4,1,2,0,0.0,1,2,0,1,Character,COMP_01206,Basic Materials
+CAM_01207,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01207,Basic Materials
+CAM_01208,4,1,2,0,0.0,1,2,0,1,Character,COMP_01208,Industrials
+CAM_01209,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01209,Healthcare
+CAM_01210,4,1,2,0,0.0,1,2,0,1,Character,COMP_01210,Consumer Cyclical
+CAM_01211,4,1,2,0,0.0,1,2,0,1,Character,COMP_01211,Consumer Defensive
+CAM_01212,3,1,1,0,1.0,1,1,0,1,Character,COMP_01212,Basic Materials
+CAM_01213,4,1,2,0,0.0,1,2,0,1,Character,COMP_01213,Industrials
+CAM_01214,4,1,2,0,0.0,1,2,0,1,Character,COMP_01214,Consumer Cyclical
+CAM_01215,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01215,Technology
+CAM_01216,4,1,2,0,0.0,1,2,0,1,Character,COMP_01216,Consumer Cyclical
+CAM_01217,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01217,Real Estate
+CAM_01218,4,1,2,0,0.0,1,2,0,1,Character,COMP_01218,Consumer Defensive
+CAM_01219,4,1,2,0,0.0,1,2,0,1,Character,COMP_01219,Industrials
+CAM_01220,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01220,Industrials
+CAM_01221,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01221,Healthcare
+CAM_01222,4,1,2,0,0.0,1,2,0,1,Character,COMP_01222,Consumer Cyclical
+CAM_01223,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01223,Financial Services
+CAM_01224,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01224,Financial Services
+CAM_01225,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01225,Technology
+CAM_01226,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01226,Financial Services
+CAM_01227,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01227,Communication Services
+CAM_01228,4,1,2,0,0.0,1,2,0,1,Character,COMP_01228,Consumer Defensive
+CAM_01229,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01229,Real Estate
+CAM_01230,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01230,Healthcare
+CAM_01231,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01231,Healthcare
+CAM_01232,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01232,Consumer Cyclical
+CAM_01233,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01233,Industrials
+CAM_01234,4,1,2,0,0.0,1,2,0,1,Character,COMP_01234,Industrials
+CAM_01235,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01235,Basic Materials
+CAM_01236,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01236,Industrials
+CAM_01237,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01237,Industrials
+CAM_01238,4,1,2,0,0.0,1,2,0,1,Character,COMP_01238,Basic Materials
+CAM_01239,4,1,2,0,0.0,1,2,0,1,Character,COMP_01239,Consumer Defensive
+CAM_01240,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01240,Technology
+CAM_01241,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01241,Financial Services
+CAM_01242,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01242,Healthcare
+CAM_01243,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01243,Healthcare
+CAM_01244,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01244,Healthcare
+CAM_01245,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01245,Healthcare
+CAM_01246,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01246,Healthcare
+CAM_01247,4,1,2,0,0.0,1,2,0,1,Character,COMP_01247,Consumer Cyclical
+CAM_01248,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01248,Consumer Defensive
+CAM_01249,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01249,Industrials
+CAM_01250,4,1,2,0,0.0,1,2,0,1,Character,COMP_01250,Consumer Cyclical
+CAM_01251,4,1,2,0,0.0,1,2,0,1,Character,COMP_01251,Industrials
+CAM_01252,4,1,2,0,0.0,1,2,0,1,Character,COMP_01252,Consumer Cyclical
+CAM_01253,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01253,Healthcare
+CAM_01254,4,1,2,0,0.0,1,2,0,1,Character,COMP_01254,Consumer Cyclical
+CAM_01255,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01255,Financial Services
+CAM_01256,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01256,Consumer Defensive
+CAM_01257,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01257,Utilities
+CAM_01258,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01258,Consumer Cyclical
+CAM_01259,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01259,Consumer Cyclical
+CAM_01260,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01260,Technology
+CAM_01261,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01261,Basic Materials
+CAM_01262,4,1,2,0,0.0,1,2,0,1,Character,COMP_01262,Basic Materials
+CAM_01263,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01263,Consumer Cyclical
+CAM_01264,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01264,Technology
+CAM_01265,4,1,2,0,0.0,1,2,0,1,Character,COMP_01265,Consumer Cyclical
+CAM_01266,4,1,2,0,0.0,1,2,0,1,Character,COMP_01266,Consumer Cyclical
+CAM_01267,4,1,2,0,0.0,1,2,0,1,Character,COMP_01267,Industrials
+CAM_01268,4,1,2,0,0.0,1,2,0,1,Character,COMP_01268,Consumer Cyclical
+CAM_01269,4,1,2,0,0.0,1,2,0,1,Character,COMP_01269,Consumer Defensive
+CAM_01270,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01270,Industrials
+CAM_01271,4,1,2,0,0.0,1,2,0,1,Character,COMP_01271,Basic Materials
+CAM_01272,4,1,2,0,0.0,1,2,0,1,Character,COMP_01272,Industrials
+CAM_01273,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01273,Technology
+CAM_01274,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01274,Consumer Defensive
+CAM_01275,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01275,Real Estate
+CAM_01276,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01276,Real Estate
+CAM_01277,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01277,Industrials
+CAM_01278,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01278,Consumer Cyclical
+CAM_01279,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01279,Consumer Cyclical
+CAM_01280,4,1,2,0,0.0,1,2,0,1,Character,COMP_01280,Basic Materials
+CAM_01281,4,1,2,0,0.0,1,2,0,1,Character,COMP_01281,Consumer Cyclical
+CAM_01282,4,1,2,0,0.0,1,2,0,1,Character,COMP_01282,Basic Materials
+CAM_01283,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01283,Industrials
+CAM_01284,4,1,2,0,0.0,1,2,0,1,Character,COMP_01284,Consumer Cyclical
+CAM_01285,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01285,Financial Services
+CAM_01286,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01286,Financial Services
+CAM_01287,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01287,Consumer Cyclical
+CAM_01288,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01288,Consumer Cyclical
+CAM_01289,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01289,Healthcare
+CAM_01290,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01290,Technology
+CAM_01291,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01291,Consumer Cyclical
+CAM_01292,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01292,Financial Services
+CAM_01293,4,1,2,0,0.0,1,2,0,1,Character,COMP_01293,Consumer Cyclical
+CAM_01294,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01294,Real Estate
+CAM_01295,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01295,Technology
+CAM_01296,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01296,Communication Services
+CAM_01297,4,1,2,0,0.0,1,2,0,1,Character,COMP_01297,Consumer Cyclical
+CAM_01298,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01298,Energy
+CAM_01299,4,1,2,0,0.0,1,2,0,1,Character,COMP_01299,Basic Materials
+CAM_01300,4,1,2,0,0.0,1,2,0,1,Character,COMP_01300,Industrials
+CAM_01301,4,1,2,0,0.0,1,2,0,1,Character,COMP_01301,Consumer Cyclical
+CAM_01302,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01302,Industrials
+CAM_01303,4,1,2,0,0.0,1,2,0,1,Character,COMP_01303,Consumer Defensive
+CAM_01304,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01304,Communication Services
+CAM_01305,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01305,Financial Services
+CAM_01306,4,1,2,0,0.0,1,2,0,1,Character,COMP_01306,Consumer Cyclical
+CAM_01307,4,1,2,0,0.0,1,2,0,1,Character,COMP_01307,Basic Materials
+CAM_01308,4,1,2,0,0.0,1,2,0,1,Character,COMP_01308,Consumer Defensive
+CAM_01309,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01309,Communication Services
+CAM_01310,4,1,2,0,0.0,1,2,0,1,Character,COMP_01310,Consumer Cyclical
+CAM_01311,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01311,Consumer Cyclical
+CAM_01312,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01312,Industrials
+CAM_01313,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01313,Financial Services
+CAM_01314,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01314,Financial Services
+CAM_01315,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01315,Financial Services
+CAM_01316,4,1,2,0,0.0,1,2,0,1,Character,COMP_01316,Consumer Cyclical
+CAM_01317,4,1,2,0,0.0,1,2,0,1,Character,COMP_01317,Basic Materials
+CAM_01318,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01318,Basic Materials
+CAM_01319,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01319,Basic Materials
+CAM_01320,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01320,Financial Services
+CAM_01321,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01321,Consumer Cyclical
+CAM_01322,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01322,Financial Services
+CAM_01323,4,1,2,0,0.0,1,2,0,1,Character,COMP_01323,Consumer Cyclical
+CAM_01324,4,1,2,0,0.0,1,2,0,1,Character,COMP_01324,Consumer Cyclical
+CAM_01325,4,1,2,0,0.0,1,2,0,1,Character,COMP_01325,Consumer Cyclical
+CAM_01326,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01326,Financial Services
+CAM_01327,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01327,Basic Materials
+CAM_01328,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01328,Healthcare
+CAM_01329,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01329,Healthcare
+CAM_01330,4,1,2,0,0.0,1,2,0,1,Character,COMP_01330,Basic Materials
+CAM_01331,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01331,Basic Materials
+CAM_01332,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01332,Communication Services
+CAM_01333,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01333,Industrials
+CAM_01334,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01334,Basic Materials
+CAM_01335,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01335,Industrials
+CAM_01336,4,1,2,0,0.0,1,2,0,1,Character,COMP_01336,Basic Materials
+CAM_01337,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01337,Communication Services
+CAM_01338,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01338,Communication Services
+CAM_01339,4,1,2,0,0.0,1,2,0,1,Character,COMP_01339,Industrials
+CAM_01340,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01340,Financial Services
+CAM_01341,4,1,2,0,0.0,1,2,0,1,Character,COMP_01341,Industrials
+CAM_01342,4,1,2,0,0.0,1,2,0,1,Character,COMP_01342,Basic Materials
+CAM_01343,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01343,Financial Services
+CAM_01344,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01344,Consumer Cyclical
+CAM_01345,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01345,Communication Services
+CAM_01346,4,1,2,0,0.0,1,2,0,1,Character,COMP_01346,Consumer Cyclical
+CAM_01347,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01347,Communication Services
+CAM_01348,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01348,Industrials
+CAM_01349,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01349,Healthcare
+CAM_01350,4,1,2,0,0.0,1,2,0,1,Character,COMP_01350,Industrials
+CAM_01351,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01351,Technology
+CAM_01352,3,1,1,0,1.0,1,1,0,1,Character,COMP_01352,Basic Materials
+CAM_01353,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01353,Healthcare
+CAM_01354,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01354,Industrials
+CAM_01355,4,1,2,0,0.0,1,2,0,1,Character,COMP_01355,Consumer Defensive
+CAM_01356,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01356,Technology
+CAM_01357,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01357,Communication Services
+CAM_01358,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01358,Basic Materials
+CAM_01359,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01359,Healthcare
+CAM_01360,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01360,Technology
+CAM_01361,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01361,Communication Services
+CAM_01362,4,1,2,0,0.0,1,2,0,1,Character,COMP_01362,Basic Materials
+CAM_01363,4,1,2,0,0.0,1,2,0,1,Character,COMP_01363,Consumer Defensive
+CAM_01364,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01364,Healthcare
+CAM_01365,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01365,Healthcare
+CAM_01366,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01366,Utilities
+CAM_01367,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01367,Financial Services
+CAM_01368,4,1,2,0,0.0,1,2,0,1,Character,COMP_01368,Industrials
+CAM_01369,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01369,Industrials
+CAM_01370,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01370,Consumer Defensive
+CAM_01371,4,1,2,0,0.0,1,2,0,1,Character,COMP_01371,Consumer Defensive
+CAM_01372,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01372,Real Estate
+CAM_01373,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01373,Real Estate
+CAM_01374,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01374,Consumer Cyclical
+CAM_01375,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01375,Technology
+CAM_01376,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01376,Industrials
+CAM_01377,4,1,2,0,0.0,1,2,0,1,Character,COMP_01377,Industrials
+CAM_01378,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01378,Consumer Cyclical
+CAM_01379,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01379,Industrials
+CAM_01380,4,1,2,0,0.0,1,2,0,1,Character,COMP_01380,Consumer Cyclical
+CAM_01381,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01381,Technology
+CAM_01382,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01382,Financial Services
+CAM_01383,4,1,2,0,0.0,1,2,0,1,Character,COMP_01383,Consumer Defensive
+CAM_01384,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01384,Utilities
+CAM_01385,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01385,Basic Materials
+CAM_01386,4,1,2,0,0.0,1,2,0,1,Character,COMP_01386,Basic Materials
+CAM_01387,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01387,Industrials
+CAM_01388,4,1,2,0,0.0,1,2,0,1,Character,COMP_01388,Consumer Defensive
+CAM_01389,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01389,Financial Services
+CAM_01390,2,1,1,0,0.5,0,1,0,1,Character,COMP_01390,Basic Materials
+CAM_01391,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01391,Technology
+CAM_01392,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01392,Basic Materials
+CAM_01393,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01393,Consumer Cyclical
+CAM_01394,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01394,Industrials
+CAM_01395,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01395,Financial Services
+CAM_01396,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01396,Basic Materials
+CAM_01397,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01397,Utilities
+CAM_01398,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01398,Utilities
+CAM_01399,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01399,Technology
+CAM_01400,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01400,Healthcare
+CAM_01401,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01401,Financial Services
+CAM_01402,4,1,2,0,0.0,1,2,0,1,Character,COMP_01402,Basic Materials
+CAM_01403,4,1,2,0,0.0,1,2,0,1,Character,COMP_01403,Consumer Cyclical
+CAM_01404,4,1,2,0,0.0,1,2,0,1,Character,COMP_01404,Basic Materials
+CAM_01405,4,1,2,0,0.0,1,2,0,1,Character,COMP_01405,Industrials
+CAM_01406,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01406,Real Estate
+CAM_01407,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01407,Basic Materials
+CAM_01408,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01408,Communication Services
+CAM_01409,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01409,Technology
+CAM_01410,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01410,Energy
+CAM_01411,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01411,Energy
+CAM_01412,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01412,Consumer Cyclical
+CAM_01413,4,1,2,0,0.0,1,2,0,1,Character,COMP_01413,Industrials
+CAM_01414,4,1,2,0,0.0,1,2,0,1,Character,COMP_01414,Consumer Cyclical
+CAM_01415,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01415,Real Estate
+CAM_01416,4,1,2,0,0.0,1,2,0,1,Character,COMP_01416,Industrials
+CAM_01417,2,1,1,0,0.5,0,1,0,1,Character,COMP_01417,Industrials
+CAM_01418,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01418,Basic Materials
+CAM_01419,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01419,Financial Services
+CAM_01420,4,1,2,0,0.0,1,2,0,1,Character,COMP_01420,Industrials
+CAM_01421,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01421,Healthcare
+CAM_01422,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01422,Energy
+CAM_01423,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01423,Communication Services
+CAM_01424,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01424,Technology
+CAM_01425,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01425,Technology
+CAM_01426,4,1,2,0,0.0,1,2,0,1,Character,COMP_01426,Consumer Cyclical
+CAM_01427,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01427,Technology
+CAM_01428,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01428,Healthcare
+CAM_01429,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01429,Consumer Cyclical
+CAM_01430,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01430,Industrials
+CAM_01431,4,1,2,0,0.0,1,2,0,1,Character,COMP_01431,Industrials
+CAM_01432,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01432,Basic Materials
+CAM_01433,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01433,Basic Materials
+CAM_01434,4,1,2,0,0.0,1,2,0,1,Character,COMP_01434,Consumer Cyclical
+CAM_01435,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01435,Consumer Cyclical
+CAM_01436,4,1,2,0,0.0,1,2,0,1,Character,COMP_01436,Consumer Cyclical
+CAM_01437,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01437,Basic Materials
+CAM_01438,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01438,Technology
+CAM_01439,4,1,2,0,0.0,1,2,0,1,Character,COMP_01439,Basic Materials
+CAM_01440,4,1,2,0,0.0,1,2,0,1,Character,COMP_01440,Consumer Defensive
+CAM_01441,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01441,Communication Services
+CAM_01442,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01442,Healthcare
+CAM_01443,4,1,2,0,0.0,1,2,0,1,Character,COMP_01443,Consumer Cyclical
+CAM_01444,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01444,Real Estate
+CAM_01445,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01445,Financial Services
+CAM_01446,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01446,Industrials
+CAM_01447,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01447,Basic Materials
+CAM_01448,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01448,Technology
+CAM_01449,4,1,2,0,0.0,1,2,0,1,Character,COMP_01449,Consumer Cyclical
+CAM_01450,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01450,Financial Services
+CAM_01451,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01451,Basic Materials
+CAM_01452,4,1,2,0,0.0,1,2,0,1,Character,COMP_01452,Consumer Defensive
+CAM_01453,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01453,Technology
+CAM_01454,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01454,Healthcare
+CAM_01455,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01455,Technology
+CAM_01456,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01456,Energy
+CAM_01457,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01457,Real Estate
+CAM_01458,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01458,Healthcare
+CAM_01459,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01459,Technology
+CAM_01460,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01460,Basic Materials
+CAM_01461,4,1,2,0,0.0,1,2,0,1,Character,COMP_01461,Consumer Defensive
+CAM_01462,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01462,Industrials
+CAM_01463,4,1,2,0,0.0,1,2,0,1,Character,COMP_01463,Consumer Cyclical
+CAM_01464,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01464,Healthcare
+CAM_01465,4,1,2,0,0.0,1,2,0,1,Character,COMP_01465,Consumer Cyclical
+CAM_01466,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01466,Real Estate
+CAM_01467,4,1,2,0,0.0,1,2,0,1,Character,COMP_01467,Consumer Cyclical
+CAM_01468,4,1,2,0,0.0,1,2,0,1,Character,COMP_01468,Consumer Cyclical
+CAM_01469,4,1,2,0,0.0,1,2,0,1,Character,COMP_01469,Consumer Defensive
+CAM_01470,4,1,2,0,0.0,1,2,0,1,Character,COMP_01470,Industrials
+CAM_01471,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01471,Consumer Cyclical
+CAM_01472,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01472,Industrials
+CAM_01473,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01473,Basic Materials
+CAM_01474,4,1,2,0,0.0,1,2,0,1,Character,COMP_01474,Consumer Cyclical
+CAM_01475,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01475,Technology
+CAM_01476,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01476,Basic Materials
+CAM_01477,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01477,Consumer Cyclical
+CAM_01478,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01478,Basic Materials
+CAM_01479,4,1,2,0,0.0,1,2,0,1,Character,COMP_01479,Industrials
+CAM_01480,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01480,Consumer Cyclical
+CAM_01481,4,1,2,0,0.0,1,2,0,1,Character,COMP_01481,Industrials
+CAM_01482,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01482,Real Estate
+CAM_01483,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01483,Technology
+CAM_01484,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01484,Energy
+CAM_01485,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01485,Financial Services
+CAM_01486,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01486,Healthcare
+CAM_01487,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01487,Communication Services
+CAM_01488,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01488,Financial Services
+CAM_01489,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01489,Technology
+CAM_01490,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01490,Consumer Defensive
+CAM_01491,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01491,Healthcare
+CAM_01492,4,1,2,0,0.0,1,2,0,1,Character,COMP_01492,Consumer Cyclical
+CAM_01493,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01493,Real Estate
+CAM_01494,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01494,Consumer Defensive
+CAM_01495,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01495,Basic Materials
+CAM_01496,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01496,Industrials
+CAM_01497,4,1,2,0,0.0,1,2,0,1,Character,COMP_01497,Basic Materials
+CAM_01498,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01498,Financial Services
+CAM_01499,4,1,2,0,0.0,1,2,0,1,Character,COMP_01499,Consumer Cyclical
+CAM_01500,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01500,Technology
+CAM_01501,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01501,Consumer Cyclical
+CAM_01502,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01502,Financial Services
+CAM_01503,4,1,2,0,0.0,1,2,0,1,Character,COMP_01503,Industrials
+CAM_01504,4,1,2,0,0.0,1,2,0,1,Character,COMP_01504,Industrials
+CAM_01505,4,1,2,0,0.0,1,2,0,1,Character,COMP_01505,Consumer Defensive
+CAM_01506,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01506,Basic Materials
+CAM_01507,4,1,2,0,0.0,1,2,0,1,Character,COMP_01507,Basic Materials
+CAM_01508,4,1,2,0,0.0,1,2,0,1,Character,COMP_01508,Industrials
+CAM_01509,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01509,Financial Services
+CAM_01510,5,1,4,0,-2.5,2,2,0,1,Capacity,COMP_01510,Financial Services
+CAM_01511,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01511,Financial Services
+CAM_01512,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01512,Communication Services
+CAM_01513,4,1,2,0,0.0,1,2,0,1,Character,COMP_01513,Industrials
+CAM_01514,4,1,2,0,0.0,1,2,0,1,Character,COMP_01514,Consumer Cyclical
+CAM_01515,4,1,2,0,0.0,1,2,0,1,Character,COMP_01515,Consumer Cyclical
+CAM_01516,4,1,2,0,0.0,1,2,0,1,Character,COMP_01516,Basic Materials
+CAM_01517,4,1,2,0,0.0,1,2,0,1,Character,COMP_01517,Basic Materials
+CAM_01518,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01518,Industrials
+CAM_01519,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01519,Financial Services
+CAM_01520,4,1,2,0,0.0,1,2,0,1,Character,COMP_01520,Industrials
+CAM_01521,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01521,Healthcare
+CAM_01522,4,1,2,0,0.0,1,2,0,1,Character,COMP_01522,Basic Materials
+CAM_01523,4,1,2,0,0.0,1,2,0,1,Character,COMP_01523,Consumer Defensive
+CAM_01524,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01524,Financial Services
+CAM_01525,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01525,Utilities
+CAM_01526,4,1,2,0,0.0,1,2,0,1,Character,COMP_01526,Industrials
+CAM_01527,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01527,Industrials
+CAM_01528,4,1,2,0,0.0,1,2,0,1,Character,COMP_01528,Consumer Cyclical
+CAM_01529,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01529,Industrials
+CAM_01530,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01530,Healthcare
+CAM_01531,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01531,Energy
+CAM_01532,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01532,Real Estate
+CAM_01533,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01533,Industrials
+CAM_01534,4,1,2,0,0.0,1,2,0,1,Character,COMP_01534,Basic Materials
+CAM_01535,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01535,Basic Materials
+CAM_01536,4,1,2,0,0.0,1,2,0,1,Character,COMP_01536,Consumer Cyclical
+CAM_01537,4,1,2,0,0.0,1,2,0,1,Character,COMP_01537,Consumer Cyclical
+CAM_01538,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01538,Consumer Cyclical
+CAM_01539,4,1,2,0,0.0,1,2,0,1,Character,COMP_01539,Industrials
+CAM_01540,4,1,2,0,0.0,1,2,0,1,Character,COMP_01540,Basic Materials
+CAM_01541,4,1,2,0,0.0,1,2,0,1,Character,COMP_01541,Industrials
+CAM_01542,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01542,Technology
+CAM_01543,4,1,2,0,0.0,1,2,0,1,Character,COMP_01543,Basic Materials
+CAM_01544,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01544,Real Estate
+CAM_01545,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01545,Consumer Cyclical
+CAM_01546,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01546,Financial Services
+CAM_01547,4,1,2,0,0.0,1,2,0,1,Character,COMP_01547,Basic Materials
+CAM_01548,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01548,Industrials
+CAM_01549,4,1,2,0,0.0,1,2,0,1,Character,COMP_01549,Consumer Cyclical
+CAM_01550,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01550,Industrials
+CAM_01551,4,1,2,0,0.0,1,2,0,1,Character,COMP_01551,Basic Materials
+CAM_01552,4,1,2,0,0.0,1,2,0,1,Character,COMP_01552,Industrials
+CAM_01553,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01553,Technology
+CAM_01554,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01554,Real Estate
+CAM_01555,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01555,Basic Materials
+CAM_01556,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01556,Financial Services
+CAM_01557,4,1,2,0,0.0,1,2,0,1,Character,COMP_01557,Consumer Defensive
+CAM_01558,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01558,Financial Services
+CAM_01559,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01559,Industrials
+CAM_01560,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01560,Utilities
+CAM_01561,4,1,2,0,0.0,1,2,0,1,Character,COMP_01561,Industrials
+CAM_01562,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01562,Real Estate
+CAM_01563,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01563,Basic Materials
+CAM_01564,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01564,Real Estate
+CAM_01565,4,1,2,0,0.0,1,2,0,1,Character,COMP_01565,Industrials
+CAM_01566,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01566,Communication Services
+CAM_01567,4,1,2,0,0.0,1,2,0,1,Character,COMP_01567,Consumer Cyclical
+CAM_01568,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01568,Consumer Defensive
+CAM_01569,4,1,2,0,0.0,1,2,0,1,Character,COMP_01569,Consumer Cyclical
+CAM_01570,4,1,2,0,0.0,1,2,0,1,Character,COMP_01570,Industrials
+CAM_01571,4,1,2,0,0.0,1,2,0,1,Character,COMP_01571,Industrials
+CAM_01572,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01572,Industrials
+CAM_01573,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01573,Technology
+CAM_01574,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01574,Industrials
+CAM_01575,4,1,2,0,0.0,1,2,0,1,Character,COMP_01575,Consumer Cyclical
+CAM_01576,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01576,Communication Services
+CAM_01577,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01577,Consumer Cyclical
+CAM_01578,4,1,2,0,0.0,1,2,0,1,Character,COMP_01578,Industrials
+CAM_01579,3,1,1,0,1.0,1,1,0,1,Character,COMP_01579,Consumer Defensive
+CAM_01580,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01580,Communication Services
+CAM_01581,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01581,Communication Services
+CAM_01582,4,1,2,0,0.0,1,2,0,1,Character,COMP_01582,Basic Materials
+CAM_01583,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01583,Healthcare
+CAM_01584,4,1,2,0,0.0,1,2,0,1,Character,COMP_01584,Consumer Cyclical
+CAM_01585,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01585,Basic Materials
+CAM_01586,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01586,Industrials
+CAM_01587,4,1,2,0,0.0,1,2,0,1,Character,COMP_01587,Basic Materials
+CAM_01588,4,1,2,0,0.0,1,2,0,1,Character,COMP_01588,Consumer Cyclical
+CAM_01589,4,1,2,0,0.0,1,2,0,1,Character,COMP_01589,Consumer Defensive
+CAM_01590,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01590,Communication Services
+CAM_01591,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01591,Basic Materials
+CAM_01592,3,1,1,0,1.0,1,1,0,1,Character,COMP_01592,Consumer Defensive
+CAM_01593,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01593,Basic Materials
+CAM_01594,4,1,2,0,0.0,1,2,0,1,Character,COMP_01594,Basic Materials
+CAM_01595,4,1,2,0,0.0,1,2,0,1,Character,COMP_01595,Basic Materials
+CAM_01596,4,1,2,0,0.0,1,2,0,1,Character,COMP_01596,Industrials
+CAM_01597,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01597,Technology
+CAM_01598,4,1,2,0,0.0,1,2,0,1,Character,COMP_01598,Industrials
+CAM_01599,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01599,Industrials
+CAM_01600,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01600,Consumer Defensive
+CAM_01601,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01601,Consumer Cyclical
+CAM_01602,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01602,Technology
+CAM_01603,4,1,2,0,0.0,1,2,0,1,Character,COMP_01603,Basic Materials
+CAM_01604,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01604,Basic Materials
+CAM_01605,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01605,Industrials
+CAM_01606,3,1,1,1,-0.10000000000000009,0,2,0,1,Character,COMP_01606,Consumer Cyclical
+CAM_01607,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01607,Real Estate
+CAM_01608,4,1,2,0,0.0,1,2,0,1,Character,COMP_01608,Consumer Cyclical
+CAM_01609,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01609,Financial Services
+CAM_01610,4,1,2,0,0.0,1,2,0,1,Character,COMP_01610,Consumer Cyclical
+CAM_01611,4,1,2,0,0.0,1,2,0,1,Character,COMP_01611,Basic Materials
+CAM_01612,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01612,Communication Services
+CAM_01613,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01613,Financial Services
+CAM_01614,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01614,Technology
+CAM_01615,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01615,Consumer Cyclical
+CAM_01616,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01616,Energy
+CAM_01617,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01617,Consumer Defensive
+CAM_01618,4,1,2,0,0.0,1,2,0,1,Character,COMP_01618,Industrials
+CAM_01619,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01619,Consumer Cyclical
+CAM_01620,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01620,Consumer Cyclical
+CAM_01621,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01621,Technology
+CAM_01622,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01622,Energy
+CAM_01623,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01623,Financial Services
+CAM_01624,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01624,Utilities
+CAM_01625,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01625,Technology
+CAM_01626,4,1,2,0,0.0,1,2,0,1,Character,COMP_01626,Consumer Cyclical
+CAM_01627,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01627,Consumer Defensive
+CAM_01628,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01628,Financial Services
+CAM_01629,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01629,Industrials
+CAM_01630,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01630,Industrials
+CAM_01631,4,1,2,0,0.0,1,2,0,1,Character,COMP_01631,Basic Materials
+CAM_01632,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01632,Consumer Defensive
+CAM_01633,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01633,Consumer Cyclical
+CAM_01634,4,1,2,0,0.0,1,2,0,1,Character,COMP_01634,Basic Materials
+CAM_01635,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01635,Financial Services
+CAM_01636,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01636,Industrials
+CAM_01637,2,1,1,0,0.5,0,1,0,1,Character,COMP_01637,Consumer Cyclical
+CAM_01638,4,1,2,0,0.0,1,2,0,1,Character,COMP_01638,Consumer Cyclical
+CAM_01639,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01639,Industrials
+CAM_01640,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01640,Technology
+CAM_01641,4,1,2,0,0.0,1,2,0,1,Character,COMP_01641,Industrials
+CAM_01642,4,1,2,0,0.0,1,2,0,1,Character,COMP_01642,Industrials
+CAM_01643,4,1,2,0,0.0,1,2,0,1,Character,COMP_01643,Consumer Defensive
+CAM_01644,4,1,2,0,0.0,1,2,0,1,Character,COMP_01644,Industrials
+CAM_01645,4,1,2,0,0.0,1,2,0,1,Character,COMP_01645,Industrials
+CAM_01646,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01646,Communication Services
+CAM_01647,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01647,Industrials
+CAM_01648,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01648,Consumer Cyclical
+CAM_01649,4,1,2,0,0.0,1,2,0,1,Character,COMP_01649,Consumer Cyclical
+CAM_01650,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01650,Consumer Cyclical
+CAM_01651,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01651,Industrials
+CAM_01652,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01652,Real Estate
+CAM_01653,4,1,2,0,0.0,1,2,0,1,Character,COMP_01653,Consumer Defensive
+CAM_01654,3,1,1,1,-0.10000000000000009,0,2,0,1,Character,COMP_01654,Basic Materials
+CAM_01655,4,1,2,0,0.0,1,2,0,1,Character,COMP_01655,Industrials
+CAM_01656,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01656,Industrials
+CAM_01657,4,1,2,0,0.0,1,2,0,1,Character,COMP_01657,Industrials
+CAM_01658,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01658,Communication Services
+CAM_01659,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01659,Basic Materials
+CAM_01660,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01660,Healthcare
+CAM_01661,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01661,Utilities
+CAM_01662,4,1,2,0,0.0,1,2,0,1,Character,COMP_01662,Industrials
+CAM_01663,4,1,2,0,0.0,1,2,0,1,Character,COMP_01663,Consumer Cyclical
+CAM_01664,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01664,Technology
+CAM_01665,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01665,Technology
+CAM_01666,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01666,Industrials
+CAM_01667,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01667,Technology
+CAM_01668,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01668,Consumer Cyclical
+CAM_01669,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01669,Technology
+CAM_01670,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01670,Consumer Cyclical
+CAM_01671,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01671,Utilities
+CAM_01672,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01672,Basic Materials
+CAM_01673,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01673,Healthcare
+CAM_01674,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01674,Consumer Cyclical
+CAM_01675,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01675,Industrials
+CAM_01676,4,1,2,0,0.0,1,2,0,1,Character,COMP_01676,Basic Materials
+CAM_01677,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01677,Basic Materials
+CAM_01678,4,1,2,0,0.0,1,2,0,1,Character,COMP_01678,Consumer Cyclical
+CAM_01679,4,1,2,0,0.0,1,2,0,1,Character,COMP_01679,Consumer Cyclical
+CAM_01680,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01680,Real Estate
+CAM_01681,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01681,Real Estate
+CAM_01682,4,1,2,0,0.0,1,2,0,1,Character,COMP_01682,Industrials
+CAM_01683,4,1,2,0,0.0,1,2,0,1,Character,COMP_01683,Industrials
+CAM_01684,4,1,2,0,0.0,1,2,0,1,Character,COMP_01684,Industrials
+CAM_01685,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01685,Technology
+CAM_01686,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01686,Communication Services
+CAM_01687,4,1,2,0,0.0,1,2,0,1,Character,COMP_01687,Industrials
+CAM_01688,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01688,Industrials
+CAM_01689,4,1,2,0,0.0,1,2,0,1,Character,COMP_01689,Basic Materials
+CAM_01690,4,1,2,0,0.0,1,2,0,1,Character,COMP_01690,Consumer Cyclical
+CAM_01691,4,1,2,0,0.0,1,2,0,1,Character,COMP_01691,Basic Materials
+CAM_01692,4,1,2,0,0.0,1,2,0,1,Character,COMP_01692,Basic Materials
+CAM_01693,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01693,Healthcare
+CAM_01694,4,1,2,0,0.0,1,2,0,1,Character,COMP_01694,Industrials
+CAM_01695,4,1,2,0,0.0,1,2,0,1,Character,COMP_01695,Basic Materials
+CAM_01696,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01696,Healthcare
+CAM_01697,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01697,Healthcare
+CAM_01698,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01698,Consumer Defensive
+CAM_01699,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01699,Technology
+CAM_01700,4,1,2,0,0.0,1,2,0,1,Character,COMP_01700,Consumer Defensive
+CAM_01701,4,1,2,0,0.0,1,2,0,1,Character,COMP_01701,Basic Materials
+CAM_01702,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01702,Consumer Cyclical
+CAM_01703,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01703,Basic Materials
+CAM_01704,4,1,2,0,0.0,1,2,0,1,Character,COMP_01704,Industrials
+CAM_01705,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01705,Communication Services
+CAM_01706,4,1,2,0,0.0,1,2,0,1,Character,COMP_01706,Basic Materials
+CAM_01707,4,1,1,1,0.3999999999999999,1,2,0,1,Character,COMP_01707,Consumer Cyclical
+CAM_01708,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01708,Financial Services
+CAM_01709,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01709,Basic Materials
+CAM_01710,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01710,Consumer Cyclical
+CAM_01711,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01711,Industrials
+CAM_01712,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01712,Communication Services
+CAM_01713,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01713,Consumer Cyclical
+CAM_01714,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01714,Basic Materials
+CAM_01715,4,1,2,0,0.0,1,2,0,1,Character,COMP_01715,Consumer Cyclical
+CAM_01716,4,1,2,0,0.0,1,2,0,1,Character,COMP_01716,Basic Materials
+CAM_01717,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01717,Industrials
+CAM_01718,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01718,Basic Materials
+CAM_01719,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01719,Healthcare
+CAM_01720,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01720,Healthcare
+CAM_01721,2,1,1,0,0.5,0,1,0,1,Character,COMP_01721,Consumer Cyclical
+CAM_01722,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01722,Basic Materials
+CAM_01723,4,1,2,0,0.0,1,2,0,1,Character,COMP_01723,Consumer Defensive
+CAM_01724,4,1,2,0,0.0,1,2,0,1,Character,COMP_01724,Consumer Cyclical
+CAM_01725,4,1,2,0,0.0,1,2,0,1,Character,COMP_01725,Basic Materials
+CAM_01726,3,1,1,1,-0.10000000000000009,0,2,0,1,Character,COMP_01726,Communication Services
+CAM_01727,4,1,2,0,0.0,1,2,0,1,Character,COMP_01727,Consumer Cyclical
+CAM_01728,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01728,Consumer Defensive
+CAM_01729,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01729,Technology
+CAM_01730,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01730,Healthcare
+CAM_01731,4,1,2,0,0.0,1,2,0,1,Character,COMP_01731,Basic Materials
+CAM_01732,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01732,Financial Services
+CAM_01733,4,1,2,0,0.0,1,2,0,1,Character,COMP_01733,Basic Materials
+CAM_01734,4,1,2,0,0.0,1,2,0,1,Character,COMP_01734,Industrials
+CAM_01735,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01735,Industrials
+CAM_01736,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01736,Financial Services
+CAM_01737,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01737,Real Estate
+CAM_01738,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01738,Financial Services
+CAM_01739,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01739,Financial Services
+CAM_01740,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01740,Financial Services
+CAM_01741,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01741,Consumer Cyclical
+CAM_01742,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01742,Communication Services
+CAM_01743,4,1,2,0,0.0,1,2,0,1,Character,COMP_01743,Industrials
+CAM_01744,4,1,2,0,0.0,1,2,0,1,Character,COMP_01744,Industrials
+CAM_01745,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01745,Real Estate
+CAM_01746,4,1,2,0,0.0,1,2,0,1,Character,COMP_01746,Basic Materials
+CAM_01747,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01747,Consumer Defensive
+CAM_01748,4,1,2,0,0.0,1,2,0,1,Character,COMP_01748,Consumer Defensive
+CAM_01749,4,1,2,0,0.0,1,2,0,1,Character,COMP_01749,Industrials
+CAM_01750,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01750,Industrials
+CAM_01751,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01751,Technology
+CAM_01752,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01752,Industrials
+CAM_01753,4,1,2,0,0.0,1,2,0,1,Character,COMP_01753,Consumer Cyclical
+CAM_01754,4,1,2,0,0.0,1,2,0,1,Character,COMP_01754,Industrials
+CAM_01755,4,1,2,0,0.0,1,2,0,1,Character,COMP_01755,Consumer Cyclical
+CAM_01756,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01756,Healthcare
+CAM_01757,3,1,1,1,-0.10000000000000009,0,2,0,1,Character,COMP_01757,Industrials
+CAM_01758,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01758,Industrials
+CAM_01759,4,1,2,0,0.0,1,2,0,1,Character,COMP_01759,Basic Materials
+CAM_01760,3,1,1,0,1.0,1,1,0,1,Character,COMP_01760,Consumer Cyclical
+CAM_01761,4,1,2,0,0.0,1,2,0,1,Character,COMP_01761,Industrials
+CAM_01762,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01762,Industrials
+CAM_01763,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01763,Basic Materials
+CAM_01764,4,1,2,0,0.0,1,2,0,1,Character,COMP_01764,Consumer Cyclical
+CAM_01765,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01765,Financial Services
+CAM_01766,4,1,2,0,0.0,1,2,0,1,Character,COMP_01766,Industrials
+CAM_01767,4,1,2,0,0.0,1,2,0,1,Character,COMP_01767,Consumer Cyclical
+CAM_01768,4,1,2,0,0.0,1,2,0,1,Character,COMP_01768,Industrials
+CAM_01769,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01769,Industrials
+CAM_01770,4,1,2,0,0.0,1,2,0,1,Character,COMP_01770,Basic Materials
+CAM_01771,4,1,2,0,0.0,1,2,0,1,Character,COMP_01771,Basic Materials
+CAM_01772,4,1,2,0,0.0,1,2,0,1,Character,COMP_01772,Basic Materials
+CAM_01773,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01773,Industrials
+CAM_01774,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01774,Healthcare
+CAM_01775,4,1,2,0,0.0,1,2,0,1,Character,COMP_01775,Basic Materials
+CAM_01776,4,1,2,0,0.0,1,2,0,1,Character,COMP_01776,Consumer Cyclical
+CAM_01777,4,1,2,0,0.0,1,2,0,1,Character,COMP_01777,Consumer Defensive
+CAM_01778,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01778,Industrials
+CAM_01779,4,1,2,0,0.0,1,2,0,1,Character,COMP_01779,Consumer Cyclical
+CAM_01780,4,1,2,0,0.0,1,2,0,1,Character,COMP_01780,Basic Materials
+CAM_01781,4,1,2,0,0.0,1,2,0,1,Character,COMP_01781,Consumer Cyclical
+CAM_01782,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01782,Financial Services
+CAM_01783,4,1,2,0,0.0,1,2,0,1,Character,COMP_01783,Consumer Cyclical
+CAM_01784,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01784,Communication Services
+CAM_01785,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01785,Industrials
+CAM_01786,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01786,Healthcare
+CAM_01787,4,1,2,0,0.0,1,2,0,1,Character,COMP_01787,Basic Materials
+CAM_01788,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01788,Consumer Cyclical
+CAM_01789,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01789,Consumer Cyclical
+CAM_01790,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01790,Consumer Cyclical
+CAM_01791,4,1,2,0,0.0,1,2,0,1,Character,COMP_01791,Basic Materials
+CAM_01792,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01792,Basic Materials
+CAM_01793,4,1,2,0,0.0,1,2,0,1,Character,COMP_01793,Consumer Cyclical
+CAM_01794,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01794,Real Estate
+CAM_01795,4,1,2,0,0.0,1,2,0,1,Character,COMP_01795,Basic Materials
+CAM_01796,4,1,2,0,0.0,1,2,0,1,Character,COMP_01796,Basic Materials
+CAM_01797,4,1,2,0,0.0,1,2,0,1,Character,COMP_01797,Industrials
+CAM_01798,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01798,Basic Materials
+CAM_01799,4,1,2,0,0.0,1,2,0,1,Character,COMP_01799,Consumer Cyclical
+CAM_01800,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01800,Basic Materials
+CAM_01801,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01801,Basic Materials
+CAM_01802,4,1,2,0,0.0,1,2,0,1,Character,COMP_01802,Consumer Cyclical
+CAM_01803,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01803,Consumer Cyclical
+CAM_01804,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01804,Financial Services
+CAM_01805,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01805,Real Estate
+CAM_01806,4,1,2,0,0.0,1,2,0,1,Character,COMP_01806,Basic Materials
+CAM_01807,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01807,Basic Materials
+CAM_01808,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01808,Technology
+CAM_01809,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01809,Industrials
+CAM_01810,4,1,2,0,0.0,1,2,0,1,Character,COMP_01810,Industrials
+CAM_01811,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01811,Healthcare
+CAM_01812,4,1,2,0,0.0,1,2,0,1,Character,COMP_01812,Industrials
+CAM_01813,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01813,Technology
+CAM_01814,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01814,Industrials
+CAM_01815,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01815,Real Estate
+CAM_01816,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01816,Communication Services
+CAM_01817,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01817,Basic Materials
+CAM_01818,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01818,Consumer Cyclical
+CAM_01819,4,1,2,0,0.0,1,2,0,1,Character,COMP_01819,Consumer Cyclical
+CAM_01820,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01820,Financial Services
+CAM_01821,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01821,Communication Services
+CAM_01822,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01822,Technology
+CAM_01823,4,1,2,0,0.0,1,2,0,1,Character,COMP_01823,Consumer Defensive
+CAM_01824,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01824,Industrials
+CAM_01825,4,1,2,0,0.0,1,2,0,1,Character,COMP_01825,Consumer Cyclical
+CAM_01826,4,1,2,0,0.0,1,2,0,1,Character,COMP_01826,Industrials
+CAM_01827,4,1,2,0,0.0,1,2,0,1,Character,COMP_01827,Consumer Cyclical
+CAM_01828,4,1,2,0,0.0,1,2,0,1,Character,COMP_01828,Basic Materials
+CAM_01829,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01829,Industrials
+CAM_01830,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01830,Communication Services
+CAM_01831,4,1,2,0,0.0,1,2,0,1,Character,COMP_01831,Consumer Cyclical
+CAM_01832,4,1,2,0,0.0,1,2,0,1,Character,COMP_01832,Consumer Cyclical
+CAM_01833,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01833,Utilities
+CAM_01834,4,1,2,0,0.0,1,2,0,1,Character,COMP_01834,Industrials
+CAM_01835,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01835,Industrials
+CAM_01836,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01836,Industrials
+CAM_01837,4,1,2,0,0.0,1,2,0,1,Character,COMP_01837,Consumer Defensive
+CAM_01838,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01838,Consumer Cyclical
+CAM_01839,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01839,Technology
+CAM_01840,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01840,Real Estate
+CAM_01841,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01841,Financial Services
+CAM_01842,4,1,2,0,0.0,1,2,0,1,Character,COMP_01842,Consumer Cyclical
+CAM_01843,4,1,2,0,0.0,1,2,0,1,Character,COMP_01843,Industrials
+CAM_01844,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01844,Healthcare
+CAM_01845,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01845,Industrials
+CAM_01846,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01846,Real Estate
+CAM_01847,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01847,Technology
+CAM_01848,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01848,Healthcare
+CAM_01849,4,1,2,0,0.0,1,2,0,1,Character,COMP_01849,Basic Materials
+CAM_01850,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01850,Technology
+CAM_01851,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01851,Technology
+CAM_01852,4,1,2,0,0.0,1,2,0,1,Character,COMP_01852,Industrials
+CAM_01853,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01853,Consumer Cyclical
+CAM_01854,4,1,2,0,0.0,1,2,0,1,Character,COMP_01854,Industrials
+CAM_01855,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01855,Consumer Cyclical
+CAM_01856,4,1,2,0,0.0,1,2,0,1,Character,COMP_01856,Consumer Cyclical
+CAM_01857,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01857,Technology
+CAM_01858,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01858,Basic Materials
+CAM_01859,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01859,Financial Services
+CAM_01860,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01860,Energy
+CAM_01861,4,1,2,0,0.0,1,2,0,1,Character,COMP_01861,Consumer Cyclical
+CAM_01862,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01862,Financial Services
+CAM_01863,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01863,Healthcare
+CAM_01864,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01864,Financial Services
+CAM_01865,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01865,Consumer Cyclical
+CAM_01866,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01866,Industrials
+CAM_01867,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01867,Consumer Cyclical
+CAM_01868,4,1,2,0,0.0,1,2,0,1,Character,COMP_01868,Basic Materials
+CAM_01869,4,1,2,0,0.0,1,2,0,1,Character,COMP_01869,Consumer Cyclical
+CAM_01870,4,1,2,0,0.0,1,2,0,1,Character,COMP_01870,Basic Materials
+CAM_01871,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01871,Industrials
+CAM_01872,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01872,Consumer Cyclical
+CAM_01873,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01873,Basic Materials
+CAM_01874,4,1,2,0,0.0,1,2,0,1,Character,COMP_01874,Consumer Cyclical
+CAM_01875,4,1,2,0,0.0,1,2,0,1,Character,COMP_01875,Industrials
+CAM_01876,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01876,Financial Services
+CAM_01877,4,1,2,0,0.0,1,2,0,1,Character,COMP_01877,Basic Materials
+CAM_01878,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01878,Industrials
+CAM_01879,4,1,2,0,0.0,1,2,0,1,Character,COMP_01879,Consumer Cyclical
+CAM_01880,4,1,2,0,0.0,1,2,0,1,Character,COMP_01880,Consumer Cyclical
+CAM_01881,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01881,Consumer Cyclical
+CAM_01882,4,1,2,0,0.0,1,2,0,1,Character,COMP_01882,Basic Materials
+CAM_01883,4,1,2,0,0.0,1,2,0,1,Character,COMP_01883,Consumer Cyclical
+CAM_01884,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01884,Healthcare
+CAM_01885,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01885,Basic Materials
+CAM_01886,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01886,Financial Services
+CAM_01887,4,1,2,0,0.0,1,2,0,1,Character,COMP_01887,Basic Materials
+CAM_01888,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01888,Financial Services
+CAM_01889,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01889,Industrials
+CAM_01890,4,1,2,0,0.0,1,2,0,1,Character,COMP_01890,Basic Materials
+CAM_01891,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01891,Financial Services
+CAM_01892,4,1,2,0,0.0,1,2,0,1,Character,COMP_01892,Basic Materials
+CAM_01893,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01893,Financial Services
+CAM_01894,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01894,Industrials
+CAM_01895,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01895,Communication Services
+CAM_01896,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01896,Technology
+CAM_01897,4,1,2,0,0.0,1,2,0,1,Character,COMP_01897,Consumer Cyclical
+CAM_01898,4,1,2,0,0.0,1,2,0,1,Character,COMP_01898,Consumer Cyclical
+CAM_01899,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01899,Technology
+CAM_01900,2,1,1,0,0.5,0,1,0,1,Character,COMP_01900,Consumer Cyclical
+CAM_01901,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01901,Consumer Cyclical
+CAM_01902,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01902,Basic Materials
+CAM_01903,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01903,Technology
+CAM_01904,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01904,Consumer Cyclical
+CAM_01905,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01905,Basic Materials
+CAM_01906,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01906,Basic Materials
+CAM_01907,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01907,Healthcare
+CAM_01908,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01908,Basic Materials
+CAM_01909,4,1,2,0,0.0,1,2,0,1,Character,COMP_01909,Consumer Defensive
+CAM_01910,3,1,1,0,1.0,1,1,0,1,Character,COMP_01910,Consumer Cyclical
+CAM_01911,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01911,Basic Materials
+CAM_01912,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01912,Real Estate
+CAM_01913,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01913,Financial Services
+CAM_01914,4,1,2,0,0.0,1,2,0,1,Character,COMP_01914,Industrials
+CAM_01915,4,1,1,1,0.3999999999999999,1,2,0,1,Character,COMP_01915,Basic Materials
+CAM_01916,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01916,Financial Services
+CAM_01917,4,1,2,0,0.0,1,2,0,1,Character,COMP_01917,Consumer Cyclical
+CAM_01918,4,1,2,0,0.0,1,2,0,1,Character,COMP_01918,Consumer Cyclical
+CAM_01919,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01919,Consumer Defensive
+CAM_01920,4,1,2,0,0.0,1,2,0,1,Character,COMP_01920,Basic Materials
+CAM_01921,4,1,2,0,0.0,1,2,0,1,Character,COMP_01921,Healthcare
+CAM_01922,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01922,Real Estate
+CAM_01923,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01923,Communication Services
+CAM_01924,4,1,2,0,0.0,1,2,0,1,Character,COMP_01924,Consumer Cyclical
+CAM_01925,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01925,Consumer Cyclical
+CAM_01926,4,1,2,0,0.0,1,2,0,1,Character,COMP_01926,Consumer Cyclical
+CAM_01927,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01927,Real Estate
+CAM_01928,4,1,2,0,0.0,1,2,0,1,Character,COMP_01928,Basic Materials
+CAM_01929,4,1,2,0,0.0,1,2,0,1,Character,COMP_01929,Industrials
+CAM_01930,4,1,2,0,0.0,1,2,0,1,Character,COMP_01930,Industrials
+CAM_01931,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01931,Healthcare
+CAM_01932,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01932,Real Estate
+CAM_01933,4,1,2,0,0.0,1,2,0,1,Character,COMP_01933,Basic Materials
+CAM_01934,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01934,Healthcare
+CAM_01935,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01935,Technology
+CAM_01936,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01936,Utilities
+CAM_01937,4,1,2,0,0.0,1,2,0,1,Character,COMP_01937,Consumer Cyclical
+CAM_01938,4,1,2,0,0.0,1,2,0,1,Character,COMP_01938,Basic Materials
+CAM_01939,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01939,Financial Services
+CAM_01940,4,1,2,0,0.0,1,2,0,1,Character,COMP_01940,Consumer Cyclical
+CAM_01941,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01941,Healthcare
+CAM_01942,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01942,Technology
+CAM_01943,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01943,Communication Services
+CAM_01944,4,1,2,0,0.0,1,2,0,1,Character,COMP_01944,Industrials
+CAM_01945,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01945,Industrials
+CAM_01946,4,1,2,0,0.0,1,2,0,1,Character,COMP_01946,Consumer Cyclical
+CAM_01947,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01947,Industrials
+CAM_01948,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01948,Industrials
+CAM_01949,4,1,2,0,0.0,1,2,0,1,Character,COMP_01949,Consumer Cyclical
+CAM_01950,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01950,Technology
+CAM_01951,4,1,2,0,0.0,1,2,0,1,Character,COMP_01951,Consumer Cyclical
+CAM_01952,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01952,Technology
+CAM_01953,4,1,2,0,0.0,1,2,0,1,Character,COMP_01953,Consumer Cyclical
+CAM_01954,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01954,Healthcare
+CAM_01955,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01955,Healthcare
+CAM_01956,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01956,Technology
+CAM_01957,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01957,Financial Services
+CAM_01958,4,1,2,0,0.0,1,2,0,1,Character,COMP_01958,Basic Materials
+CAM_01959,4,1,2,0,0.0,1,2,0,1,Character,COMP_01959,Consumer Cyclical
+CAM_01960,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01960,Healthcare
+CAM_01961,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01961,Consumer Cyclical
+CAM_01962,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01962,Technology
+CAM_01963,4,1,2,0,0.0,1,2,0,1,Character,COMP_01963,Industrials
+CAM_01964,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01964,Industrials
+CAM_01965,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01965,Real Estate
+CAM_01966,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01966,Industrials
+CAM_01967,3,1,1,1,-0.10000000000000009,0,2,0,1,Character,COMP_01967,Industrials
+CAM_01968,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01968,Healthcare
+CAM_01969,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01969,Consumer Defensive
+CAM_01970,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01970,Financial Services
+CAM_01971,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01971,Basic Materials
+CAM_01972,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01972,Communication Services
+CAM_01973,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01973,Consumer Defensive
+CAM_01974,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01974,Technology
+CAM_01975,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01975,Financial Services
+CAM_01976,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01976,Utilities
+CAM_01977,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01977,Basic Materials
+CAM_01978,3,1,1,1,-0.10000000000000009,0,2,0,1,Character,COMP_01978,Technology
+CAM_01979,4,1,2,0,0.0,1,2,0,1,Character,COMP_01979,Basic Materials
+CAM_01980,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01980,Consumer Cyclical
+CAM_01981,4,1,2,0,0.0,1,2,0,1,Character,COMP_01981,Consumer Cyclical
+CAM_01982,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01982,Industrials
+CAM_01983,4,1,2,0,0.0,1,2,0,1,Character,COMP_01983,Industrials
+CAM_01984,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01984,Financial Services
+CAM_01985,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01985,Consumer Cyclical
+CAM_01986,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01986,Technology
+CAM_01987,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01987,Industrials
+CAM_01988,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01988,Financial Services
+CAM_01989,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01989,Industrials
+CAM_01990,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01990,Technology
+CAM_01991,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01991,Industrials
+CAM_01992,4,1,3,0,-1.5,1,2,0,1,Character,COMP_01992,Financial Services
+CAM_01993,4,1,2,0,0.0,1,2,0,1,Character,COMP_01993,Industrials
+CAM_01994,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01994,Technology
+CAM_01995,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01995,Industrials
+CAM_01996,4,1,2,0,0.0,1,2,0,1,Character,COMP_01996,Consumer Cyclical
+CAM_01997,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01997,Technology
+CAM_01998,3,1,2,0,-0.5,0,2,0,1,Character,COMP_01998,Real Estate
+CAM_01999,4,1,2,0,0.0,1,2,0,1,Character,COMP_01999,Industrials
+CAM_02000,3,1,1,1,-0.10000000000000009,0,2,0,1,Character,COMP_02000,Industrials
+CAM_02001,4,1,3,0,-1.5,1,2,0,1,Character,COMP_02001,Financial Services
+CAM_02002,4,1,3,0,-1.5,1,2,0,1,Character,COMP_02002,Financial Services
+CAM_02003,4,1,2,0,0.0,1,2,0,1,Character,COMP_02003,Consumer Cyclical
+CAM_02004,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02004,Consumer Cyclical
+CAM_02005,4,1,3,0,-1.5,1,2,0,1,Character,COMP_02005,Financial Services
+CAM_02006,4,1,2,0,0.0,1,2,0,1,Character,COMP_02006,Industrials
+CAM_02007,4,1,2,0,0.0,1,2,0,1,Character,COMP_02007,Consumer Cyclical
+CAM_02008,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02008,Healthcare
+CAM_02009,4,1,2,0,0.0,1,2,0,1,Character,COMP_02009,Industrials
+CAM_02010,4,1,2,0,0.0,1,2,0,1,Character,COMP_02010,Consumer Cyclical
+CAM_02011,4,1,2,0,0.0,1,2,0,1,Character,COMP_02011,Consumer Cyclical
+CAM_02012,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02012,Healthcare
+CAM_02013,4,1,2,0,0.0,1,2,0,1,Character,COMP_02013,Consumer Defensive
+CAM_02014,4,1,2,0,0.0,1,2,0,1,Character,COMP_02014,Industrials
+CAM_02015,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02015,Industrials
+CAM_02016,4,1,2,0,0.0,1,2,0,1,Character,COMP_02016,Industrials
+CAM_02017,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02017,Industrials
+CAM_02018,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02018,Industrials
+CAM_02019,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02019,Industrials
+CAM_02020,4,1,2,0,0.0,1,2,0,1,Character,COMP_02020,Consumer Cyclical
+CAM_02021,4,1,2,0,0.0,1,2,0,1,Character,COMP_02021,Industrials
+CAM_02022,4,1,2,0,0.0,1,2,0,1,Character,COMP_02022,Basic Materials
+CAM_02023,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02023,Communication Services
+CAM_02024,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02024,Communication Services
+CAM_02025,4,1,2,0,0.0,1,2,0,1,Character,COMP_02025,Basic Materials
+CAM_02026,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02026,Industrials
+CAM_02027,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02027,Industrials
+CAM_02028,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02028,Consumer Cyclical
+CAM_02029,4,1,3,0,-1.5,1,2,0,1,Character,COMP_02029,Financial Services
+CAM_02030,4,1,2,0,0.0,1,2,0,1,Character,COMP_02030,Consumer Cyclical
+CAM_02031,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02031,Consumer Cyclical
+CAM_02032,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02032,Basic Materials
+CAM_02033,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02033,Basic Materials
+CAM_02034,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02034,Technology
+CAM_02035,4,1,2,0,0.0,1,2,0,1,Character,COMP_02035,Consumer Cyclical
+CAM_02036,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02036,Consumer Cyclical
+CAM_02037,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02037,Healthcare
+CAM_02038,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02038,Utilities
+CAM_02039,4,1,2,0,0.0,1,2,0,1,Character,COMP_02039,Industrials
+CAM_02040,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02040,Communication Services
+CAM_02041,4,1,2,0,0.0,1,2,0,1,Character,COMP_02041,Industrials
+CAM_02042,4,1,2,0,0.0,1,2,0,1,Character,COMP_02042,Consumer Cyclical
+CAM_02043,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02043,Technology
+CAM_02044,4,1,2,0,0.0,1,2,0,1,Character,COMP_02044,Industrials
+CAM_02045,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02045,Industrials
+CAM_02046,3,1,1,0,1.0,1,1,0,1,Character,COMP_02046,Consumer Cyclical
+CAM_02047,4,1,2,0,0.0,1,2,0,1,Character,COMP_02047,Consumer Defensive
+CAM_02048,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02048,Technology
+CAM_02049,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02049,Real Estate
+CAM_02050,4,1,2,0,0.0,1,2,0,1,Character,COMP_02050,Consumer Cyclical
+CAM_02051,4,1,2,0,0.0,1,2,0,1,Character,COMP_02051,Industrials
+CAM_02052,4,1,2,0,0.0,1,2,0,1,Character,COMP_02052,Consumer Cyclical
+CAM_02053,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02053,Technology
+CAM_02054,4,1,2,0,0.0,1,2,0,1,Character,COMP_02054,Industrials
+CAM_02055,4,1,2,0,0.0,1,2,0,1,Character,COMP_02055,Consumer Defensive
+CAM_02056,4,1,3,0,-1.5,1,2,0,1,Character,COMP_02056,Financial Services
+CAM_02057,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02057,Energy
+CAM_02058,4,1,3,0,-1.5,1,2,0,1,Character,COMP_02058,Financial Services
+CAM_02059,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02059,Healthcare
+CAM_02060,4,1,2,0,0.0,1,2,0,1,Character,COMP_02060,Consumer Cyclical
+CAM_02061,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02061,Consumer Cyclical
+CAM_02062,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02062,Communication Services
+CAM_02063,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02063,Technology
+CAM_02064,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02064,Consumer Cyclical
+CAM_02065,4,1,2,0,0.0,1,2,0,1,Character,COMP_02065,Consumer Cyclical
+CAM_02066,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02066,Industrials
+CAM_02067,4,1,2,0,0.0,1,2,0,1,Character,COMP_02067,Consumer Cyclical
+CAM_02068,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02068,Communication Services
+CAM_02069,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02069,Communication Services
+CAM_02070,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02070,Consumer Defensive
+CAM_02071,4,1,2,0,0.0,1,2,0,1,Character,COMP_02071,Consumer Cyclical
+CAM_02072,4,1,3,0,-1.5,1,2,0,1,Character,COMP_02072,Financial Services
+CAM_02073,4,1,2,0,0.0,1,2,0,1,Character,COMP_02073,Industrials
+CAM_02074,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02074,Technology
+CAM_02075,4,1,2,0,0.0,1,2,0,1,Character,COMP_02075,Consumer Cyclical
+CAM_02076,4,1,2,0,0.0,1,2,0,1,Character,COMP_02076,Consumer Cyclical
+CAM_02077,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02077,Communication Services
+CAM_02078,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02078,Consumer Defensive
+CAM_02079,4,1,3,0,-1.5,1,2,0,1,Character,COMP_02079,Financial Services
+CAM_02080,4,1,3,0,-1.5,1,2,0,1,Character,COMP_02080,Financial Services
+CAM_02081,4,1,2,0,0.0,1,2,0,1,Character,COMP_02081,Basic Materials
+CAM_02082,4,1,2,0,0.0,1,2,0,1,Character,COMP_02082,Consumer Defensive
+CAM_02083,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02083,Consumer Defensive
+CAM_02084,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02084,Real Estate
+CAM_02085,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02085,Healthcare
+CAM_02086,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02086,Energy
+CAM_02087,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02087,Technology
+CAM_02088,4,1,2,0,0.0,1,2,0,1,Character,COMP_02088,Basic Materials
+CAM_02089,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02089,Communication Services
+CAM_02090,4,1,2,0,0.0,1,2,0,1,Character,COMP_02090,Industrials
+CAM_02091,4,1,3,0,-1.5,1,2,0,1,Character,COMP_02091,Financial Services
+CAM_02092,4,1,2,0,0.0,1,2,0,1,Character,COMP_02092,Industrials
+CAM_02093,2,1,1,0,0.5,0,1,0,1,Character,COMP_02093,Consumer Defensive
+CAM_02094,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02094,Real Estate
+CAM_02095,4,1,2,0,0.0,1,2,0,1,Character,COMP_02095,Consumer Cyclical
+CAM_02096,4,1,2,0,0.0,1,2,0,1,Character,COMP_02096,Consumer Defensive
+CAM_02097,4,1,2,0,0.0,1,2,0,1,Character,COMP_02097,Industrials
+CAM_02098,4,1,2,0,0.0,1,2,0,1,Character,COMP_02098,Industrials
+CAM_02099,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02099,Healthcare
+CAM_02100,4,1,2,0,0.0,1,2,0,1,Character,COMP_02100,Consumer Cyclical
+CAM_02101,4,1,1,1,0.3999999999999999,1,2,0,1,Character,COMP_02101,Basic Materials
+CAM_02102,4,1,2,0,0.0,1,2,0,1,Character,COMP_02102,Consumer Cyclical
+CAM_02103,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02103,Technology
+CAM_02104,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02104,Technology
+CAM_02105,4,1,2,0,0.0,1,2,0,1,Character,COMP_02105,Basic Materials
+CAM_02106,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02106,Industrials
+CAM_02107,4,1,3,0,-1.5,1,2,0,1,Character,COMP_02107,Financial Services
+CAM_02108,4,1,3,0,-1.5,1,2,0,1,Character,COMP_02108,Financial Services
+CAM_02109,4,1,2,0,0.0,1,2,0,1,Character,COMP_02109,Technology
+CAM_02110,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02110,Consumer Defensive
+CAM_02111,4,1,3,0,-1.5,1,2,0,1,Character,COMP_02111,Financial Services
+CAM_02112,4,1,2,0,0.0,1,2,0,1,Character,COMP_02112,Consumer Cyclical
+CAM_02113,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02113,Consumer Defensive
+CAM_02114,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02114,Consumer Cyclical
+CAM_02115,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02115,Healthcare
+CAM_02116,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02116,Technology
+CAM_02117,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02117,Healthcare
+CAM_02118,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02118,Basic Materials
+CAM_02119,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02119,Consumer Cyclical
+CAM_02120,4,1,2,0,0.0,1,2,0,1,Character,COMP_02120,Consumer Cyclical
+CAM_02121,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02121,Consumer Cyclical
+CAM_02122,4,1,2,0,0.0,1,2,0,1,Character,COMP_02122,Industrials
+CAM_02123,4,1,2,0,0.0,1,2,0,1,Character,COMP_02123,Basic Materials
+CAM_02124,4,1,2,0,0.0,1,2,0,1,Character,COMP_02124,Consumer Defensive
+CAM_02125,4,1,2,0,0.0,1,2,0,1,Character,COMP_02125,Consumer Cyclical
+CAM_02126,4,1,2,0,0.0,1,2,0,1,Character,COMP_02126,Basic Materials
+CAM_02127,4,1,2,0,0.0,1,2,0,1,Character,COMP_02127,Basic Materials
+CAM_02128,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02128,Consumer Defensive
+CAM_02129,4,1,2,0,0.0,1,2,0,1,Character,COMP_02129,Consumer Cyclical
+CAM_02130,4,1,2,0,0.0,1,2,0,1,Character,COMP_02130,Basic Materials
+CAM_02131,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02131,Healthcare
+CAM_02132,4,1,2,0,0.0,1,2,0,1,Character,COMP_02132,Consumer Defensive
+CAM_02133,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02133,Technology
+CAM_02134,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02134,Industrials
+CAM_02135,4,1,2,0,0.0,1,2,0,1,Character,COMP_02135,Industrials
+CAM_02136,4,1,2,0,0.0,1,2,0,1,Character,COMP_02136,Consumer Cyclical
+CAM_02137,4,1,2,0,0.0,1,2,0,1,Character,COMP_02137,Industrials
+CAM_02138,4,1,3,0,-1.5,1,2,0,1,Character,COMP_02138,Financial Services
+CAM_02139,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02139,Consumer Cyclical
+CAM_02140,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02140,Basic Materials
+CAM_02141,4,1,2,0,0.0,1,2,0,1,Character,COMP_02141,Industrials
+CAM_02142,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02142,Healthcare
+CAM_02143,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02143,Financial Services
+CAM_02144,4,1,2,0,0.0,1,2,0,1,Character,COMP_02144,Basic Materials
+CAM_02145,4,1,2,0,0.0,1,2,0,1,Character,COMP_02145,Consumer Defensive
+CAM_02146,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02146,Technology
+CAM_02147,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02147,Industrials
+CAM_02148,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02148,Healthcare
+CAM_02149,4,1,2,0,0.0,1,2,0,1,Character,COMP_02149,Basic Materials
+CAM_02150,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02150,Consumer Defensive
+CAM_02151,4,1,2,0,0.0,1,2,0,1,Character,COMP_02151,Industrials
+CAM_02152,4,1,2,0,0.0,1,2,0,1,Character,COMP_02152,Basic Materials
+CAM_02153,4,1,2,0,0.0,1,2,0,1,Character,COMP_02153,Consumer Cyclical
+CAM_02154,4,1,2,0,0.0,1,2,0,1,Character,COMP_02154,Basic Materials
+CAM_02155,3,1,1,0,1.0,1,1,0,1,Character,COMP_02155,Consumer Cyclical
+CAM_02156,4,1,2,0,0.0,1,2,0,1,Character,COMP_02156,Consumer Cyclical
+CAM_02157,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02157,Real Estate
+CAM_02158,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02158,Technology
+CAM_02159,4,1,2,0,0.0,1,2,0,1,Character,COMP_02159,Industrials
+CAM_02160,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02160,Basic Materials
+CAM_02161,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02161,Basic Materials
+CAM_02162,4,1,2,0,0.0,1,2,0,1,Character,COMP_02162,Consumer Defensive
+CAM_02163,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02163,Consumer Cyclical
+CAM_02164,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02164,Healthcare
+CAM_02165,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02165,Healthcare
+CAM_02166,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02166,Technology
+CAM_02167,4,1,3,0,-1.5,1,2,0,1,Character,COMP_02167,Financial Services
+CAM_02168,4,1,2,0,0.0,1,2,0,1,Character,COMP_02168,Consumer Cyclical
+CAM_02169,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02169,Consumer Cyclical
+CAM_02170,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02170,Basic Materials
+CAM_02171,4,1,2,0,0.0,1,2,0,1,Character,COMP_02171,Industrials
+CAM_02172,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02172,Consumer Cyclical
+CAM_02173,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02173,Industrials
+CAM_02174,4,1,2,0,0.0,1,2,0,1,Character,COMP_02174,Basic Materials
+CAM_02175,4,1,2,0,0.0,1,2,0,1,Character,COMP_02175,Industrials
+CAM_02176,4,1,2,0,0.0,1,2,0,1,Character,COMP_02176,Basic Materials
+CAM_02177,2,1,1,0,0.5,0,1,0,1,Character,COMP_02177,Consumer Defensive
+CAM_02178,4,1,2,0,0.0,1,2,0,1,Character,COMP_02178,Basic Materials
+CAM_02179,4,1,2,0,0.0,1,2,0,1,Character,COMP_02179,Industrials
+CAM_02180,4,1,2,0,0.0,1,2,0,1,Character,COMP_02180,Consumer Cyclical
+CAM_02181,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02181,Technology
+CAM_02182,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02182,Technology
+CAM_02183,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02183,Utilities
+CAM_02184,4,1,2,0,0.0,1,2,0,1,Character,COMP_02184,Industrials
+CAM_02185,4,1,2,0,0.0,1,2,0,1,Character,COMP_02185,Consumer Cyclical
+CAM_02186,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02186,Industrials
+CAM_02187,4,1,2,0,0.0,1,2,0,1,Character,COMP_02187,Healthcare
+CAM_02188,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02188,Industrials
+CAM_02189,4,1,3,0,-1.5,1,2,0,1,Character,COMP_02189,Financial Services
+CAM_02190,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02190,Technology
+CAM_02191,4,1,2,0,0.0,1,2,0,1,Character,COMP_02191,Consumer Cyclical
+CAM_02192,4,1,2,0,0.0,1,2,0,1,Character,COMP_02192,Consumer Cyclical
+CAM_02193,4,1,2,0,0.0,1,2,0,1,Character,COMP_02193,Basic Materials
+CAM_02194,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02194,Industrials
+CAM_02195,4,1,3,0,-1.5,1,2,0,1,Character,COMP_02195,Financial Services
+CAM_02196,4,1,2,0,0.0,1,2,0,1,Character,COMP_02196,Consumer Cyclical
+CAM_02197,4,1,2,0,0.0,1,2,0,1,Character,COMP_02197,Industrials
+CAM_02198,4,1,2,0,0.0,1,2,0,1,Character,COMP_02198,Consumer Cyclical
+CAM_02199,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02199,Technology
+CAM_02200,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02200,Real Estate
+CAM_02201,4,1,2,0,0.0,1,2,0,1,Character,COMP_02201,Consumer Cyclical
+CAM_02202,4,1,2,0,0.0,1,2,0,1,Character,COMP_02202,Consumer Cyclical
+CAM_02203,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02203,Financial Services
+CAM_02204,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02204,Healthcare
+CAM_02205,4,1,2,0,0.0,1,2,0,1,Character,COMP_02205,Industrials
+CAM_02206,4,1,2,0,0.0,1,2,0,1,Character,COMP_02206,Consumer Cyclical
+CAM_02207,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02207,Basic Materials
+CAM_02208,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02208,Technology
+CAM_02209,4,1,2,0,0.0,1,2,0,1,Character,COMP_02209,Healthcare
+CAM_02210,4,1,2,0,0.0,1,2,0,1,Character,COMP_02210,Consumer Cyclical
+CAM_02211,4,1,2,0,0.0,1,2,0,1,Character,COMP_02211,Consumer Cyclical
+CAM_02212,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02212,Industrials
+CAM_02213,4,1,2,0,0.0,1,2,0,1,Character,COMP_02213,Basic Materials
+CAM_02214,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02214,Technology
+CAM_02215,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02215,Technology
+CAM_02216,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02216,Basic Materials
+CAM_02217,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02217,Technology
+CAM_02218,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02218,Basic Materials
+CAM_02219,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02219,Healthcare
+CAM_02220,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02220,Consumer Cyclical
+CAM_02221,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02221,Financial Services
+CAM_02222,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02222,Industrials
+CAM_02223,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02223,Technology
+CAM_02224,4,1,3,0,-1.5,1,2,0,1,Character,COMP_02224,Communication Services
+CAM_02225,4,1,2,0,0.0,1,2,0,1,Character,COMP_02225,Consumer Defensive
+CAM_02226,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02226,Communication Services
+CAM_02227,4,1,2,0,0.0,1,2,0,1,Character,COMP_02227,Consumer Cyclical
+CAM_02228,4,1,2,0,0.0,1,2,0,1,Character,COMP_02228,Basic Materials
+CAM_02229,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02229,Technology
+CAM_02230,4,1,2,0,0.0,1,2,0,1,Character,COMP_02230,Industrials
+CAM_02231,4,1,2,0,0.0,1,2,0,1,Character,COMP_02231,Consumer Cyclical
+CAM_02232,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02232,Healthcare
+CAM_02233,4,1,2,0,0.0,1,2,0,1,Character,COMP_02233,Consumer Cyclical
+CAM_02234,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02234,Healthcare
+CAM_02235,4,1,2,0,0.0,1,2,0,1,Character,COMP_02235,Basic Materials
+CAM_02236,4,1,2,0,0.0,1,2,0,1,Character,COMP_02236,Industrials
+CAM_02237,3,1,2,0,-0.5,0,2,0,1,Character,COMP_02237,Healthcare
+CAM_02238,4,1,2,0,0.0,1,2,0,1,Character,COMP_02238,Consumer Defensive
