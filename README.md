@@ -1,4 +1,4 @@
-# 🏛️ IntelliSense (Intelli-Credit)
+# IntelliSense (Intelli-Credit)
 ### *Autonomous AI Underwriting & Digital Credit Appraisal Engine for Institutional Lending*
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
@@ -10,7 +10,7 @@
 
 ---
 
-## 📌 Executive Overview
+## Executive Overview
 
 **IntelliSense (Intelli-Credit)** is an institutional-grade, AI-driven **“Digital Credit Manager”** engineered for Indian Banks, Non-Banking Financial Companies (NBFCs), and SME lenders. 
 
@@ -28,7 +28,7 @@ In traditional commercial credit underwriting, credit teams spend days manually 
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```
                                   [ RAW BORROWER ARTIFACTS ]
@@ -79,20 +79,20 @@ In traditional commercial credit underwriting, credit teams spend days manually 
 
 ---
 
-## ⚡ Key Modules & Capabilities
+## Key Modules & Capabilities
 
-### 1. 📄 High-Precision OCR & Document Ingestion
+### 1. High-Precision OCR & Document Ingestion
 * **Location:** `processing/ocr/` & `processing/classification/`
 * **Multi-Engine PDF Parsing:** Coordinates `pdfplumber` (native text & layout), `Camelot` (lattice/stream financial table extraction), `PyMuPDF` (rasterization & metadata), and `pytesseract` (fallback for scanned photocopies).
 * **Document Classification:** Categorizes uploaded collateral into canonical document classes (`bank_statement`, `gst_return`, `financial_statement`, `mca_filing`, `litigation_record`).
 * **Schema Validation & Storage:** Persists raw and validated schema data to SQLite with field-level confidence scores, audit logs, and manual human-in-the-loop override endpoints.
 
-### 2. 🔍 GST vs. Bank Turnover Reconciliation
+### 2. GST vs. Bank Turnover Reconciliation
 * **Location:** `processing/ocr/gst_bank_recon.py`
 * **Fraud & Divergence Detection:** Compares reported outward taxable supplies from GSTR-1/3B against actual credit deposits in operational bank accounts.
 * **Reliability Metric:** Computes divergence percentages and flags suspicious discrepancies (>15% divergence), circular routing, and fictitious revenue inflation.
 
-### 3. 🧠 Machine Learning & Risk Intelligence
+### 3. Machine Learning & Risk Intelligence
 * **Location:** `ml/ml/`
 * **FinBERT Governance Extractor (`finbert_risk_extractor.ipynb`):** Uses `ProsusAI/finbert` tokenized in 256-token sliding windows to analyze management interview transcripts, annual reports, and legal notes to extract governance penalties and risk probabilities.
 * **Isolation Forest Anomaly Engine (`isolation_forsest.ipynb`):** Runs unsupervised anomaly detection over daily transaction volumes, counterparty velocity, and sudden spikes in debit/credit ratios.
@@ -104,13 +104,13 @@ In traditional commercial credit underwriting, credit teams spend days manually 
   - **Collateral:** Live vs. satisfied MCA charges, asset coverage ratio, encumbrance percentage.
   - **Conditions:** Industry headwinds, site visit sentiment, customer concentration.
 
-### 4. 📝 Autonomous CAM (Credit Appraisal Memo) Generation
+### 4. Autonomous CAM (Credit Appraisal Memo) Generation
 * **Location:** `cam_generation/`
 * **Structured Prompt Synthesis:** Assembles borrower context, financials, ratio spreads, and 5 Cs scores into institutional credit appraisal prompts.
 * **LLM Client (`llm_client.py`):** Interfaces with LLMs via OpenRouter/OpenAI API with low-temperature deterministic reasoning (`temperature=0.2`).
 * **Report Builder (`docx_builder.py`, `pdf_exporter.py`):** Automatically compiles the generated analysis into professional, formatted `.docx` and `.pdf` files containing borrower profiles, facility recommendations, key covenants, and SWOT analysis.
 
-### 5. 🌐 Modular FastAPI Backend & Web Client
+### 5. Modular FastAPI Backend & Web Client
 * **Location:** `app/` & `frontend/`
 * Complete REST API with CORS support, Pydantic request/response schemas, SQLite persistence, and endpoints for:
   - Single and batch document upload (`/api/ingest/upload`, `/api/ingest/batch`)
@@ -120,7 +120,7 @@ In traditional commercial credit underwriting, credit teams spend days manually 
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```plaintext
 IntelliSense/
@@ -176,7 +176,7 @@ IntelliSense/
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Domain | Technologies |
 |---|---|
@@ -191,7 +191,7 @@ IntelliSense/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Prerequisites
 Ensure you have the following installed on your machine:
@@ -234,7 +234,7 @@ DEBUG=True
 
 ---
 
-## 💻 Running the System
+## Running the System
 
 ### 1. Start the FastAPI Server
 ```bash
@@ -276,7 +276,7 @@ jupyter notebook ml/ml/
 
 ---
 
-## 📡 API Reference Overview
+## API Reference Overview
 
 | Method | Endpoint | Description |
 |---|---|---|
@@ -290,7 +290,7 @@ jupyter notebook ml/ml/
 
 ---
 
-## 📊 The "Five Cs of Credit" Evaluation Matrix
+## The "Five Cs of Credit" Evaluation Matrix
 
 IntelliSense maps raw financial and non-financial data into institutional credit metrics:
 
@@ -317,7 +317,7 @@ IntelliSense maps raw financial and non-financial data into institutional credit
 
 ---
 
-## 🛡️ License & Acknowledgements
+## License & Acknowledgements
 
 * **License:** Distributed under the MIT License. See `LICENSE` for more information.
 * **Pretrained Models:** [ProsusAI/finbert](https://huggingface.co/ProsusAI/finbert) hosted via Hugging Face.
